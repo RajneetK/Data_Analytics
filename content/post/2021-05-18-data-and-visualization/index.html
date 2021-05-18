@@ -1,0 +1,40 @@
+---
+title: Data and Visualization
+author: RajneetK
+date: '2021-05-18'
+slug: data-and-visualization
+categories: []
+tags: []
+---
+
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
+
+
+<div id="data-visualization-exercise" class="section level2">
+<h2>Data Visualization Exercise</h2>
+<pre class="r"><code>library(dplyr)
+starwars</code></pre>
+<pre><code>## # A tibble: 87 x 14
+##    name    height  mass hair_color  skin_color eye_color birth_year sex   gender
+##    &lt;chr&gt;    &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
+##  1 Luke S~    172    77 blond       fair       blue            19   male  mascu~
+##  2 C-3PO      167    75 &lt;NA&gt;        gold       yellow         112   none  mascu~
+##  3 R2-D2       96    32 &lt;NA&gt;        white, bl~ red             33   none  mascu~
+##  4 Darth ~    202   136 none        white      yellow          41.9 male  mascu~
+##  5 Leia O~    150    49 brown       light      brown           19   fema~ femin~
+##  6 Owen L~    178   120 brown, grey light      blue            52   male  mascu~
+##  7 Beru W~    165    75 brown       light      blue            47   fema~ femin~
+##  8 R5-D4       97    32 &lt;NA&gt;        white, red red             NA   none  mascu~
+##  9 Biggs ~    183    84 black       light      brown           24   male  mascu~
+## 10 Obi-Wa~    182    77 auburn, wh~ fair       blue-gray       57   male  mascu~
+## # ... with 77 more rows, and 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;,
+## #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
+<div id="mass-vs-weight" class="section level3">
+<h3>Mass vs weight</h3>
+<p>we will study the mass vs weight relationship through a scatterplot</p>
+<pre class="r"><code>library(ggplot2)
+ggplot(starwars,aes(x=height, y= mass))+geom_point()+labs(title = &quot;Mass vs. height of Starwars characters&quot;,
+       x = &quot;Height (cm)&quot;, y = &quot;Weight (kg)&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+</div>
+</div>
