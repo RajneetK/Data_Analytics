@@ -62,7 +62,7 @@
 
   <article class="article">
     
-    <span class="article-duration">1 min read</span>
+    <span class="article-duration">2 min read</span>
     
 
     <h1 class="article-title">Data and Visualization</h1>
@@ -102,6 +102,29 @@ starwars</code></pre>
 ggplot(starwars,aes(x=height, y= mass))+geom_point()+labs(title = &quot;Mass vs. height of Starwars characters&quot;,
        x = &quot;Height (cm)&quot;, y = &quot;Weight (kg)&quot;)</code></pre>
 <p><img src="/2021/05/18/data-and-visualization/index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<div id="anscombes-quartet" class="section level4">
+<h4>Anscombe’s Quartet</h4>
+<p>We summarize the quartet information by each set of data</p>
+<pre class="r"><code>library(Tmisc)
+quartet %&gt;%
+  group_by(set) %&gt;%
+  summarise(
+    mean_x = mean(x), 
+    mean_y = mean(y),
+    sd_x = sd(x),
+    sd_y = sd(y),
+    r = cor(x, y)
+  )</code></pre>
+<pre><code>## # A tibble: 4 x 6
+##   set   mean_x mean_y  sd_x  sd_y     r
+##   &lt;fct&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 I          9   7.50  3.32  2.03 0.816
+## 2 II         9   7.50  3.32  2.03 0.816
+## 3 III        9   7.5   3.32  2.03 0.816
+## 4 IV         9   7.50  3.32  2.03 0.817</code></pre>
+<p>we visualize all four set</p>
+<p><img src="/2021/05/18/data-and-visualization/index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
 </div>
 </div>
 
