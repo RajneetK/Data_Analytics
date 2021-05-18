@@ -2,7 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>/categories/</loc>
+    <lastmod>2021-05-18T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>/2021/05/18/data-and-visualization/</loc>
+    <lastmod>2021-05-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/2021/05/18/data-visulization-using-ggplot2/</loc>
+    <lastmod>2021-05-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/ggplot2/</loc>
     <lastmod>2021-05-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/post/</loc>
@@ -13,8 +22,6 @@
   </url><url>
     <loc>/about/</loc>
     <lastmod>2016-05-05T21:48:51-07:00</lastmod>
-  </url><url>
-    <loc>/categories/</loc>
   </url><url>
     <loc>/tags/</loc>
   </url>

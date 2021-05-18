@@ -16,5 +16,14 @@
       <description>Data Visualization Exerciselibrary(dplyr)starwars## # A tibble: 87 x 14## name height mass hair_color skin_color eye_color birth_year sex gender## &amp;lt;chr&amp;gt; &amp;lt;int&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt; ## 1 Luke S~ 172 77 blond fair blue 19 male mascu~## 2 C-3PO 167 75 &amp;lt;NA&amp;gt; gold yellow 112 none mascu~## 3 R2-D2 96 32 &amp;lt;NA&amp;gt; white, bl~ red 33 none mascu~## 4 Darth ~ 202 136 none white yellow 41.</description>
     </item>
     
+    <item>
+      <title>Data visualisation using ggplot2</title>
+      <link>/2021/05/18/data-visulization-using-ggplot2/</link>
+      <pubDate>Tue, 18 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/2021/05/18/data-visulization-using-ggplot2/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
