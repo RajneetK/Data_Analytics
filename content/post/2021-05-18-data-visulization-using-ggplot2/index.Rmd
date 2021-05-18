@@ -8,7 +8,7 @@ categories:
 tags: []
 ---
 
-## palmer Penguins Data Visualisation
+## Palmer Penguins Data Visualisation
 ```{r warning= FALSE, echo=FALSE, message=FALSE}
 library(palmerpenguins)
 library(tidyverse)
@@ -21,7 +21,8 @@ ggplot(penguins,aes(x = bill_depth_mm,
        subtitle = "Dimensions for Adelie,Chinstrap, and Gentoo Penguins",
        x = "Bill depth (mm)", y = "Bill length (mm)",
        colour = "Species")+
-   facet_grid(species ~ sex)
+   facet_grid(species ~ sex)+scale_color_viridis_d() +
+  guides(color = FALSE)
 
 ```
 
