@@ -11,6 +11,7 @@ tags: []
 ## palmer Penguins Data Visualisation
 ```{r warning= FALSE, echo=FALSE, message=FALSE}
 library(palmerpenguins)
+library(tidyverse)
 
 ggplot(penguins,aes(x = bill_depth_mm,
                      y = bill_length_mm,
