@@ -292,9 +292,8 @@ little_ones %&lt;&gt;%
   mutate(little_ones = children + babies) %&gt;%
   select(children, babies, little_ones) %&gt;%
   arrange(desc(little_ones))</code></pre>
-</div>
-<div id="summary-stats" class="section level2">
-<h2>summary stats</h2>
+<div id="summary-stats" class="section level3">
+<h3>summary stats</h3>
 <pre class="r"><code>summary &lt;-hotels %&gt;%
   group_by(hotel) %&gt;%
   summarise(mean_adr = mean(adr))
@@ -304,6 +303,7 @@ summary</code></pre>
 ##   &lt;chr&gt;           &lt;dbl&gt;
 ## 1 City Hotel      105. 
 ## 2 Resort Hotel     95.0</code></pre>
+</div>
 </div>
 
     </div>

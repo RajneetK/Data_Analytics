@@ -1,8 +1,166 @@
 ---
-title: Assignment - A01
+title: Assignment A01 based on mtcars dataset 
 author: Rajneetk
-date: '2021-05-25'
-slug: assignment-a01
-categories: []
+date: '2021-05-20'
+slug: assignment-a01 on mtcars dataset
+categories:
+  - Data analytics
 tags: []
 ---
+
+
+
+Our analysis will start with the data and then show different links between the car's design and the miles it can achieve per gallon. Below is a detailed report with our code and methods.
+
+
+Description:
+
+The data was extracted from the US magazine Motor Trend 1974 and includes fuel consumption and 10 car design and performance aspects for 32 cars (1973-74 models).
+
+
+
+Source Data:
+
+We have used the mtcars dataset integrated in R.
+
+Given 32 observations dataframe on eleven (numeric) variables
+
+
+* mpg - Miles per gallon
+* cyl - Number of cylinders
+* disp- Displacement (cu.in.)
+* hp  - Gross horsepower
+* drat- Rear axle ratio
+* wt  - Weight (1000 lbs)
+* qsec- 1/4 mile time
+* vs  - Engine (0 = V-shaped, 1 = straight)
+* am  - Transmission (0 = automatic, 1 = manual)
+* gear- Number of forward gears
+* carb- Number of carburetors
+
+
+look at the structure of the mtcars dataset.
+
+```{r,message=FALSE}
+
+str(mtcars)
+summary(mtcars)
+library(dplyr)
+mtcars
+
+```
+
+
+# Gross Horsepower vs Miles per gallon
+
+The effect of this horsepower number on mpg is shown below. Linear regression is then applied to fit the data in a line. With the linear model method, we use geom smooth.
+
+
+```{r,message=FALSE}
+library(ggplot2)
+
+ggplot(mtcars, aes(x=hp,y=mpg)) +
+  geom_point(color="blue") +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(title= "Horsepower vs MPG",x="Gross horsepower",y= "Miles per gallon",caption ="Source:Henderson and Velleman (1981), Building multiple regression models interactively. Biometrics, 37, 391–411")
+  
+```
+
+It shows that as the horsepower is increasing,gallon is unlikely to hit zero.
+
+
+
+
+
+
+## Faceting: individual parts for each vactor level
+
+Impact of Cylinders Number on MPG:
+
+We now carry out the same analysis as above but rather consider the number of cylinders and their effect on gallon(mpg).
+
+
+
+```{r,message=FALSE,fig.show='hide', echo=FALSE, results='hide'}
+library(ggplot2)
+
+mtcars$cyl <- as.factor(mtcars$cyl)
+plot(mpg ~ hp , mtcars, 
+    col=cyl, pch=c(4,6,8)[mtcars$cyl], cex=1.2)
+legend("topright", legend=levels(mtcars$cyl),
+                   pch = c(4,6,8),
+                   col=levels(mtcars$cyl))
+
+
+
+```
+
+
+
+```{r,message=FALSE}
+
+library(ggplot2)
+
+plt <-
+ggplot(mtcars, aes(x=hp, y=mpg, color=cyl, shape=cyl)) +
+    geom_point(size=3) +
+   geom_smooth(method="lm", aes(fill=cyl))+ 
+  labs(title= "Facet:Horsepower vs MPG",x="Gross horsepower",y= "Miles per gallon",
+       caption ="Source:Henderson and Velleman (1981), Building multiple regression models interactively. Biometrics,37, 391–411") 
+plt + facet_wrap(~cyl)
+```
+
+
+
+### Bar plots
+
+A bar charts is an excellent way to show categorical x-axis variables.
+
+```{r, message=FALSE, echo=FALSE}
+library(ggplot2)
+library(dplyr)
+
+ggplot(mtcars, aes(factor(cyl),
+        fill = factor(cyl))) +
+    geom_bar()
+```
+
+
+
+
+
+
+
+#### Histograms
+
+To get a sense of how certain data is being analyzed, we compare histograms, first with mpg(miles per gallon) and the second with hp(Gross horsepower).
+
+
+1: Distribution of Cars by Miles per Gallon
+
+```{r, message=FALSE}
+library(ggplot2)
+
+ggplot(mtcars, aes(mpg)) +
+  geom_histogram(binwidth = 5) + xlab('Miles per Gallon') + ylab('Number of Cars') + 
+   ggtitle('Distribution of Cars by Miles per Gallon')
+
+
+```
+
+
+2: Distribution of Cars by Gross horsepower
+
+```{r, message=FALSE}
+library(ggplot2)
+
+ggplot(mtcars, aes(hp)) +
+  geom_histogram(binwidth=10) + xlab('Gross horsepower') + ylab('Number of Cars') +
+  ggtitle('Distribution of Cars by Gross horsepower')
+```
+
+
+
+
+
+

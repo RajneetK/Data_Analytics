@@ -8,6 +8,15 @@
     <language>en-us</language>
     <lastBuildDate>Tue, 25 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Assignment - A01</title>
+      <link>/2021/05/25/assignment-a01/</link>
+      <pubDate>Tue, 25 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/2021/05/25/assignment-a01/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Data Wrangling using tidyverse</title>
       <link>/2021/05/25/data-wrangling-using-tidyverse/</link>
       <pubDate>Tue, 25 May 2021 00:00:00 +0000</pubDate>
