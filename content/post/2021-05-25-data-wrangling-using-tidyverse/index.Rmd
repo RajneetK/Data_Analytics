@@ -81,8 +81,7 @@ little_ones %<>%
   arrange(desc(little_ones))
 
 ```
-
-##summary stats
+## summary stats
 
 ```{r}
 summary <-hotels %>%
