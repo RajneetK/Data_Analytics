@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Fun with r on RajneetK-Fundamentals of Analytics</title>
+    <link>/categories/fun-with-r/</link>
+    <description>Recent content in Fun with r on RajneetK-Fundamentals of Analytics</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 25 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="/categories/fun-with-r/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Fun with R</title>
+      <link>/2021/05/25/fun-with-r/</link>
+      <pubDate>Tue, 25 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/2021/05/25/fun-with-r/</guid>
+      <description>Variables and Numbersx&amp;lt;- 1y = 23 -&amp;gt; zx+y## [1] 3x*z## [1] 3y/x## [1] 2Vectorsa &amp;lt;- 0:10print(a)## [1] 0 1 2 3 4 5 6 7 8 9 10b &amp;lt;- 10:-4print(b)## [1] 10 9 8 7 6 5 4 3 2 1 0 -1 -2 -3 -4class(a)## [1] &amp;quot;integer&amp;quot;str(a)## int [1:11] 0 1 2 3 4 5 6 7 8 9 .</description>
+    </item>
+    
+  </channel>
+</rss>
