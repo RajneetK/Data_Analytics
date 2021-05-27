@@ -1,0 +1,86 @@
+---
+title: Assignment A02
+author: Rajneetk
+date: '2021-05-26'
+slug: assignment-a02
+categories: []
+tags: []
+---
+
+
+Goodreads Book
+
+
+Description:
+
+The dataset is from kaggle website about Goodreads book.
+
+
+1) Dataset information
+
+    Goodreads offers a platform for people interested in talking about books.Analyze book data not only to understand     users reading habits, but also to predict what books are worth reading.
+
+    All books on GoodRead books are included in this data sets.
+
+    The dataset includes 10 columns, including the books and the scores and reviews.
+
+
+2) The objective is to predict the rating of the book and the analysis which most affects the evaluation.
+
+
+## Importing data from goodreads.csv file
+
+
+```{r, warning=FALSE}
+
+library(tidyverse)
+library(gridExtra)
+library(dplyr)
+
+goodreads <- read_csv("goodreads.csv")
+head(goodreads)
+names(goodreads)
+
+```
+
+
+
+## One table verb
+Count observations by group
+
+```{r}
+
+# select(goodreads,Title,`Average Rating`)
+
+goodreads %>%
+  select(Title,`Average Rating`) %>%
+  count(`Average Rating`) %>%
+  arrange(desc(n))
+```
+
+## Two table verbs
+
+Given the results, we would sort the predictions with respect to recommend the highest rated books. 
+
+```{r}
+library(dplyr)
+library(tidyverse)
+
+goodreads %>%
+  select(Title:Bookshelves)
+
+goodreads %>%
+  select(starts_with("Bookshelves"))
+
+ left_join(`Book Id`,Title)
+ 
+```
+
+
+
+
+
+
+
+
+
