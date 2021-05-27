@@ -70,7 +70,7 @@ goodreads %>%
   select(Title:Bookshelves)
 
 goodreads %>%
-  select(starts_with("Bookshelves"))
+  select(starts_with("Bookshelves")) 
 
  left_join(`Book Id`,Title)
  

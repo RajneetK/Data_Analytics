@@ -2,8 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/2021/05/25/assignment-a01/</loc>
-    <lastmod>2021-05-25T00:00:00+00:00</lastmod>
+    <loc>/2021/05/26/assignment-a02/</loc>
+    <lastmod>2021-05-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/post/</loc>
+    <lastmod>2021-05-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/</loc>
+    <lastmod>2021-05-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/categories/</loc>
     <lastmod>2021-05-25T00:00:00+00:00</lastmod>
@@ -17,11 +23,11 @@
     <loc>/categories/fun-with-r/</loc>
     <lastmod>2021-05-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/post/</loc>
-    <lastmod>2021-05-25T00:00:00+00:00</lastmod>
+    <loc>/2021/05/20/assignment-a01-on-mtcars-dataset/</loc>
+    <lastmod>2021-05-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/</loc>
-    <lastmod>2021-05-25T00:00:00+00:00</lastmod>
+    <loc>/categories/data-analytics/</loc>
+    <lastmod>2021-05-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/2021/05/18/data-and-visualization/</loc>
     <lastmod>2021-05-18T00:00:00+00:00</lastmod>

@@ -42,6 +42,8 @@ hotels %>%
 ```
 
 
+
+
 ## Select a range of rows / cases
 ```{r}
 

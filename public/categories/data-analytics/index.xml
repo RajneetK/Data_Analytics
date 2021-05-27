@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Data analytics on RajneetK-Fundamentals of Analytics</title>
+    <link>/categories/data-analytics/</link>
+    <description>Recent content in Data analytics on RajneetK-Fundamentals of Analytics</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 20 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="/categories/data-analytics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Assignment A01 based on mtcars dataset</title>
+      <link>/2021/05/20/assignment-a01-on-mtcars-dataset/</link>
+      <pubDate>Thu, 20 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/2021/05/20/assignment-a01-on-mtcars-dataset/</guid>
+      <description>Our analysis will start with the data and then show different links between the car’s design and the miles it can achieve per gallon. Below is a detailed report with our code and methods.
+Description:
+The data was extracted from the US magazine Motor Trend 1974 and includes fuel consumption and 10 car design and performance aspects for 32 cars (1973-74 models).
+Source Data:
+We have used the mtcars dataset integrated in R.</description>
+    </item>
+    
+  </channel>
+</rss>
