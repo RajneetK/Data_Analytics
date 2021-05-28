@@ -72,12 +72,12 @@ We have used the mtcars dataset integrated in R.</description>
     </item>
     
     <item>
-      <title>About</title>
+      <title>Fundamentals of Data Analytics</title>
       <link>/about/</link>
       <pubDate>Thu, 05 May 2016 21:48:51 -0700</pubDate>
       
       <guid>/about/</guid>
-      <description>overview  building the blog This is a &amp;ldquo;hello world&amp;rdquo; example website for the blogdown package. The theme was forked from @jrutheiser/hugo-lithium-theme and modified by Yihui Xie.  </description>
+      <description>overview This is a website for learning the course &amp;ldquo;Fundamentals of Data Analytics&amp;rdquo;.</description>
     </item>
     
   </channel>
