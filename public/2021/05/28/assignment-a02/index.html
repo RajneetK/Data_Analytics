@@ -62,7 +62,7 @@
 
   <article class="article">
     
-    <span class="article-duration">16 min read</span>
+    <span class="article-duration">15 min read</span>
     
 
     <h1 class="article-title">Assignment A02</h1>
@@ -184,9 +184,10 @@ phishing &lt;- read_csv(&quot;phishing.csv&quot;)</code></pre>
 ##  9       8              7
 ## 10       2              0
 ## # ... with 9,990 more rows</code></pre>
-<pre><code>2) Arrange in ascending / descending order:
-  
-   HostnameLength is arranged in descending order.</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Arrange in ascending / descending order:</p>
+<p>HostnameLength is arranged in descending order.</p></li>
+</ol>
 <pre class="r"><code>library(dplyr)
 library(tidyverse)
 
@@ -207,11 +208,10 @@ phishing %&gt;%
 ##  9   569                 1       165             11         6             84
 ## 10  2083                 0       163              7         3             83
 ## # ... with 9,990 more rows</code></pre>
-</div>
-<div id="mutate-to-add-a-new-variable" class="section level2">
-<h2>mutate to add a new variable</h2>
-<pre><code>3) Mutate
-   Mutating joins allow you to combine variables from multiple tables.HostnameLength_PathLength is added as a new        variable by mutate.</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li><p>mutate to add a new variable:</p>
+<p>Mutating joins allow you to combine variables from multiple tables.HostnameLength_PathLength is added as a new variable by mutate.</p></li>
+</ol>
 <pre class="r"><code>phishing %&gt;%
   mutate(HostnameLength_PathLength = HostnameLength + PathLength) %&gt;%
   select(HostnameLength, PathLength, HostnameLength_PathLength) %&gt;%
@@ -234,8 +234,10 @@ phishing %&gt;%
 <div id="two-table-verbs" class="section level2">
 <h2>Two table verbs</h2>
 <p>A single data table is rare for a data analysis.We usually have a number of tables for analysis and flexible tools to bring them together.</p>
-<pre><code>1) Left_join: 
-   The left_join keyword returns all records from the left table (table_1), and the matching records from the           right table (table_2).</code></pre>
+<ol style="list-style-type: decimal">
+<li>Left_join:
+The left_join keyword returns all records from the left table (table_1), and the matching records from the right table (table_2).</li>
+</ol>
 <pre class="r"><code>library(dplyr)
 library(tidyverse)
 
@@ -291,8 +293,10 @@ table_1</code></pre>
 ##  9     9                     1                   1            0                0
 ## 10    10                     1                   1            0                0
 ## # ... with 9,990 more rows</code></pre>
-<pre><code>2) full_join():
-   Keeps all of the entries in both tables, regardless of whether or not they appear in the other table.</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>full_join():
+Keeps all of the entries in both tables, regardless of whether or not they appear in the other table.</li>
+</ol>
 <pre class="r"><code>library(dplyr)
 library(tidyverse)
 
@@ -352,8 +356,8 @@ table_3</code></pre>
 <div id="grouping" class="section level2">
 <h2>Grouping</h2>
 <p>Most data operations are done on groups defined by variables group_by() and converts it into a group where operations are performed “by group”. ungroup() removes grouping.</p>
-<pre><code>1)Summarize with groups:
-  It allows us to get a summary row for each group.</code></pre>
+<p>1)Summarize with groups:
+It allows us to get a summary row for each group.</p>
 <pre class="r"><code>library(dplyr)
 library(tidyverse)
 
@@ -538,8 +542,10 @@ by_NumDots &lt;- by_NumDots_SubdomainLevel %&gt;%
 <div id="pivoting" class="section level2">
 <h2>Pivoting</h2>
 <p>Describes the use of the new pivot_longer() and pivot_wider() functions. Their goal is to improve the usability of gather() and spread().</p>
-<pre><code>1) pivot_longer:
-   increasing the number of rows and decreasing the number of columns.</code></pre>
+<ol style="list-style-type: decimal">
+<li>pivot_longer:
+increasing the number of rows and decreasing the number of columns.</li>
+</ol>
 <pre class="r"><code>library(tidyverse)
 
 pivot_longer(
@@ -577,8 +583,10 @@ pivot_longer(
 ## #   PctExtResourceUrlsRT &lt;dbl&gt;, AbnormalExtFormActionR &lt;dbl&gt;,
 ## #   ExtMetaScriptLinkRT &lt;dbl&gt;, PctExtNullSelfRedirectHyperlinksRT &lt;dbl&gt;,
 ## #   CLASS_LABEL &lt;dbl&gt;, NumDots old &lt;chr&gt;, NumDots new &lt;dbl&gt;</code></pre>
-<pre><code>2) pivot_wider:
-   Widens data, increasing the number of columns and decreasing the number of rows. The inverse transformation is        pivot_longer().</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>pivot_wider:
+Widens data, increasing the number of columns and decreasing the number of rows. The inverse transformation is pivot_longer().</li>
+</ol>
 <pre class="r"><code>phishing %&gt;%
   select(SubdomainLevelRT, UrlLengthRT) %&gt;%
   add_count(SubdomainLevelRT, name = &quot;SubdomainLevelRT_n&quot;) %&gt;%
@@ -611,7 +619,7 @@ df &lt;- phishing
 df$RightClickDisabled[2] &lt;- NA
 df$NumDash[5] &lt;- NA
 df$NumDashInHostname[5] &lt;- NA
-df$ SubdomainLevel[10] &lt;- NA
+df$SubdomainLevel[10] &lt;- NA
 
 # counting number of missing values
 paste(&quot;Number of Missing Values&quot;, sum(is.na(df)))</code></pre>
