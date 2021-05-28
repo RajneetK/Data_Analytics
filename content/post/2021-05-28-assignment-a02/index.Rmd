@@ -1,6 +1,17 @@
 ---
 title: Assignment A02
 author: Rajneetk
+date: '2021-05-28'
+slug: assignment-a02
+categories:
+  - Data analytics
+tags: []
+---
+
+
+---
+title: Assignment A02
+author: Rajneetk
 date: '2021-05-26'
 slug: assignment-a02
 categories: []
@@ -8,24 +19,24 @@ tags: []
 ---
 
 
-Exploring mtcars dataset with Tidyverse
+Exploring Phishing Dataset for Machine Learning with Tidyverse.
 
 
 Description:
 
-The mtcars dataset is downloaded from kaggle website.
+The Phishing dataset is downloaded from kaggle website.
 
 
 1) Dataset information
 
-    The mtcars dataset is a downloaded from kaggle. It comprises 11 features of 32 automobiles from the 1974 Motor       Trend US magazine. We will use it for data wrangling exercise.
+   This dataset contains 48 features taken from 5000 phishing web pages and 5000 legitimate web pages downloaded         between January and May and June 2015. 
 
 
 2) Tidyverse and dplyr library would be used.
 
 
 
-## Importing data from mtcars.csv file
+## Importing data from phishing.csv file
 
 
 ```{r, warning=FALSE}
@@ -34,49 +45,47 @@ library(tidyverse)
 library(gridExtra)
 library(dplyr)
 
-mtcars <- read_csv("mtcars.csv")
-head(mtcars)
-names(mtcars)
+phishing <- read_csv("phishing.csv")
+head(phishing)
+names(phishing)
 
 ```
-
 
 
 ## One table verb
 
-1)select to keep variables, here mpg and cyl is kept.
+1)select to keep variables, here NumDots and SubdomainLevel is kept.
 
 ```{r}
-mtcars %>%
-  select(mpg, cyl)
+phishing %>%
+  select(NumDots, SubdomainLevel)
   
 ```
 
 
-2) Arrange in ascending / descending order,slice for certain row numbers and filter to select a subset of rows.
-   disp is arranged in descending order, slice for five row number and filter to select vs of rows.
+2) Arrange in ascending / descending order:
+   HostnameLength is arranged in descending order.
 
 ```{r}
 library(dplyr)
 library(tidyverse)
 
-mtcars %>%
-  select(mpg, disp, wt, qsec, vs) %>%
-  arrange(desc(disp)) %>%
-  slice(1:5) %>%
-  filter(vs == 0) 
+phishing %>%
+  select(id, EmbeddedBrandName,UrlLength,SubdomainLevel, PathLevel,HostnameLength) %>%
+  arrange(desc(HostnameLength)) 
+   
 ```
 
 ## mutate to add a new variable
 
 3) Mutate
-   Mutating joins allow you to combine variables from multiple tables.Vs_am is added as a new variable by mutate.
+   Mutating joins allow you to combine variables from multiple tables.HostnameLength_PathLength is added as a new       variable by mutate.
 
 ```{r}
-mtcars %>%
-  mutate(vs_am = vs + am) %>%
-  select(vs, am, vs_am) %>%
-  arrange(desc(vs_am))
+phishing %>%
+  mutate(HostnameLength_PathLength = HostnameLength + PathLength) %>%
+  select(HostnameLength, PathLength, HostnameLength_PathLength) %>%
+  arrange(desc(HostnameLength_PathLength))
 ```
 
 
@@ -91,10 +100,10 @@ A single data table is rare for a data analysis.We usually have a number of tabl
 library(dplyr)
 library(tidyverse)
 
-table_1  <- mtcars   %>%
-  select(X1,mpg,cyl)
-table_2 <- mtcars  %>%
-  select(X1,vs,am)
+table_1  <- phishing   %>%
+  select(id,AbnormalExtFormActionR,PctExtResourceUrlsRT)
+table_2 <- phishing  %>%
+  select(id,MissingTitle,ImagesOnlyInForm)
 
 
 table_1
@@ -112,10 +121,10 @@ table_1  %>%  left_join(table_2)
 library(dplyr)
 library(tidyverse)
 
-table_3  <- mtcars   %>%
-  select(X1,gear,carb)
-table_4 <- mtcars  %>%
-  select(X1,drat,wt,vs)
+table_3  <- phishing  %>%
+  select(id,InsecureForms,RelativeFormAction,ExtFormAction)
+table_4 <- phishing  %>%
+  select(id,PctExtHyperlinks,PctExtResourceUrls)
 
 
 table_3
@@ -124,23 +133,24 @@ table_4
 table_3  %>%  full_join(table_4)
 
 ```
-   
+
 
 
 ## Grouping 
 
 Most data operations are done on groups defined by variables group_by() and converts it into a group where operations are performed "by group". ungroup() removes grouping.
 
- 1) It changes how it acts with the other dplyr verbs:
+ 1) How it acts with the other dplyr verbs:
  
 ```{r}
 library(dplyr)
 library(tidyverse)
 
-by_cyl %>% summarise(
-  disp = mean(disp),
-  hp = mean(hp)
-)
+by_NumDots<- phishing %>% 
+  summarise(
+  HostnameLength = mean(HostnameLength),
+  PathLevel = mean(PathLevel)
+  )
 ```
 
 
@@ -148,38 +158,44 @@ by_cyl %>% summarise(
  
 ```{r}
 
-by_gear_carb <- mtcars %>% 
-  group_by(gear, carb)
+by_NumDots_SubdomainLevel <- phishing %>% 
+  group_by(NumDots, SubdomainLevel)
 
-by_gear <- by_gear_carb %>% 
+by_NumDots <- by_NumDots_SubdomainLevel %>% 
   summarise(n = n())
-by_gear
+by_NumDots
 
-mtcars %>% 
-  group_by(gearcarb = gear + carb)
+phishing %>% 
+  group_by(NumDots_SubdomainLevel = NumDots + SubdomainLevel)
 
 ```
- 
+
+
+
 ## Vector function
-   1)logical operators applied to generate output with rows of data where column mpg is between 15 and 20(excluding       15 and 20) and rows of data where column cyl is equal to 6 and column am is not 0.
+   1)logical operators applied to generate output with rows of data where column PathLevel is between 1 and 5             and rows of data where column NumDash is equal to 1 and column DomainInPaths is not 0.
  
 ```{r}
-v <- mtcars
+v <- phishing
 
 
- v[v$mpg > 15 & v$mpg < 20,]
- v[v$cyl == 6 & v$am  != 0,]
+ v[v$PathLevel > 1 & v$PathLevel < 5,]
+ v[v$NumDash == 1 & v$DomainInPaths  != 0,]
  
 ```
  
   2) Vectors can be constructed with c(), :, or seq().
 
 ```{r}
+
 5:10
 c(seq(2,20,by=2),seq(1,20,by=2))
-mtcars[c(1,3,5,7,9),]
+phishing[c(1,3,5,7,9),]
+
 ```
- 
+
+
+
 ## Pivoting
 
 Describes the use of the new pivot_longer() and pivot_wider() functions. Their goal is to improve the usability of gather() and spread().
@@ -192,10 +208,10 @@ Describes the use of the new pivot_longer() and pivot_wider() functions. Their g
 library(tidyverse)
 
 pivot_longer(
-  mtcars,
-  vs, 
-  names_to = "vs old", 
-  values_to = "vs new"
+ phishing,
+  NumDots, 
+  names_to = "NumDots old", 
+  values_to = "NumDots new"
   )
 
 ```
@@ -205,21 +221,22 @@ pivot_longer(
 
 ```{r}
 
-mtcars %>%
-  select(cyl, vs) %>%
-  add_count(cyl, name = "cyl_n") %>%
+phishing %>%
+  select(SubdomainLevelRT, UrlLengthRT) %>%
+  add_count(SubdomainLevelRT, name = "SubdomainLevelRT_n") %>%
   pivot_wider(
-    names_from = cyl,
-    values_from = cyl_n,
-    names_prefix = "cyl_",
-    values_fn = list(cyl_n = mean)
+    names_from = SubdomainLevelRT,
+    values_from = SubdomainLevelRT_n,
+    names_prefix = "SubdomainLevelRT_",
+    values_fn = list(SubdomainLevelRT_n = mean)
   )
     
 ```
 
+
 ## Missing value
 
-The mtcars dataset has some missing values.
+The phishing dataset has some missing values.
 
   Following are the 3 tidyr functions that are handy for processing Missing Values
 
@@ -231,12 +248,12 @@ The mtcars dataset has some missing values.
 
 library(dplyr)
 
-df <- mtcars
+df <- phishing
 
-df$hp[2] <- NA
-df$cyl[5] <- NA
-df$gear[5] <- NA
-df$mpg[10] <- NA
+df$RightClickDisabled[2] <- NA
+df$NumDash[5] <- NA
+df$NumDashInHostname[5] <- NA
+df$ SubdomainLevel[10] <- NA
 
 # counting number of missing values
 paste("Number of Missing Values", sum(is.na(df)))
@@ -265,4 +282,3 @@ df_na_replaced <- df %>%
                     mutate_if(is.numeric, replace_na,0)
 
 ```
-

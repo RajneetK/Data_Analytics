@@ -1,0 +1,572 @@
+---
+title: Assignment A02
+author: Rajneetk
+date: '2021-05-28'
+slug: assignment-a02
+categories:
+  - Data analytics
+tags: []
+---
+
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
+
+
+<p>Exploring Phishing Dataset for Machine Learning with Tidyverse.</p>
+<p>Description:</p>
+<p>The Phishing dataset is downloaded from kaggle website.</p>
+<ol style="list-style-type: decimal">
+<li><p>Dataset information</p>
+<p>This dataset contains 48 features taken from 5000 phishing web pages and 5000 legitimate web pages downloaded between January and May and June 2015.</p></li>
+<li><p>Tidyverse and dplyr library would be used.</p></li>
+</ol>
+<div id="importing-data-from-phishing.csv-file" class="section level2">
+<h2>Importing data from phishing.csv file</h2>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --</code></pre>
+<pre><code>## v ggplot2 3.3.3     v purrr   0.3.4
+## v tibble  3.1.1     v dplyr   1.0.6
+## v tidyr   1.1.3     v stringr 1.4.0
+## v readr   1.4.0     v forcats 0.5.1</code></pre>
+<pre><code>## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>library(gridExtra)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;gridExtra&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     combine</code></pre>
+<pre class="r"><code>library(dplyr)
+
+phishing &lt;- read_csv(&quot;phishing.csv&quot;)</code></pre>
+<pre><code>## 
+## -- Column specification --------------------------------------------------------
+## cols(
+##   .default = col_double()
+## )
+## i Use `spec()` for the full column specifications.</code></pre>
+<pre class="r"><code>head(phishing)</code></pre>
+<pre><code>## # A tibble: 6 x 50
+##      id NumDots SubdomainLevel PathLevel UrlLength NumDash NumDashInHostname
+##   &lt;dbl&gt;   &lt;dbl&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;             &lt;dbl&gt;
+## 1     1       3              1         5        72       0                 0
+## 2     2       3              1         3       144       0                 0
+## 3     3       3              1         2        58       0                 0
+## 4     4       3              1         6        79       1                 0
+## 5     5       3              0         4        46       0                 0
+## 6     6       3              1         1        42       1                 0
+## # ... with 43 more variables: AtSymbol &lt;dbl&gt;, TildeSymbol &lt;dbl&gt;,
+## #   NumUnderscore &lt;dbl&gt;, NumPercent &lt;dbl&gt;, NumQueryComponents &lt;dbl&gt;,
+## #   NumAmpersand &lt;dbl&gt;, NumHash &lt;dbl&gt;, NumNumericChars &lt;dbl&gt;, NoHttps &lt;dbl&gt;,
+## #   RandomString &lt;dbl&gt;, IpAddress &lt;dbl&gt;, DomainInSubdomains &lt;dbl&gt;,
+## #   DomainInPaths &lt;dbl&gt;, HttpsInHostname &lt;dbl&gt;, HostnameLength &lt;dbl&gt;,
+## #   PathLength &lt;dbl&gt;, QueryLength &lt;dbl&gt;, DoubleSlashInPath &lt;dbl&gt;,
+## #   NumSensitiveWords &lt;dbl&gt;, EmbeddedBrandName &lt;dbl&gt;, PctExtHyperlinks &lt;dbl&gt;,
+## #   PctExtResourceUrls &lt;dbl&gt;, ExtFavicon &lt;dbl&gt;, InsecureForms &lt;dbl&gt;,
+## #   RelativeFormAction &lt;dbl&gt;, ExtFormAction &lt;dbl&gt;, AbnormalFormAction &lt;dbl&gt;,
+## #   PctNullSelfRedirectHyperlinks &lt;dbl&gt;, FrequentDomainNameMismatch &lt;dbl&gt;,
+## #   FakeLinkInStatusBar &lt;dbl&gt;, RightClickDisabled &lt;dbl&gt;, PopUpWindow &lt;dbl&gt;,
+## #   SubmitInfoToEmail &lt;dbl&gt;, IframeOrFrame &lt;dbl&gt;, MissingTitle &lt;dbl&gt;,
+## #   ImagesOnlyInForm &lt;dbl&gt;, SubdomainLevelRT &lt;dbl&gt;, UrlLengthRT &lt;dbl&gt;,
+## #   PctExtResourceUrlsRT &lt;dbl&gt;, AbnormalExtFormActionR &lt;dbl&gt;,
+## #   ExtMetaScriptLinkRT &lt;dbl&gt;, PctExtNullSelfRedirectHyperlinksRT &lt;dbl&gt;,
+## #   CLASS_LABEL &lt;dbl&gt;</code></pre>
+<pre class="r"><code>names(phishing)</code></pre>
+<pre><code>##  [1] &quot;id&quot;                                 &quot;NumDots&quot;                           
+##  [3] &quot;SubdomainLevel&quot;                     &quot;PathLevel&quot;                         
+##  [5] &quot;UrlLength&quot;                          &quot;NumDash&quot;                           
+##  [7] &quot;NumDashInHostname&quot;                  &quot;AtSymbol&quot;                          
+##  [9] &quot;TildeSymbol&quot;                        &quot;NumUnderscore&quot;                     
+## [11] &quot;NumPercent&quot;                         &quot;NumQueryComponents&quot;                
+## [13] &quot;NumAmpersand&quot;                       &quot;NumHash&quot;                           
+## [15] &quot;NumNumericChars&quot;                    &quot;NoHttps&quot;                           
+## [17] &quot;RandomString&quot;                       &quot;IpAddress&quot;                         
+## [19] &quot;DomainInSubdomains&quot;                 &quot;DomainInPaths&quot;                     
+## [21] &quot;HttpsInHostname&quot;                    &quot;HostnameLength&quot;                    
+## [23] &quot;PathLength&quot;                         &quot;QueryLength&quot;                       
+## [25] &quot;DoubleSlashInPath&quot;                  &quot;NumSensitiveWords&quot;                 
+## [27] &quot;EmbeddedBrandName&quot;                  &quot;PctExtHyperlinks&quot;                  
+## [29] &quot;PctExtResourceUrls&quot;                 &quot;ExtFavicon&quot;                        
+## [31] &quot;InsecureForms&quot;                      &quot;RelativeFormAction&quot;                
+## [33] &quot;ExtFormAction&quot;                      &quot;AbnormalFormAction&quot;                
+## [35] &quot;PctNullSelfRedirectHyperlinks&quot;      &quot;FrequentDomainNameMismatch&quot;        
+## [37] &quot;FakeLinkInStatusBar&quot;                &quot;RightClickDisabled&quot;                
+## [39] &quot;PopUpWindow&quot;                        &quot;SubmitInfoToEmail&quot;                 
+## [41] &quot;IframeOrFrame&quot;                      &quot;MissingTitle&quot;                      
+## [43] &quot;ImagesOnlyInForm&quot;                   &quot;SubdomainLevelRT&quot;                  
+## [45] &quot;UrlLengthRT&quot;                        &quot;PctExtResourceUrlsRT&quot;              
+## [47] &quot;AbnormalExtFormActionR&quot;             &quot;ExtMetaScriptLinkRT&quot;               
+## [49] &quot;PctExtNullSelfRedirectHyperlinksRT&quot; &quot;CLASS_LABEL&quot;</code></pre>
+</div>
+<div id="one-table-verb" class="section level2">
+<h2>One table verb</h2>
+<p>1)select to keep variables, here NumDots and SubdomainLevel is kept.</p>
+<pre class="r"><code>phishing %&gt;%
+  select(NumDots, SubdomainLevel)</code></pre>
+<pre><code>## # A tibble: 10,000 x 2
+##    NumDots SubdomainLevel
+##      &lt;dbl&gt;          &lt;dbl&gt;
+##  1       3              1
+##  2       3              1
+##  3       3              1
+##  4       3              1
+##  5       3              0
+##  6       3              1
+##  7       2              0
+##  8       1              0
+##  9       8              7
+## 10       2              0
+## # ... with 9,990 more rows</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Arrange in ascending / descending order:
+HostnameLength is arranged in descending order.</li>
+</ol>
+<pre class="r"><code>library(dplyr)
+library(tidyverse)
+
+phishing %&gt;%
+  select(id, EmbeddedBrandName,UrlLength,SubdomainLevel, PathLevel,HostnameLength) %&gt;%
+  arrange(desc(HostnameLength)) </code></pre>
+<pre><code>## # A tibble: 10,000 x 6
+##       id EmbeddedBrandName UrlLength SubdomainLevel PathLevel HostnameLength
+##    &lt;dbl&gt;             &lt;dbl&gt;     &lt;dbl&gt;          &lt;dbl&gt;     &lt;dbl&gt;          &lt;dbl&gt;
+##  1  3042                 1       178              5         2            137
+##  2  2926                 0       159             14         8            115
+##  3  3693                 0       141              4         2            109
+##  4  2529                 0       157              8         3             94
+##  5  2544                 0       156              8         3             94
+##  6  2555                 0       176              8         3             94
+##  7  3645                 0       138             10         4             86
+##  8   101                 1       149             11         6             84
+##  9   569                 1       165             11         6             84
+## 10  2083                 0       163              7         3             83
+## # ... with 9,990 more rows</code></pre>
+</div>
+<div id="mutate-to-add-a-new-variable" class="section level2">
+<h2>mutate to add a new variable</h2>
+<ol start="3" style="list-style-type: decimal">
+<li>Mutate
+Mutating joins allow you to combine variables from multiple tables.HostnameLength_PathLength is added as a new variable by mutate.</li>
+</ol>
+<pre class="r"><code>phishing %&gt;%
+  mutate(HostnameLength_PathLength = HostnameLength + PathLength) %&gt;%
+  select(HostnameLength, PathLength, HostnameLength_PathLength) %&gt;%
+  arrange(desc(HostnameLength_PathLength))</code></pre>
+<pre><code>## # A tibble: 10,000 x 3
+##    HostnameLength PathLength HostnameLength_PathLength
+##             &lt;dbl&gt;      &lt;dbl&gt;                     &lt;dbl&gt;
+##  1             73        120                       193
+##  2             29        156                       185
+##  3             25        156                       181
+##  4             16        159                       175
+##  5             16        159                       175
+##  6             20        154                       174
+##  7            137         34                       171
+##  8             30        141                       171
+##  9             10        161                       171
+## 10             31        138                       169
+## # ... with 9,990 more rows</code></pre>
+</div>
+<div id="two-table-verbs" class="section level2">
+<h2>Two table verbs</h2>
+<p>A single data table is rare for a data analysis.We usually have a number of tables for analysis and flexible tools to bring them together.</p>
+<ol style="list-style-type: decimal">
+<li>Left_join:
+The left_join keyword returns all records from the left table (table_1), and the matching records from the right table (table_2).</li>
+</ol>
+<pre class="r"><code>library(dplyr)
+library(tidyverse)
+
+table_1  &lt;- phishing   %&gt;%
+  select(id,AbnormalExtFormActionR,PctExtResourceUrlsRT)
+table_2 &lt;- phishing  %&gt;%
+  select(id,MissingTitle,ImagesOnlyInForm)
+
+
+table_1</code></pre>
+<pre><code>## # A tibble: 10,000 x 3
+##       id AbnormalExtFormActionR PctExtResourceUrlsRT
+##    &lt;dbl&gt;                  &lt;dbl&gt;                &lt;dbl&gt;
+##  1     1                      1                    1
+##  2     2                      1                    1
+##  3     3                      1                   -1
+##  4     4                      1                    1
+##  5     5                      0                   -1
+##  6     6                      1                    1
+##  7     7                      1                    1
+##  8     8                      1                    1
+##  9     9                      1                    1
+## 10    10                      1                    1
+## # ... with 9,990 more rows</code></pre>
+<pre class="r"><code>table_2</code></pre>
+<pre><code>## # A tibble: 10,000 x 3
+##       id MissingTitle ImagesOnlyInForm
+##    &lt;dbl&gt;        &lt;dbl&gt;            &lt;dbl&gt;
+##  1     1            0                1
+##  2     2            0                0
+##  3     3            0                0
+##  4     4            0                0
+##  5     5            0                0
+##  6     6            1                0
+##  7     7            0                0
+##  8     8            0                0
+##  9     9            0                0
+## 10    10            0                0
+## # ... with 9,990 more rows</code></pre>
+<pre class="r"><code>table_1  %&gt;%  left_join(table_2)</code></pre>
+<pre><code>## Joining, by = &quot;id&quot;</code></pre>
+<pre><code>## # A tibble: 10,000 x 5
+##       id AbnormalExtFormActio~ PctExtResourceUrls~ MissingTitle ImagesOnlyInForm
+##    &lt;dbl&gt;                 &lt;dbl&gt;               &lt;dbl&gt;        &lt;dbl&gt;            &lt;dbl&gt;
+##  1     1                     1                   1            0                1
+##  2     2                     1                   1            0                0
+##  3     3                     1                  -1            0                0
+##  4     4                     1                   1            0                0
+##  5     5                     0                  -1            0                0
+##  6     6                     1                   1            1                0
+##  7     7                     1                   1            0                0
+##  8     8                     1                   1            0                0
+##  9     9                     1                   1            0                0
+## 10    10                     1                   1            0                0
+## # ... with 9,990 more rows</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>full_join():
+Keeps all of the entries in both tables, regardless of whether or not they appear in the other table.</li>
+</ol>
+<pre class="r"><code>library(dplyr)
+library(tidyverse)
+
+table_3  &lt;- phishing  %&gt;%
+  select(id,InsecureForms,RelativeFormAction,ExtFormAction)
+table_4 &lt;- phishing  %&gt;%
+  select(id,PctExtHyperlinks,PctExtResourceUrls)
+
+
+table_3</code></pre>
+<pre><code>## # A tibble: 10,000 x 4
+##       id InsecureForms RelativeFormAction ExtFormAction
+##    &lt;dbl&gt;         &lt;dbl&gt;              &lt;dbl&gt;         &lt;dbl&gt;
+##  1     1             1                  0             0
+##  2     2             1                  0             0
+##  3     3             1                  0             0
+##  4     4             1                  0             0
+##  5     5             0                  0             1
+##  6     6             1                  0             0
+##  7     7             1                  0             0
+##  8     8             1                  0             0
+##  9     9             1                  0             0
+## 10    10             1                  0             0
+## # ... with 9,990 more rows</code></pre>
+<pre class="r"><code>table_4</code></pre>
+<pre><code>## # A tibble: 10,000 x 3
+##       id PctExtHyperlinks PctExtResourceUrls
+##    &lt;dbl&gt;            &lt;dbl&gt;              &lt;dbl&gt;
+##  1     1            0                 0.25  
+##  2     2            0                 0     
+##  3     3            0.375             1     
+##  4     4            1                 0.0952
+##  5     5            1                 1     
+##  6     6            0.1               1     
+##  7     7            0.909             1     
+##  8     8            0                 0     
+##  9     9            0                 0     
+## 10    10            1                 1     
+## # ... with 9,990 more rows</code></pre>
+<pre class="r"><code>table_3  %&gt;%  full_join(table_4)</code></pre>
+<pre><code>## Joining, by = &quot;id&quot;</code></pre>
+<pre><code>## # A tibble: 10,000 x 6
+##       id InsecureForms RelativeFormAction ExtFormAction PctExtHyperlinks
+##    &lt;dbl&gt;         &lt;dbl&gt;              &lt;dbl&gt;         &lt;dbl&gt;            &lt;dbl&gt;
+##  1     1             1                  0             0            0    
+##  2     2             1                  0             0            0    
+##  3     3             1                  0             0            0.375
+##  4     4             1                  0             0            1    
+##  5     5             0                  0             1            1    
+##  6     6             1                  0             0            0.1  
+##  7     7             1                  0             0            0.909
+##  8     8             1                  0             0            0    
+##  9     9             1                  0             0            0    
+## 10    10             1                  0             0            1    
+## # ... with 9,990 more rows, and 1 more variable: PctExtResourceUrls &lt;dbl&gt;</code></pre>
+</div>
+<div id="grouping" class="section level2">
+<h2>Grouping</h2>
+<p>Most data operations are done on groups defined by variables group_by() and converts it into a group where operations are performed “by group”. ungroup() removes grouping.</p>
+<ol style="list-style-type: decimal">
+<li>How it acts with the other dplyr verbs:</li>
+</ol>
+<pre class="r"><code>library(dplyr)
+library(tidyverse)
+
+by_NumDots&lt;- phishing %&gt;% 
+  summarise(
+  HostnameLength = mean(HostnameLength),
+  PathLevel = mean(PathLevel)
+  )</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>summarise() removes a layer of grouping</li>
+</ol>
+<pre class="r"><code>by_NumDots_SubdomainLevel &lt;- phishing %&gt;% 
+  group_by(NumDots, SubdomainLevel)
+
+by_NumDots &lt;- by_NumDots_SubdomainLevel %&gt;% 
+  summarise(n = n())</code></pre>
+<pre><code>## `summarise()` has grouped output by &#39;NumDots&#39;. You can override using the `.groups` argument.</code></pre>
+<pre class="r"><code>by_NumDots</code></pre>
+<pre><code>## # A tibble: 54 x 3
+## # Groups:   NumDots [17]
+##    NumDots SubdomainLevel     n
+##      &lt;dbl&gt;          &lt;dbl&gt; &lt;int&gt;
+##  1       1              0  1959
+##  2       2              0  1998
+##  3       2              1  2055
+##  4       3              0   529
+##  5       3              1  2049
+##  6       3              2   145
+##  7       4              0   222
+##  8       4              1   484
+##  9       4              2    83
+## 10       4              3     6
+## # ... with 44 more rows</code></pre>
+<pre class="r"><code>phishing %&gt;% 
+  group_by(NumDots_SubdomainLevel = NumDots + SubdomainLevel)</code></pre>
+<pre><code>## # A tibble: 10,000 x 51
+## # Groups:   NumDots_SubdomainLevel [23]
+##       id NumDots SubdomainLevel PathLevel UrlLength NumDash NumDashInHostname
+##    &lt;dbl&gt;   &lt;dbl&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;             &lt;dbl&gt;
+##  1     1       3              1         5        72       0                 0
+##  2     2       3              1         3       144       0                 0
+##  3     3       3              1         2        58       0                 0
+##  4     4       3              1         6        79       1                 0
+##  5     5       3              0         4        46       0                 0
+##  6     6       3              1         1        42       1                 0
+##  7     7       2              0         5        60       0                 0
+##  8     8       1              0         3        30       0                 0
+##  9     9       8              7         2        76       1                 1
+## 10    10       2              0         2        46       0                 0
+## # ... with 9,990 more rows, and 44 more variables: AtSymbol &lt;dbl&gt;,
+## #   TildeSymbol &lt;dbl&gt;, NumUnderscore &lt;dbl&gt;, NumPercent &lt;dbl&gt;,
+## #   NumQueryComponents &lt;dbl&gt;, NumAmpersand &lt;dbl&gt;, NumHash &lt;dbl&gt;,
+## #   NumNumericChars &lt;dbl&gt;, NoHttps &lt;dbl&gt;, RandomString &lt;dbl&gt;, IpAddress &lt;dbl&gt;,
+## #   DomainInSubdomains &lt;dbl&gt;, DomainInPaths &lt;dbl&gt;, HttpsInHostname &lt;dbl&gt;,
+## #   HostnameLength &lt;dbl&gt;, PathLength &lt;dbl&gt;, QueryLength &lt;dbl&gt;,
+## #   DoubleSlashInPath &lt;dbl&gt;, NumSensitiveWords &lt;dbl&gt;, EmbeddedBrandName &lt;dbl&gt;,
+## #   PctExtHyperlinks &lt;dbl&gt;, PctExtResourceUrls &lt;dbl&gt;, ExtFavicon &lt;dbl&gt;,
+## #   InsecureForms &lt;dbl&gt;, RelativeFormAction &lt;dbl&gt;, ExtFormAction &lt;dbl&gt;,
+## #   AbnormalFormAction &lt;dbl&gt;, PctNullSelfRedirectHyperlinks &lt;dbl&gt;,
+## #   FrequentDomainNameMismatch &lt;dbl&gt;, FakeLinkInStatusBar &lt;dbl&gt;,
+## #   RightClickDisabled &lt;dbl&gt;, PopUpWindow &lt;dbl&gt;, SubmitInfoToEmail &lt;dbl&gt;,
+## #   IframeOrFrame &lt;dbl&gt;, MissingTitle &lt;dbl&gt;, ImagesOnlyInForm &lt;dbl&gt;,
+## #   SubdomainLevelRT &lt;dbl&gt;, UrlLengthRT &lt;dbl&gt;, PctExtResourceUrlsRT &lt;dbl&gt;,
+## #   AbnormalExtFormActionR &lt;dbl&gt;, ExtMetaScriptLinkRT &lt;dbl&gt;,
+## #   PctExtNullSelfRedirectHyperlinksRT &lt;dbl&gt;, CLASS_LABEL &lt;dbl&gt;,
+## #   NumDots_SubdomainLevel &lt;dbl&gt;</code></pre>
+</div>
+<div id="vector-function" class="section level2">
+<h2>Vector function</h2>
+<p>1)logical operators applied to generate output with rows of data where column PathLevel is between 1 and 5 and rows of data where column NumDash is equal to 1 and column DomainInPaths is not 0.</p>
+<pre class="r"><code>v &lt;- phishing
+
+
+ v[v$PathLevel &gt; 1 &amp; v$PathLevel &lt; 5,]</code></pre>
+<pre><code>## # A tibble: 6,548 x 50
+##       id NumDots SubdomainLevel PathLevel UrlLength NumDash NumDashInHostname
+##    &lt;dbl&gt;   &lt;dbl&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;             &lt;dbl&gt;
+##  1     2       3              1         3       144       0                 0
+##  2     3       3              1         2        58       0                 0
+##  3     5       3              0         4        46       0                 0
+##  4     8       1              0         3        30       0                 0
+##  5     9       8              7         2        76       1                 1
+##  6    10       2              0         2        46       0                 0
+##  7    11       5              4         2        64       1                 1
+##  8    12       2              0         2        47       0                 0
+##  9    13       2              1         2        61       1                 1
+## 10    14       2              1         3        35       0                 0
+## # ... with 6,538 more rows, and 43 more variables: AtSymbol &lt;dbl&gt;,
+## #   TildeSymbol &lt;dbl&gt;, NumUnderscore &lt;dbl&gt;, NumPercent &lt;dbl&gt;,
+## #   NumQueryComponents &lt;dbl&gt;, NumAmpersand &lt;dbl&gt;, NumHash &lt;dbl&gt;,
+## #   NumNumericChars &lt;dbl&gt;, NoHttps &lt;dbl&gt;, RandomString &lt;dbl&gt;, IpAddress &lt;dbl&gt;,
+## #   DomainInSubdomains &lt;dbl&gt;, DomainInPaths &lt;dbl&gt;, HttpsInHostname &lt;dbl&gt;,
+## #   HostnameLength &lt;dbl&gt;, PathLength &lt;dbl&gt;, QueryLength &lt;dbl&gt;,
+## #   DoubleSlashInPath &lt;dbl&gt;, NumSensitiveWords &lt;dbl&gt;, EmbeddedBrandName &lt;dbl&gt;,
+## #   PctExtHyperlinks &lt;dbl&gt;, PctExtResourceUrls &lt;dbl&gt;, ExtFavicon &lt;dbl&gt;,
+## #   InsecureForms &lt;dbl&gt;, RelativeFormAction &lt;dbl&gt;, ExtFormAction &lt;dbl&gt;,
+## #   AbnormalFormAction &lt;dbl&gt;, PctNullSelfRedirectHyperlinks &lt;dbl&gt;,
+## #   FrequentDomainNameMismatch &lt;dbl&gt;, FakeLinkInStatusBar &lt;dbl&gt;,
+## #   RightClickDisabled &lt;dbl&gt;, PopUpWindow &lt;dbl&gt;, SubmitInfoToEmail &lt;dbl&gt;,
+## #   IframeOrFrame &lt;dbl&gt;, MissingTitle &lt;dbl&gt;, ImagesOnlyInForm &lt;dbl&gt;,
+## #   SubdomainLevelRT &lt;dbl&gt;, UrlLengthRT &lt;dbl&gt;, PctExtResourceUrlsRT &lt;dbl&gt;,
+## #   AbnormalExtFormActionR &lt;dbl&gt;, ExtMetaScriptLinkRT &lt;dbl&gt;,
+## #   PctExtNullSelfRedirectHyperlinksRT &lt;dbl&gt;, CLASS_LABEL &lt;dbl&gt;</code></pre>
+<pre class="r"><code> v[v$NumDash == 1 &amp; v$DomainInPaths  != 0,]</code></pre>
+<pre><code>## # A tibble: 780 x 50
+##       id NumDots SubdomainLevel PathLevel UrlLength NumDash NumDashInHostname
+##    &lt;dbl&gt;   &lt;dbl&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;             &lt;dbl&gt;
+##  1     4       3              1         6        79       1                 0
+##  2     6       3              1         1        42       1                 0
+##  3     9       8              7         2        76       1                 1
+##  4    11       5              4         2        64       1                 1
+##  5    18       3              1         2        59       1                 1
+##  6    42       3              1         3        53       1                 0
+##  7    54       4              1         3        51       1                 1
+##  8    66       5              1         5       120       1                 0
+##  9    72       5              1         5       120       1                 0
+## 10    82       5              0         7       135       1                 0
+## # ... with 770 more rows, and 43 more variables: AtSymbol &lt;dbl&gt;,
+## #   TildeSymbol &lt;dbl&gt;, NumUnderscore &lt;dbl&gt;, NumPercent &lt;dbl&gt;,
+## #   NumQueryComponents &lt;dbl&gt;, NumAmpersand &lt;dbl&gt;, NumHash &lt;dbl&gt;,
+## #   NumNumericChars &lt;dbl&gt;, NoHttps &lt;dbl&gt;, RandomString &lt;dbl&gt;, IpAddress &lt;dbl&gt;,
+## #   DomainInSubdomains &lt;dbl&gt;, DomainInPaths &lt;dbl&gt;, HttpsInHostname &lt;dbl&gt;,
+## #   HostnameLength &lt;dbl&gt;, PathLength &lt;dbl&gt;, QueryLength &lt;dbl&gt;,
+## #   DoubleSlashInPath &lt;dbl&gt;, NumSensitiveWords &lt;dbl&gt;, EmbeddedBrandName &lt;dbl&gt;,
+## #   PctExtHyperlinks &lt;dbl&gt;, PctExtResourceUrls &lt;dbl&gt;, ExtFavicon &lt;dbl&gt;,
+## #   InsecureForms &lt;dbl&gt;, RelativeFormAction &lt;dbl&gt;, ExtFormAction &lt;dbl&gt;,
+## #   AbnormalFormAction &lt;dbl&gt;, PctNullSelfRedirectHyperlinks &lt;dbl&gt;,
+## #   FrequentDomainNameMismatch &lt;dbl&gt;, FakeLinkInStatusBar &lt;dbl&gt;,
+## #   RightClickDisabled &lt;dbl&gt;, PopUpWindow &lt;dbl&gt;, SubmitInfoToEmail &lt;dbl&gt;,
+## #   IframeOrFrame &lt;dbl&gt;, MissingTitle &lt;dbl&gt;, ImagesOnlyInForm &lt;dbl&gt;,
+## #   SubdomainLevelRT &lt;dbl&gt;, UrlLengthRT &lt;dbl&gt;, PctExtResourceUrlsRT &lt;dbl&gt;,
+## #   AbnormalExtFormActionR &lt;dbl&gt;, ExtMetaScriptLinkRT &lt;dbl&gt;,
+## #   PctExtNullSelfRedirectHyperlinksRT &lt;dbl&gt;, CLASS_LABEL &lt;dbl&gt;</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Vectors can be constructed with c(), :, or seq().</li>
+</ol>
+<pre class="r"><code>5:10</code></pre>
+<pre><code>## [1]  5  6  7  8  9 10</code></pre>
+<pre class="r"><code>c(seq(2,20,by=2),seq(1,20,by=2))</code></pre>
+<pre><code>##  [1]  2  4  6  8 10 12 14 16 18 20  1  3  5  7  9 11 13 15 17 19</code></pre>
+<pre class="r"><code>phishing[c(1,3,5,7,9),]</code></pre>
+<pre><code>## # A tibble: 5 x 50
+##      id NumDots SubdomainLevel PathLevel UrlLength NumDash NumDashInHostname
+##   &lt;dbl&gt;   &lt;dbl&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;             &lt;dbl&gt;
+## 1     1       3              1         5        72       0                 0
+## 2     3       3              1         2        58       0                 0
+## 3     5       3              0         4        46       0                 0
+## 4     7       2              0         5        60       0                 0
+## 5     9       8              7         2        76       1                 1
+## # ... with 43 more variables: AtSymbol &lt;dbl&gt;, TildeSymbol &lt;dbl&gt;,
+## #   NumUnderscore &lt;dbl&gt;, NumPercent &lt;dbl&gt;, NumQueryComponents &lt;dbl&gt;,
+## #   NumAmpersand &lt;dbl&gt;, NumHash &lt;dbl&gt;, NumNumericChars &lt;dbl&gt;, NoHttps &lt;dbl&gt;,
+## #   RandomString &lt;dbl&gt;, IpAddress &lt;dbl&gt;, DomainInSubdomains &lt;dbl&gt;,
+## #   DomainInPaths &lt;dbl&gt;, HttpsInHostname &lt;dbl&gt;, HostnameLength &lt;dbl&gt;,
+## #   PathLength &lt;dbl&gt;, QueryLength &lt;dbl&gt;, DoubleSlashInPath &lt;dbl&gt;,
+## #   NumSensitiveWords &lt;dbl&gt;, EmbeddedBrandName &lt;dbl&gt;, PctExtHyperlinks &lt;dbl&gt;,
+## #   PctExtResourceUrls &lt;dbl&gt;, ExtFavicon &lt;dbl&gt;, InsecureForms &lt;dbl&gt;,
+## #   RelativeFormAction &lt;dbl&gt;, ExtFormAction &lt;dbl&gt;, AbnormalFormAction &lt;dbl&gt;,
+## #   PctNullSelfRedirectHyperlinks &lt;dbl&gt;, FrequentDomainNameMismatch &lt;dbl&gt;,
+## #   FakeLinkInStatusBar &lt;dbl&gt;, RightClickDisabled &lt;dbl&gt;, PopUpWindow &lt;dbl&gt;,
+## #   SubmitInfoToEmail &lt;dbl&gt;, IframeOrFrame &lt;dbl&gt;, MissingTitle &lt;dbl&gt;,
+## #   ImagesOnlyInForm &lt;dbl&gt;, SubdomainLevelRT &lt;dbl&gt;, UrlLengthRT &lt;dbl&gt;,
+## #   PctExtResourceUrlsRT &lt;dbl&gt;, AbnormalExtFormActionR &lt;dbl&gt;,
+## #   ExtMetaScriptLinkRT &lt;dbl&gt;, PctExtNullSelfRedirectHyperlinksRT &lt;dbl&gt;,
+## #   CLASS_LABEL &lt;dbl&gt;</code></pre>
+</div>
+<div id="pivoting" class="section level2">
+<h2>Pivoting</h2>
+<p>Describes the use of the new pivot_longer() and pivot_wider() functions. Their goal is to improve the usability of gather() and spread().</p>
+<ol style="list-style-type: decimal">
+<li>pivot_longer:
+increasing the number of rows and decreasing the number of columns.</li>
+</ol>
+<pre class="r"><code>library(tidyverse)
+
+pivot_longer(
+ phishing,
+  NumDots, 
+  names_to = &quot;NumDots old&quot;, 
+  values_to = &quot;NumDots new&quot;
+  )</code></pre>
+<pre><code>## # A tibble: 10,000 x 51
+##       id SubdomainLevel PathLevel UrlLength NumDash NumDashInHostname AtSymbol
+##    &lt;dbl&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;             &lt;dbl&gt;    &lt;dbl&gt;
+##  1     1              1         5        72       0                 0        0
+##  2     2              1         3       144       0                 0        0
+##  3     3              1         2        58       0                 0        0
+##  4     4              1         6        79       1                 0        0
+##  5     5              0         4        46       0                 0        0
+##  6     6              1         1        42       1                 0        0
+##  7     7              0         5        60       0                 0        0
+##  8     8              0         3        30       0                 0        0
+##  9     9              7         2        76       1                 1        0
+## 10    10              0         2        46       0                 0        0
+## # ... with 9,990 more rows, and 44 more variables: TildeSymbol &lt;dbl&gt;,
+## #   NumUnderscore &lt;dbl&gt;, NumPercent &lt;dbl&gt;, NumQueryComponents &lt;dbl&gt;,
+## #   NumAmpersand &lt;dbl&gt;, NumHash &lt;dbl&gt;, NumNumericChars &lt;dbl&gt;, NoHttps &lt;dbl&gt;,
+## #   RandomString &lt;dbl&gt;, IpAddress &lt;dbl&gt;, DomainInSubdomains &lt;dbl&gt;,
+## #   DomainInPaths &lt;dbl&gt;, HttpsInHostname &lt;dbl&gt;, HostnameLength &lt;dbl&gt;,
+## #   PathLength &lt;dbl&gt;, QueryLength &lt;dbl&gt;, DoubleSlashInPath &lt;dbl&gt;,
+## #   NumSensitiveWords &lt;dbl&gt;, EmbeddedBrandName &lt;dbl&gt;, PctExtHyperlinks &lt;dbl&gt;,
+## #   PctExtResourceUrls &lt;dbl&gt;, ExtFavicon &lt;dbl&gt;, InsecureForms &lt;dbl&gt;,
+## #   RelativeFormAction &lt;dbl&gt;, ExtFormAction &lt;dbl&gt;, AbnormalFormAction &lt;dbl&gt;,
+## #   PctNullSelfRedirectHyperlinks &lt;dbl&gt;, FrequentDomainNameMismatch &lt;dbl&gt;,
+## #   FakeLinkInStatusBar &lt;dbl&gt;, RightClickDisabled &lt;dbl&gt;, PopUpWindow &lt;dbl&gt;,
+## #   SubmitInfoToEmail &lt;dbl&gt;, IframeOrFrame &lt;dbl&gt;, MissingTitle &lt;dbl&gt;,
+## #   ImagesOnlyInForm &lt;dbl&gt;, SubdomainLevelRT &lt;dbl&gt;, UrlLengthRT &lt;dbl&gt;,
+## #   PctExtResourceUrlsRT &lt;dbl&gt;, AbnormalExtFormActionR &lt;dbl&gt;,
+## #   ExtMetaScriptLinkRT &lt;dbl&gt;, PctExtNullSelfRedirectHyperlinksRT &lt;dbl&gt;,
+## #   CLASS_LABEL &lt;dbl&gt;, NumDots old &lt;chr&gt;, NumDots new &lt;dbl&gt;</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>pivot_wider:
+Widens data, increasing the number of columns and decreasing the number of rows. The inverse transformation is pivot_longer().</li>
+</ol>
+<pre class="r"><code>phishing %&gt;%
+  select(SubdomainLevelRT, UrlLengthRT) %&gt;%
+  add_count(SubdomainLevelRT, name = &quot;SubdomainLevelRT_n&quot;) %&gt;%
+  pivot_wider(
+    names_from = SubdomainLevelRT,
+    values_from = SubdomainLevelRT_n,
+    names_prefix = &quot;SubdomainLevelRT_&quot;,
+    values_fn = list(SubdomainLevelRT_n = mean)
+  )</code></pre>
+<pre><code>## # A tibble: 3 x 4
+##   UrlLengthRT SubdomainLevelRT_1 `SubdomainLevelRT_-1` SubdomainLevelRT_0
+##         &lt;dbl&gt;              &lt;dbl&gt;                 &lt;dbl&gt;              &lt;dbl&gt;
+## 1           0               9666                   100                234
+## 2          -1               9666                   100                234
+## 3           1               9666                   100                234</code></pre>
+</div>
+<div id="missing-value" class="section level2">
+<h2>Missing value</h2>
+<p>The phishing dataset has some missing values.</p>
+<p>Following are the 3 tidyr functions that are handy for processing Missing Values</p>
+<ol style="list-style-type: decimal">
+<li>drop_na()-drops/removes the rows/entries with Missing Values</li>
+<li>fill()- fills the NAs (missing values) in selected columns</li>
+<li>replace_na()-used when you have got the replacement value which the NAs should be filled with.</li>
+</ol>
+<pre class="r"><code>library(dplyr)
+
+df &lt;- phishing
+
+df$RightClickDisabled[2] &lt;- NA
+df$NumDash[5] &lt;- NA
+df$NumDashInHostname[5] &lt;- NA
+df$ SubdomainLevel[10] &lt;- NA
+
+# counting number of missing values
+paste(&quot;Number of Missing Values&quot;, sum(is.na(df)))</code></pre>
+<pre><code>## [1] &quot;Number of Missing Values 4&quot;</code></pre>
+<pre class="r"><code>df_no_na &lt;- drop_na(df)
+paste(&quot;Number of Missing Values&quot;, sum(is.na(df_no_na)))</code></pre>
+<pre><code>## [1] &quot;Number of Missing Values 0&quot;</code></pre>
+<pre class="r"><code>paste(&quot;Number of Rows&quot;,nrow(df_no_na))</code></pre>
+<pre><code>## [1] &quot;Number of Rows 9997&quot;</code></pre>
+<pre class="r"><code>paste(&quot;Number of Columns&quot;,ncol(df_no_na))</code></pre>
+<pre><code>## [1] &quot;Number of Columns 50&quot;</code></pre>
+<pre class="r"><code>df_na_filled &lt;- df %&gt;% 
+                    fill(
+                      dplyr::everything()
+                    )
+
+
+# counting number of missing values
+paste(&quot;Number of Missing Values&quot;, sum(is.na(df_na_filled)))</code></pre>
+<pre><code>## [1] &quot;Number of Missing Values 0&quot;</code></pre>
+<pre class="r"><code>paste(&quot;Number of Rows&quot;,nrow(df_na_filled))</code></pre>
+<pre><code>## [1] &quot;Number of Rows 10000&quot;</code></pre>
+<pre class="r"><code>paste(&quot;Number of Columns&quot;,ncol(df_na_filled))</code></pre>
+<pre><code>## [1] &quot;Number of Columns 50&quot;</code></pre>
+<pre class="r"><code># replaced their values with NAs
+df_na_replaced &lt;- df %&gt;% 
+                    mutate_if(is.numeric, replace_na,0)</code></pre>
+</div>
