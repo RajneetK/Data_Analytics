@@ -13,14 +13,13 @@
       <pubDate>Wed, 26 May 2021 00:00:00 +0000</pubDate>
       
       <guid>/2021/05/26/assignment-a02/</guid>
-      <description>Goodreads Book
+      <description>Exploring mtcars dataset with Tidyverse
 Description:
-The dataset is from kaggle website about Goodreads book.
+The mtcars dataset is downloaded from kaggle website.
 Dataset information
-Goodreads offers a platform for people interested in talking about books.Analyze book data not only to understand users reading habits, but also to predict what books are worth reading.
-All books on GoodRead books are included in this data sets.
-The dataset includes 10 columns, including the books and the scores and reviews.
-The objective is to predict the rating of the book and the analysis which most affects the evaluation.</description>
+The mtcars dataset is a downloaded from kaggle. It comprises 11 features of 32 automobiles from the 1974 Motor Trend US magazine. We will use it for data wrangling exercise.
+The objective is to predict the rating of the book and the analysis which most affects the evaluation.
+Importing data from goodreads.</description>
     </item>
     
     <item>
