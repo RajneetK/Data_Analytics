@@ -6,20 +6,20 @@
     <description>Recent content on RajneetK-Fundamentals of Analytics</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 26 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 28 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Assignment A02</title>
-      <link>/2021/05/26/assignment-a02/</link>
-      <pubDate>Wed, 26 May 2021 00:00:00 +0000</pubDate>
+      <link>/2021/05/28/assignment-a02/</link>
+      <pubDate>Fri, 28 May 2021 00:00:00 +0000</pubDate>
       
-      <guid>/2021/05/26/assignment-a02/</guid>
-      <description>Exploring mtcars dataset with Tidyverse
+      <guid>/2021/05/28/assignment-a02/</guid>
+      <description>Exploring Phishing Dataset for Machine Learning with Tidyverse.
 Description:
-The mtcars dataset is downloaded from kaggle website.
+The Phishing dataset is downloaded from kaggle website.
 Dataset information
-The mtcars dataset is a downloaded from kaggle. It comprises 11 features of 32 automobiles from the 1974 Motor Trend US magazine. We will use it for data wrangling exercise.
-The objective is to predict the rating of the book and the analysis which most affects the evaluation.
-Importing data from goodreads.</description>
+This dataset contains 48 features taken from 5000 phishing web pages and 5000 legitimate web pages downloaded between January and May and June 2015.
+Tidyverse and dplyr library would be used.
+Importing data from phishing.csv filelibrary(tidyverse)## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --## v ggplot2 3.</description>
     </item>
     
     <item>

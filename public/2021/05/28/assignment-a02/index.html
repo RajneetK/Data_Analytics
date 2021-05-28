@@ -1,14 +1,79 @@
----
-title: Assignment A02
-author: Rajneetk
-date: '2021-05-28'
-slug: assignment-a02
-categories:
-  - Data analytics
-tags: []
----
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.83.1" />
 
-<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
+
+<title>Assignment A02 - RajneetK-Fundamentals of Analytics</title>
+<meta property="og:title" content="Assignment A02 - RajneetK-Fundamentals of Analytics">
+
+
+  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="https://github.com/RajneetK">GitHub</a></li>
+    
+    <li><a href="https://twitter.com/Rajneet74968819">Twitter</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">15 min read</span>
+    
+
+    <h1 class="article-title">Assignment A02</h1>
+
+    
+    <span class="article-date">2021-05-28</span>
+    
+
+    <div class="article-content">
+      
+<script src="/2021/05/28/assignment-a02/index_files/header-attrs/header-attrs.js"></script>
 
 
 <p>Exploring Phishing Dataset for Machine Learning with Tidyverse.</p>
@@ -100,9 +165,7 @@ phishing &lt;- read_csv(&quot;phishing.csv&quot;)</code></pre>
 </div>
 <div id="one-table-verb" class="section level2">
 <h2>One table verb</h2>
-<ol style="list-style-type: decimal">
-<li>Select to keep variables, here NumDots and SubdomainLevel is kept.</li>
-</ol>
+<p>1)select to keep variables, here NumDots and SubdomainLevel is kept.</p>
 <pre class="r"><code>phishing %&gt;%
   select(NumDots, SubdomainLevel)</code></pre>
 <pre><code>## # A tibble: 10,000 x 2
@@ -119,9 +182,10 @@ phishing &lt;- read_csv(&quot;phishing.csv&quot;)</code></pre>
 ##  9       8              7
 ## 10       2              0
 ## # ... with 9,990 more rows</code></pre>
-<pre><code>2) Arrange in ascending / descending order:
-  
-   HostnameLength is arranged in descending order.</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Arrange in ascending / descending order:
+HostnameLength is arranged in descending order.</li>
+</ol>
 <pre class="r"><code>library(dplyr)
 library(tidyverse)
 
@@ -145,8 +209,10 @@ phishing %&gt;%
 </div>
 <div id="mutate-to-add-a-new-variable" class="section level2">
 <h2>mutate to add a new variable</h2>
-<pre><code>3) Mutate
-   Mutating joins allow you to combine variables from multiple tables.HostnameLength_PathLength is added as a new        variable by mutate.</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Mutate
+Mutating joins allow you to combine variables from multiple tables.HostnameLength_PathLength is added as a new variable by mutate.</li>
+</ol>
 <pre class="r"><code>phishing %&gt;%
   mutate(HostnameLength_PathLength = HostnameLength + PathLength) %&gt;%
   select(HostnameLength, PathLength, HostnameLength_PathLength) %&gt;%
@@ -169,8 +235,10 @@ phishing %&gt;%
 <div id="two-table-verbs" class="section level2">
 <h2>Two table verbs</h2>
 <p>A single data table is rare for a data analysis.We usually have a number of tables for analysis and flexible tools to bring them together.</p>
-<pre><code>1) Left_join: 
-   The left_join keyword returns all records from the left table (table_1), and the matching records from the           right table (table_2).</code></pre>
+<ol style="list-style-type: decimal">
+<li>Left_join:
+The left_join keyword returns all records from the left table (table_1), and the matching records from the right table (table_2).</li>
+</ol>
 <pre class="r"><code>library(dplyr)
 library(tidyverse)
 
@@ -226,8 +294,10 @@ table_1</code></pre>
 ##  9     9                     1                   1            0                0
 ## 10    10                     1                   1            0                0
 ## # ... with 9,990 more rows</code></pre>
-<pre><code>2) full_join():
-   Keeps all of the entries in both tables, regardless of whether or not they appear in the other table.</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>full_join():
+Keeps all of the entries in both tables, regardless of whether or not they appear in the other table.</li>
+</ol>
 <pre class="r"><code>library(dplyr)
 library(tidyverse)
 
@@ -287,31 +357,17 @@ table_3</code></pre>
 <div id="grouping" class="section level2">
 <h2>Grouping</h2>
 <p>Most data operations are done on groups defined by variables group_by() and converts it into a group where operations are performed “by group”. ungroup() removes grouping.</p>
-<pre><code>1)Summarize with groups:
-  It allows us to get a summary row for each group.</code></pre>
+<ol style="list-style-type: decimal">
+<li>How it acts with the other dplyr verbs:</li>
+</ol>
 <pre class="r"><code>library(dplyr)
 library(tidyverse)
 
-  
-  phishing %&gt;% 
-  group_by(AbnormalExtFormActionR) %&gt;% 
-  summarize(mean_phishing  = mean(phishing ),
-  max_phishing = max(phishing),
-            count = n())</code></pre>
-<pre><code>## Warning in mean.default(phishing): argument is not numeric or logical: returning
-## NA
-
-## Warning in mean.default(phishing): argument is not numeric or logical: returning
-## NA
-
-## Warning in mean.default(phishing): argument is not numeric or logical: returning
-## NA</code></pre>
-<pre><code>## # A tibble: 3 x 4
-##   AbnormalExtFormActionR mean_phishing max_phishing count
-##                    &lt;dbl&gt;         &lt;dbl&gt;        &lt;dbl&gt; &lt;int&gt;
-## 1                     -1            NA        10000   537
-## 2                      0            NA        10000   994
-## 3                      1            NA        10000  8469</code></pre>
+by_NumDots&lt;- phishing %&gt;% 
+  summarise(
+  HostnameLength = mean(HostnameLength),
+  PathLevel = mean(PathLevel)
+  )</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>summarise() removes a layer of grouping</li>
 </ol>
@@ -473,8 +529,10 @@ by_NumDots &lt;- by_NumDots_SubdomainLevel %&gt;%
 <div id="pivoting" class="section level2">
 <h2>Pivoting</h2>
 <p>Describes the use of the new pivot_longer() and pivot_wider() functions. Their goal is to improve the usability of gather() and spread().</p>
-<pre><code>1) pivot_longer:
-   increasing the number of rows and decreasing the number of columns.</code></pre>
+<ol style="list-style-type: decimal">
+<li>pivot_longer:
+increasing the number of rows and decreasing the number of columns.</li>
+</ol>
 <pre class="r"><code>library(tidyverse)
 
 pivot_longer(
@@ -512,8 +570,10 @@ pivot_longer(
 ## #   PctExtResourceUrlsRT &lt;dbl&gt;, AbnormalExtFormActionR &lt;dbl&gt;,
 ## #   ExtMetaScriptLinkRT &lt;dbl&gt;, PctExtNullSelfRedirectHyperlinksRT &lt;dbl&gt;,
 ## #   CLASS_LABEL &lt;dbl&gt;, NumDots old &lt;chr&gt;, NumDots new &lt;dbl&gt;</code></pre>
-<pre><code>2) pivot_wider:
-   Widens data, increasing the number of columns and decreasing the number of rows. The inverse transformation is        pivot_longer().</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>pivot_wider:
+Widens data, increasing the number of columns and decreasing the number of rows. The inverse transformation is pivot_longer().</li>
+</ol>
 <pre class="r"><code>phishing %&gt;%
   select(SubdomainLevelRT, UrlLengthRT) %&gt;%
   add_count(SubdomainLevelRT, name = &quot;SubdomainLevelRT_n&quot;) %&gt;%
@@ -575,3 +635,47 @@ paste(&quot;Number of Missing Values&quot;, sum(is.na(df_na_filled)))</code></pr
 df_na_replaced &lt;- df %&gt;% 
                     mutate_if(is.numeric, replace_na,0)</code></pre>
 </div>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  </body>
+</html>
+
