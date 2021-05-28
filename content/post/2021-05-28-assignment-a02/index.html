@@ -143,12 +143,9 @@ phishing %&gt;%
 ##  9   569                 1       165             11         6             84
 ## 10  2083                 0       163              7         3             83
 ## # ... with 9,990 more rows</code></pre>
-</div>
-<div id="mutate-to-add-a-new-variable" class="section level2">
-<h2>mutate to add a new variable</h2>
 <ol start="3" style="list-style-type: decimal">
-<li>Mutate
-Mutating joins allow you to combine variables from multiple tables.HostnameLength_PathLength is added as a new variable by mutate.</li>
+<li><p>mutate to add a new variable:</p>
+<p>Mutating joins allow you to combine variables from multiple tables.HostnameLength_PathLength is added as a new variable by mutate.</p></li>
 </ol>
 <pre class="r"><code>phishing %&gt;%
   mutate(HostnameLength_PathLength = HostnameLength + PathLength) %&gt;%

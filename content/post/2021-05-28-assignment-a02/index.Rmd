@@ -77,10 +77,9 @@ phishing %>%
    
 ```
 
-## mutate to add a new variable
-
-  3) Mutate
-     Mutating joins allow you to combine variables from multiple tables.HostnameLength_PathLength is added as a new        variable by mutate.
+  3) mutate to add a new variable:
+  
+     Mutating joins allow you to combine variables from multiple tables.HostnameLength_PathLength is added as a new       variable by mutate.
 
 ```{r}
 phishing %>%
