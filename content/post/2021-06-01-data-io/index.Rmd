@@ -104,3 +104,29 @@ fav_food %>%
 fav_food
 ```
 
+
+## Put it all together
+
+```{r}
+fav_food <- read_excel("favourite-food.xlsx", na = c("N/A", "99999")) %>%
+  janitor::clean_names() %>%
+  mutate(
+    age = if_else(age == "five", "5", age), 
+    age = as.numeric(age),
+    ses = fct_relevel(ses, "Low", "Middle", "High")
+  )
+fav_food
+
+
+```
+
+
+## Out and back in
+
+```{r}
+write_csv(fav_food, file = "fav-food-clean.csv")
+fav_food_clean <- read_csv("fav-food-clean.csv")
+fav_food
+```
+
+## 
