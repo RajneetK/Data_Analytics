@@ -1,0 +1,254 @@
+---
+title: Data IO
+author: Rajneetk
+date: '2021-06-01'
+slug: data-io
+categories:
+  - Data analytics
+tags: []
+---
+
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
+
+
+<div id="import-nobel.csv-file" class="section level2">
+<h2>Import Nobel.csv file</h2>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --</code></pre>
+<pre><code>## v ggplot2 3.3.3     v purrr   0.3.4
+## v tibble  3.1.1     v dplyr   1.0.6
+## v tidyr   1.1.3     v stringr 1.4.0
+## v readr   1.4.0     v forcats 0.5.1</code></pre>
+<pre><code>## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>nobel &lt;- read_csv(file =&quot;nobel.csv&quot;)</code></pre>
+<pre><code>## 
+## -- Column specification --------------------------------------------------------
+## cols(
+##   .default = col_character(),
+##   id = col_double(),
+##   year = col_double(),
+##   born_date = col_date(format = &quot;&quot;),
+##   died_date = col_date(format = &quot;&quot;),
+##   share = col_double()
+## )
+## i Use `spec()` for the full column specifications.</code></pre>
+<pre class="r"><code>head(nobel)</code></pre>
+<pre><code>## # A tibble: 6 x 26
+##      id firstname  surname  year category affiliation   city  country born_date 
+##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;         &lt;chr&gt; &lt;chr&gt;   &lt;date&gt;    
+## 1     1 Wilhelm C~ Röntgen  1901 Physics  Munich Unive~ Muni~ Germany 1845-03-27
+## 2     2 Hendrik A. Lorentz  1902 Physics  Leiden Unive~ Leid~ Nether~ 1853-07-18
+## 3     3 Pieter     Zeeman   1902 Physics  Amsterdam Un~ Amst~ Nether~ 1865-05-25
+## 4     4 Henri      Becque~  1903 Physics  École Polyte~ Paris France  1852-12-15
+## 5     5 Pierre     Curie    1903 Physics  École munici~ Paris France  1859-05-15
+## 6     6 Marie      Curie    1903 Physics  &lt;NA&gt;          &lt;NA&gt;  &lt;NA&gt;    1867-11-07
+## # ... with 17 more variables: died_date &lt;date&gt;, gender &lt;chr&gt;, born_city &lt;chr&gt;,
+## #   born_country &lt;chr&gt;, born_country_code &lt;chr&gt;, died_city &lt;chr&gt;,
+## #   died_country &lt;chr&gt;, died_country_code &lt;chr&gt;, overall_motivation &lt;chr&gt;,
+## #   share &lt;dbl&gt;, motivation &lt;chr&gt;, born_country_original &lt;chr&gt;,
+## #   born_city_original &lt;chr&gt;, died_country_original &lt;chr&gt;,
+## #   died_city_original &lt;chr&gt;, city_original &lt;chr&gt;, country_original &lt;chr&gt;</code></pre>
+</div>
+<div id="write-a-csv-file" class="section level2">
+<h2>Write a csv file</h2>
+<pre class="r"><code>df &lt;- tribble(
+  ~x, ~y,
+  1,  &quot;a&quot;,
+  2,  &quot;b&quot;,
+  3,  &quot;c&quot;
+)
+
+write_csv(df, &quot;df.csv&quot;)</code></pre>
+</div>
+<div id="dealing-with-bad-variable-names" class="section level2">
+<h2>Dealing with bad variable names</h2>
+<pre class="r"><code>#edibnb_badnames &lt;- read_csv(&quot;edibnb-badnames.csv&quot;)
+# names(edibnb_badnames)
+
+edibnb_col_names &lt;- read_csv(&quot;edibnb-badnames.csv&quot;,
+                    col_names = c(&quot;id&quot;, &quot;price&quot;,&quot;neighbourhood&quot;, &quot;accommodates&quot;,&quot;bathroom&quot;, &quot;bedroom&quot;,&quot;bed&quot;,                                            &quot;review_scores_rating&quot;, &quot;n_reviews&quot;, &quot;url&quot;))</code></pre>
+<pre><code>## 
+## -- Column specification --------------------------------------------------------
+## cols(
+##   id = col_character(),
+##   price = col_character(),
+##   neighbourhood = col_character(),
+##   accommodates = col_character(),
+##   bathroom = col_character(),
+##   bedroom = col_character(),
+##   bed = col_character(),
+##   review_scores_rating = col_character(),
+##   n_reviews = col_character(),
+##   url = col_character()
+## )</code></pre>
+<pre class="r"><code>names(edibnb_col_names)</code></pre>
+<pre><code>##  [1] &quot;id&quot;                   &quot;price&quot;                &quot;neighbourhood&quot;       
+##  [4] &quot;accommodates&quot;         &quot;bathroom&quot;             &quot;bedroom&quot;             
+##  [7] &quot;bed&quot;                  &quot;review_scores_rating&quot; &quot;n_reviews&quot;           
+## [10] &quot;url&quot;</code></pre>
+</div>
+<div id="importing-data-with-snake-case-variables" class="section level2">
+<h2>Importing data with snake case variables</h2>
+<pre class="r"><code>edibnb_clean_names &lt;- read_csv(&quot;edibnb-badnames.csv&quot;) %&gt;%
+  janitor::clean_names()</code></pre>
+<pre><code>## 
+## -- Column specification --------------------------------------------------------
+## cols(
+##   ID = col_double(),
+##   Price = col_double(),
+##   neighbourhood = col_character(),
+##   accommodates = col_double(),
+##   `Number of bathrooms` = col_double(),
+##   `Number of Bedrooms` = col_double(),
+##   `n beds` = col_double(),
+##   `Review Scores Rating` = col_double(),
+##   `Number of reviews` = col_double(),
+##   listing_url = col_character()
+## )</code></pre>
+<pre class="r"><code>names(edibnb_clean_names)</code></pre>
+<pre><code>##  [1] &quot;id&quot;                   &quot;price&quot;                &quot;neighbourhood&quot;       
+##  [4] &quot;accommodates&quot;         &quot;number_of_bathrooms&quot;  &quot;number_of_bedrooms&quot;  
+##  [7] &quot;n_beds&quot;               &quot;review_scores_rating&quot; &quot;number_of_reviews&quot;   
+## [10] &quot;listing_url&quot;</code></pre>
+</div>
+<div id="read-df-na-csv" class="section level2">
+<h2>Read df-na csv</h2>
+<pre class="r"><code>read_csv(&quot;df-na.csv&quot;, 
+         na = c(&quot;&quot;, &quot;NA&quot;, &quot;.&quot;, &quot;9999&quot;, &quot;Not applicable&quot;))</code></pre>
+<pre><code>## 
+## -- Column specification --------------------------------------------------------
+## cols(
+##   x = col_double(),
+##   y = col_character(),
+##   z = col_character()
+## )</code></pre>
+<pre><code>## # A tibble: 9 x 3
+##       x y     z     
+##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
+## 1     1 a     hi    
+## 2    NA b     hello 
+## 3     3 &lt;NA&gt;  &lt;NA&gt;  
+## 4     4 d     ola   
+## 5     5 e     hola  
+## 6    NA f     whatup
+## 7     7 g     wassup
+## 8     8 h     sup   
+## 9     9 i     &lt;NA&gt;</code></pre>
+</div>
+<div id="reading-an-xlsx-file" class="section level2">
+<h2>Reading an XLSX file</h2>
+<pre class="r"><code>library(readxl)
+fav_food &lt;- readxl::read_excel(&quot;favourite-food.xlsx&quot;,na = c(&quot;N/A&quot;, &quot;99999&quot;)) %&gt;%
+janitor::clean_names()
+fav_food</code></pre>
+<pre><code>## # A tibble: 5 x 6
+##   student_id full_name        favourite_food     meal_plan           age   ses  
+##        &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;              &lt;chr&gt;               &lt;chr&gt; &lt;chr&gt;
+## 1          1 Sunil Huffmann   Strawberry yoghurt Lunch only          4     High 
+## 2          2 Barclay Lynn     French fries       Lunch only          5     Midd~
+## 3          3 Jayendra Lyne    &lt;NA&gt;               Breakfast and lunch 7     Low  
+## 4          4 Leon Rossini     Anchovies          Lunch only          &lt;NA&gt;  Midd~
+## 5          5 Chidiegwu Dunkel Pizza              Breakfast and lunch five  High</code></pre>
+<pre class="r"><code>fav_food &lt;- fav_food %&gt;%
+  mutate(
+    age = if_else(age == &quot;five&quot;, &quot;5&quot;, age),
+    age = as.numeric(age)
+    )
+
+fav_food</code></pre>
+<pre><code>## # A tibble: 5 x 6
+##   student_id full_name        favourite_food     meal_plan             age ses  
+##        &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;              &lt;chr&gt;               &lt;dbl&gt; &lt;chr&gt;
+## 1          1 Sunil Huffmann   Strawberry yoghurt Lunch only              4 High 
+## 2          2 Barclay Lynn     French fries       Lunch only              5 Midd~
+## 3          3 Jayendra Lyne    &lt;NA&gt;               Breakfast and lunch     7 Low  
+## 4          4 Leon Rossini     Anchovies          Lunch only             NA Midd~
+## 5          5 Chidiegwu Dunkel Pizza              Breakfast and lunch     5 High</code></pre>
+<pre class="r"><code>glimpse(fav_food)</code></pre>
+<pre><code>## Rows: 5
+## Columns: 6
+## $ student_id     &lt;dbl&gt; 1, 2, 3, 4, 5
+## $ full_name      &lt;chr&gt; &quot;Sunil Huffmann&quot;, &quot;Barclay Lynn&quot;, &quot;Jayendra Lyne&quot;, &quot;Leo~
+## $ favourite_food &lt;chr&gt; &quot;Strawberry yoghurt&quot;, &quot;French fries&quot;, NA, &quot;Anchovies&quot;, ~
+## $ meal_plan      &lt;chr&gt; &quot;Lunch only&quot;, &quot;Lunch only&quot;, &quot;Breakfast and lunch&quot;, &quot;Lun~
+## $ age            &lt;dbl&gt; 4, 5, 7, NA, 5
+## $ ses            &lt;chr&gt; &quot;High&quot;, &quot;Middle&quot;, &quot;Low&quot;, &quot;Middle&quot;, &quot;High&quot;</code></pre>
+</div>
+<div id="etl-of-ses-variable" class="section level2">
+<h2>ETL of SES variable</h2>
+<pre class="r"><code>fav_food %&gt;%
+  count(ses)</code></pre>
+<pre><code>## # A tibble: 3 x 2
+##   ses        n
+##   &lt;chr&gt;  &lt;int&gt;
+## 1 High       2
+## 2 Low        1
+## 3 Middle     2</code></pre>
+<pre class="r"><code>fav_food &lt;- fav_food %&gt;%
+  mutate(ses = fct_relevel(ses, &quot;Low&quot;, &quot;Middle&quot;, &quot;High&quot;))
+fav_food %&gt;%
+  count(ses)</code></pre>
+<pre><code>## # A tibble: 3 x 2
+##   ses        n
+##   &lt;fct&gt;  &lt;int&gt;
+## 1 Low        1
+## 2 Middle     2
+## 3 High       2</code></pre>
+<pre class="r"><code>fav_food</code></pre>
+<pre><code>## # A tibble: 5 x 6
+##   student_id full_name        favourite_food     meal_plan             age ses  
+##        &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;              &lt;chr&gt;               &lt;dbl&gt; &lt;fct&gt;
+## 1          1 Sunil Huffmann   Strawberry yoghurt Lunch only              4 High 
+## 2          2 Barclay Lynn     French fries       Lunch only              5 Midd~
+## 3          3 Jayendra Lyne    &lt;NA&gt;               Breakfast and lunch     7 Low  
+## 4          4 Leon Rossini     Anchovies          Lunch only             NA Midd~
+## 5          5 Chidiegwu Dunkel Pizza              Breakfast and lunch     5 High</code></pre>
+</div>
+<div id="put-it-all-together" class="section level2">
+<h2>Put it all together</h2>
+<pre class="r"><code>fav_food &lt;- read_excel(&quot;favourite-food.xlsx&quot;, na = c(&quot;N/A&quot;, &quot;99999&quot;)) %&gt;%
+  janitor::clean_names() %&gt;%
+  mutate(
+    age = if_else(age == &quot;five&quot;, &quot;5&quot;, age), 
+    age = as.numeric(age),
+    ses = fct_relevel(ses, &quot;Low&quot;, &quot;Middle&quot;, &quot;High&quot;)
+  )
+fav_food</code></pre>
+<pre><code>## # A tibble: 5 x 6
+##   student_id full_name        favourite_food     meal_plan             age ses  
+##        &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;              &lt;chr&gt;               &lt;dbl&gt; &lt;fct&gt;
+## 1          1 Sunil Huffmann   Strawberry yoghurt Lunch only              4 High 
+## 2          2 Barclay Lynn     French fries       Lunch only              5 Midd~
+## 3          3 Jayendra Lyne    &lt;NA&gt;               Breakfast and lunch     7 Low  
+## 4          4 Leon Rossini     Anchovies          Lunch only             NA Midd~
+## 5          5 Chidiegwu Dunkel Pizza              Breakfast and lunch     5 High</code></pre>
+</div>
+<div id="out-and-back-in" class="section level2">
+<h2>Out and back in</h2>
+<pre class="r"><code>write_csv(fav_food, file = &quot;fav-food-clean.csv&quot;)
+fav_food_clean &lt;- read_csv(&quot;fav-food-clean.csv&quot;)</code></pre>
+<pre><code>## 
+## -- Column specification --------------------------------------------------------
+## cols(
+##   student_id = col_double(),
+##   full_name = col_character(),
+##   favourite_food = col_character(),
+##   meal_plan = col_character(),
+##   age = col_double(),
+##   ses = col_character()
+## )</code></pre>
+<pre class="r"><code>fav_food</code></pre>
+<pre><code>## # A tibble: 5 x 6
+##   student_id full_name        favourite_food     meal_plan             age ses  
+##        &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;              &lt;chr&gt;               &lt;dbl&gt; &lt;fct&gt;
+## 1          1 Sunil Huffmann   Strawberry yoghurt Lunch only              4 High 
+## 2          2 Barclay Lynn     French fries       Lunch only              5 Midd~
+## 3          3 Jayendra Lyne    &lt;NA&gt;               Breakfast and lunch     7 Low  
+## 4          4 Leon Rossini     Anchovies          Lunch only             NA Midd~
+## 5          5 Chidiegwu Dunkel Pizza              Breakfast and lunch     5 High</code></pre>
+</div>
+<div id="section" class="section level2">
+<h2></h2>
+</div>
