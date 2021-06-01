@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.83.1" />
+
+
+<title>Data IO- Data Recoding - RajneetK-Fundamentals of Analytics</title>
+<meta property="og:title" content="Data IO- Data Recoding - RajneetK-Fundamentals of Analytics">
+
+
+  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="https://github.com/RajneetK">GitHub</a></li>
+    
+    <li><a href="https://twitter.com/Rajneet74968819">Twitter</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">2 min read</span>
+    
+
+    <h1 class="article-title">Data IO- Data Recoding</h1>
+
+    
+    <span class="article-date">2021-06-01</span>
+    
+
+    <div class="article-content">
+      
+<script src="/2021/06/01/data-io-data-recoding/index_files/header-attrs/header-attrs.js"></script>
+
+
+<div id="import-and-transform-religion-income-.csv-file" class="section level2">
+<h2>Import and Transform religion-income .csv file</h2>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --</code></pre>
+<pre><code>## v ggplot2 3.3.3     v purrr   0.3.4
+## v tibble  3.1.1     v dplyr   1.0.6
+## v tidyr   1.1.3     v stringr 1.4.0
+## v readr   1.4.0     v forcats 0.5.1</code></pre>
+<pre><code>## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>library(readxl)
+rel_inc &lt;- read_excel(&quot;relig-income.xlsx&quot;)
+rel_inc_long = rel_inc %&gt;%
+  rename( 
+    religion = `Religious tradition`, 
+    n = `Sample Size` 
+  ) %&gt;%
+  pivot_longer( 
+    cols = -c(religion, n),   # all but religion and n 
+    names_to = &quot;income&quot;,  
+    values_to = &quot;proportion&quot; 
+  )%&gt;%
+  mutate(frequency = round(proportion * n))</code></pre>
+</div>
+<div id="visualize-the-barplot" class="section level2">
+<h2>Visualize the barplot</h2>
+<pre class="r"><code>library(tidyverse)
+rel_inc_long &lt;- rel_inc_long %&gt;%
+  mutate(religion = case_when(
+    religion == &quot;Evangelical Protestant&quot;           ~ &quot;Ev. Protestant&quot;,
+    religion == &quot;Historically Black Protestant&quot;    ~ &quot;Hist. Black Protestant&quot;,
+    religion == &#39;Unaffiliated (religious &quot;nones&quot;)&#39; ~ &quot;Unaffiliated&quot;,
+    TRUE                                           ~ religion
+  ))
+rel_inc_long &lt;- rel_inc_long %&gt;%
+  mutate(religion = fct_rev(religion))
+ggplot(rel_inc_long, aes(y = religion, x = frequency)) +
+  geom_col()</code></pre>
+<p><img src="/2021/06/01/data-io-data-recoding/index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+</div>
+<div id="fill-barplot-with-income" class="section level2">
+<h2>Fill barplot with Income</h2>
+<pre class="r"><code>ggplot(rel_inc_long, aes(y = religion, x = frequency,fill= income)) +
+  geom_col(position=&quot;fill&quot;)+
+ scale_fill_viridis_d()+
+  theme_minimal()</code></pre>
+<p><img src="/2021/06/01/data-io-data-recoding/index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+</div>
+<div id="change-theme-of-plot" class="section level2">
+<h2>Change theme of plot</h2>
+<pre class="r"><code>ggplot(rel_inc_long, aes(y = religion, x = frequency, fill = income)) +
+  geom_col(position = &quot;fill&quot;) +
+  scale_fill_viridis_d() +
+  theme_minimal() +
+  theme(legend.position = &quot;bottom&quot;)+
+    guides(fill = guide_legend(nrow = 2, byrow = TRUE))</code></pre>
+<p><img src="/2021/06/01/data-io-data-recoding/index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<pre class="r"><code>ggplot(rel_inc_long, aes(y = religion, x = frequency, fill = income)) +
+  geom_col(position = &quot;fill&quot;) +
+  scale_fill_viridis_d() +
+  theme_minimal() +
+  theme(legend.position = &quot;bottom&quot;) +
+  guides(fill = guide_legend(nrow = 2, byrow = TRUE)) +
+  labs(
+    x = &quot;Proportion&quot;, y = &quot;&quot;, 
+    title = &quot;Income distribution by religious group&quot;, 
+    subtitle = &quot;Source: Pew Research Center, Religious Landscape Study&quot;, 
+    fill = &quot;Income&quot; 
+    )</code></pre>
+<p><img src="/2021/06/01/data-io-data-recoding/index_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
+</div>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+  </body>
+</html>
+
