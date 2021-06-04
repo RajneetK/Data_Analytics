@@ -104,7 +104,7 @@ age_group
     * is in the 19 - 25 age group given they purchased a Duplo theme set?
     
 1) Probability a randomly selected customer is in the 19 - 25 age group:
-
+   It is calculated by dividing the customer in the age group of 19 - 25 by total number of customers in the            lego_sales.So, the Probability of a randomly selected customer is in the 19 - 25 age group is 0.2080645.
 
 ```{r}
 
@@ -121,6 +121,8 @@ cat("Probability of a randomly selected customer is in the 19 - 25 age group: ",
 
 2) Probability a randomly selected customer is in the 19 - 25 age group and purchased a Duplo theme set:
 
+  It is calculated by dividing the customer in the age group of 19 - 25 who purchased a Duplo theme set by total       number of customers in the lego_sales.So, the Probability a randomly selected customer is in the 19 - 25 age group   and purchased a Duplo theme set is 0.01451613.
+  
 ```{r}
 duplotheme_19to25  <- age_group %>%
   filter( age_group=="19 - 25" & theme=="Duplo")
@@ -133,6 +135,7 @@ cat("Probability a randomly selected customer is in the 19 - 25 age group and pu
 ```
 
 3)  Probability a randomly selected customer is in the 19 - 25 age group given they purchased a Duplo theme set:
+    It is calculated by dividing the customer of Duplo theme purchaser under the age group of 19 - 25 by total           number duplo theme set in the lego_sales.So, the Probability of a randomly selected customer is in the 19 - 25       age group given they purchased a Duplo theme set is 0.2571429.
 
 ```{r}
 
