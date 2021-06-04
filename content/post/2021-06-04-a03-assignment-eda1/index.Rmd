@@ -110,9 +110,9 @@ age_group
 
 age_group_19to25 <- age_group %>%
 count(age_group) %>%
-  filter( age_group=="19 - 25")
+  filter(age_group=="19 - 25")
 
-probability_19to25 <- (from19_to25_age_group$n/nrow(legosales)) 
+probability_19to25 <- (age_group_19to25$n/nrow(legosales)) 
   
 
 cat("Probability of a randomly selected customer is in the 19 - 25 age group: ",probability_19to25 ,sep = "\n ")
