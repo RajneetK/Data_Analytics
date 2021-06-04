@@ -6,7 +6,17 @@
     <description>Recent content in Data analytics on RajneetK-Fundamentals of Analytics</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 01 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="/categories/data-analytics/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 02 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="/categories/data-analytics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A03 Assignment EDA1</title>
+      <link>/2021/06/02/a03-assignment-eda1/</link>
+      <pubDate>Wed, 02 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/2021/06/02/a03-assignment-eda1/</guid>
+      <description>Import Lego_sales.csv fileIn this assignment we will work with the tidyverse package as usual.We will simulate the data from Lego sales for a sample of customers who bought Legos in the US. The dataset is called lego_sales and is loaded in the data folder.
+library(tidyverse)## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --## v ggplot2 3.3.3 v purrr 0.3.4## v tibble 3.1.1 v dplyr 1.0.6## v tidyr 1.</description>
+    </item>
+    
     <item>
       <title>Data IO</title>
       <link>/2021/06/01/data-io/</link>
