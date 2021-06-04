@@ -1,9 +1,251 @@
 ---
 title: A03 Assignment EDA1
 author: Rajneetk
-date: '2021-06-04'
+date: '2021-06-02'
 slug: a03-assignment-eda1
 categories:
   - Data analytics
 tags: []
 ---
+
+
+
+## Import Lego_sales.csv file
+
+In this assignment we will work with the tidyverse package as usual.We will simulate the data from Lego sales for a sample of customers who bought Legos in the US. The dataset is called lego_sales and is loaded in the data folder.
+
+```{r}
+library(tidyverse)
+legosales <- read_csv(file ="lego_sales.csv")
+head(legosales)
+glimpse(legosales)
+```
+
+
+## Counting frequencies of three most common first names of customers
+
+1.	What are the three most common first names of customers?
+
+    Three most common first names of purchasers are Jackson, Jacob and Joseph. Here we count the three most common        first names of customers successfully and sort the count in descending order.
+
+```{r,message=FALSE,warning=FALSE}
+library(dplyr)
+
+common_first_names <- legosales %>%
+  count(first_name, sort = TRUE) %>%
+  top_n(3)%>%
+  head(3)
+cat("The three most common first names of customers are: ",common_first_names$first_name,sep = "\n ")
+
+```
+
+
+## Three most common themes
+
+2.	What are the three most common themes of lego sets purchased?
+
+    Three most common themes of lego sets purchased are Star Wars, Nexo Knights and Mixels. Here we count the three       most common themes of lego sets purchased successfully and sort the count in descending order.
+
+```{r,warning=FALSE,message=FALSE}
+common_themes <- legosales %>%
+  count(theme, sort = TRUE)  %>%
+  top_n(2:3) %>%
+  head(3)
+  cat("Most common themes are: ",common_themes$theme ,sep = "\n ")
+```
+    
+
+## Most common subtheme
+
+3.	Among the most common theme of lego sets purchased, what is the most common subtheme?
+
+     The most common subtheme among the most common theme of lego sets purchased is The Force Awakens. Here we count       the most common subtheme among the common themes of lego sets purchased successfully and sort the count in            descending order.
+
+```{r,warning=FALSE,message=FALSE}
+common_subtheme <- legosales %>%
+  filter(theme == "Star Wars") %>%
+  count(subtheme, sort = TRUE) %>%
+  top_n(1) %>%
+   head(1)
+  cat("The most common subtheme of lego sets purchased is: ",common_subtheme$subtheme ,sep = "\n ")
+
+```
+
+
+## Creating new variable for age group
+
+4.	Create a new variable called age group and group the ages into the following categories: “18 and under”, “19 - 25”, “26 - 35”, “36 - 50”, “51 and over”. 
+
+Here we will create the new variable and called it as age_group. Then group the following categories as:
+
+1) 18 and under
+2) 19 - 25
+3) 26 - 35
+4) 36 - 50
+5) 51 and over
+
+```{r,create-age-group, exercise = TRUE}
+    age_group <- legosales %>% 
+    mutate(age_group = case_when( age <= 18 ~ "18 and under", 
+                                  age >= 19 & age <= 25 ~ "19 - 25", 
+                                  age >= 26 & age <= 35 ~ "26 - 35", 
+                                  age >= 36 & age <= 50 ~ "36 - 50", 
+                                  age >= 51 ~ "51 and over" ))
+age_group
+```
+
+
+## Probability a randomly selected customer
+
+
+5.	What is the probability a randomly selected customer?
+    *	is in the 19 - 25 age group?
+    * is in the 19 - 25 age group and purchased a Duplo theme set?
+    * is in the 19 - 25 age group given they purchased a Duplo theme set?
+    
+1) Probability a randomly selected customer is in the 19 - 25 age group:
+
+
+```{r}
+
+age_group_19to25 <- age_group %>%
+count(age_group) %>%
+  filter( age_group=="19 - 25")
+
+probability_19to25 <- (from19_to25_age_group$n/nrow(legosales)) 
+  
+
+cat("Probability of a randomly selected customer is in the 19 - 25 age group: ",probability_19to25 ,sep = "\n ")
+  
+```
+
+2) Probability a randomly selected customer is in the 19 - 25 age group and purchased a Duplo theme set:
+
+```{r}
+duplotheme_19to25  <- age_group %>%
+  filter( age_group=="19 - 25" & theme=="Duplo")
+
+probability_duplotheme_19to25 <- (nrow(duplotheme_19to25)/nrow(legosales))
+
+cat("Probability a randomly selected customer is in the 19 - 25 age group and purchased a Duplo theme set:",probability_duplotheme_19to25 ,sep = "\n ")
+
+
+```
+
+3)  Probability a randomly selected customer is in the 19 - 25 age group given they purchased a Duplo theme set:
+
+```{r}
+
+duplo_theme_set  <- age_group %>%
+  filter(theme=="Duplo")
+  
+probability_duplo_theme <- (nrow(duplotheme_19to25 )/nrow(duplo_theme_set))
+
+
+cat("Probability of a randomly selected customer is in the 19 - 25 age group given they purchased a Duplo theme set: ",probability_duplo_theme ,sep = "\n ")
+
+```
+
+
+## Age group that has spent the largest number of lego sets
+
+6.	Which age group has purchased the largest number of lego sets? How many did they purchase?
+    
+    Consider the quantity of purchases to check which age group has purchased the largest number of lego sets.So, age     group 36-50 has purchased the largest number of lego sets and they purchased 313 total number. 
+
+```{r}
+
+age_group_purchased <- age_group %>% 
+  group_by(age_group) %>% 
+  summarise(purchase = sum(quantity)) %>% 
+  arrange(desc(purchase)) %>%
+  head(1)
+  cat("The age group has purchased the largest number of lego sets is  ",age_group_purchased$age_group ,sep = "\n ")
+  cat("Total number of lego sets purchased: ",age_group_purchased$purchase,sep="\n")
+```
+
+
+
+## Age group that has spent the most money on lego sets
+
+7.	Which age group has spent the most money on legos? How much did they spend?
+
+    We need to consider quantity of purchases as well as price of lego sets. So, by analysis it is cleared that age      group 36-50 has spent the most money on lego sets and they purchased 9532.87 total_spent.
+
+```{r}
+
+money_spent <- age_group %>%
+ mutate(amount_spent = us_price * quantity) %>%
+  group_by(age_group) %>%
+  summarise(total_spent = sum(amount_spent)) %>%
+  arrange(desc(total_spent)) %>%
+  head(1)
+  cat("The age group that has spent the most money on Lego sets is:  ",money_spent$age_group ,sep = "\n ")
+  cat("They spend amount of US dollars equal to  ",money_spent$total_spent ,sep = "\n ")
+```
+
+## Calculating Theme Name and Median Piece Count
+
+8. Which Themes have the most Piece Counts associated with it?
+
+  To calculate the the most Piece Counts associated with Themes,apply filter to pick only the theme data set,          then We group by theme with summarise of MedianPieceCount arranged in descending order.GGplot of theme and           MedianPiececount is plotted and it clears that Seasonal,Bionicle, Disney Princess, DC Comics Super Heros and         Mixels are the themes which have the most Piece Counts associated with it.
+
+
+```{r, warning=FALSE,message=FALSE}
+legosales %>%
+  filter(!is.na(theme)) %>%
+  group_by(theme) %>%
+  summarise(MedianPieceCount=median(pieces,na.rm=TRUE)) %>%
+  arrange(desc(MedianPieceCount)) %>%
+  ungroup() %>%
+  mutate(theme = reorder(theme,MedianPieceCount)) %>%
+  tail(10) %>%
+  
+  ggplot(aes(x = theme,y = MedianPieceCount)) +
+  geom_bar(stat="identity", color="blue", fill="green") +
+  labs(x = 'Theme name', 
+       y = 'Median Piece Count', 
+       title = 'Theme name and Median Piece Count') +
+  coord_flip() +
+  theme_bw()
+
+```
+
+
+## Changing the look of the previous exercise plot without changing the underlying data
+
+9.	Add one element to the plot from the previous exercise to change the look of the plot without changing the           underlying data.
+
+    The plot shows the change in the following:
+    * font of title- bold and Bauhaus 93 family used.
+    * axis title color- x title is blue colored and y axis title is red
+    * shift in the position of labels of axis -  margin is given to the title of axis i.e .35
+    * panel background color - changed to pink 
+
+
+```{r,warning=FALSE, message=FALSE}
+library(extrafont)
+library(tidyverse)
+legosales %>%
+ filter(!is.na(theme)) %>%
+  group_by(theme) %>%
+  summarise(MedianPieceCount=median(pieces,na.rm=TRUE)) %>%
+  arrange(desc(MedianPieceCount)) %>%
+  ungroup() %>%
+  mutate(theme = reorder(theme,MedianPieceCount)) %>%
+  tail(10) %>%
+  
+  ggplot(aes(x = theme,y = MedianPieceCount))+
+   geom_bar(stat="identity", color="blue", fill="green") +
+  labs(x = 'Theme name', 
+       y = 'Median Piece Count') +
+  theme(axis.title.x = element_text(color="blue", vjust=-0.35),
+  axis.title.y = element_text(color="red" , vjust=0.35))+
+  ggtitle('Theme name and Median Piece Count')+
+  theme(plot.title = element_text(size=20,face="bold",lineheight=.8, 
+  vjust=1,family="Bauhaus 93",))+
+  theme(panel.background = element_rect(fill = 'pink'))+
+  coord_flip() 
+  
+```
+
