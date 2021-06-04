@@ -1,7 +1,7 @@
 ---
 title: A03 Assignment EDA1
 author: Rajneetk
-date: '2021-06-02'
+date: '2021-06-04'
 slug: a03-assignment-eda1
 categories:
   - Data analytics
