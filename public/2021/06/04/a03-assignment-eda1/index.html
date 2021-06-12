@@ -62,7 +62,7 @@
 
   <article class="article">
     
-    <span class="article-duration">9 min read</span>
+    <span class="article-duration">10 min read</span>
     
 
     <h1 class="article-title">A03 Assignment EDA1</h1>
@@ -233,7 +233,8 @@ age_group</code></pre>
 </ul></li>
 </ol>
 <ol style="list-style-type: decimal">
-<li>Probability a randomly selected customer is in the 19 - 25 age group:</li>
+<li>Probability a randomly selected customer is in the 19 - 25 age group:
+It is calculated by dividing the customer in the age group of 19 - 25 by total number of customers in the lego_sales.So, the Probability of a randomly selected customer is in the 19 - 25 age group is 0.2080645.</li>
 </ol>
 <pre class="r"><code>age_group_19to25 &lt;- age_group %&gt;%
 count(age_group) %&gt;%
@@ -248,6 +249,7 @@ cat(&quot;Probability of a randomly selected customer is in the 19 - 25 age grou
 <ol start="2" style="list-style-type: decimal">
 <li>Probability a randomly selected customer is in the 19 - 25 age group and purchased a Duplo theme set:</li>
 </ol>
+<p>It is calculated by dividing the customer in the age group of 19 - 25 who purchased a Duplo theme set by total number of customers in the lego_sales.So, the Probability a randomly selected customer is in the 19 - 25 age group and purchased a Duplo theme set is 0.01451613.</p>
 <pre class="r"><code>duplotheme_19to25  &lt;- age_group %&gt;%
   filter( age_group==&quot;19 - 25&quot; &amp; theme==&quot;Duplo&quot;)
 
@@ -257,7 +259,8 @@ cat(&quot;Probability a randomly selected customer is in the 19 - 25 age group a
 <pre><code>## Probability a randomly selected customer is in the 19 - 25 age group and purchased a Duplo theme set:
 ##  0.01451613</code></pre>
 <ol start="3" style="list-style-type: decimal">
-<li>Probability a randomly selected customer is in the 19 - 25 age group given they purchased a Duplo theme set:</li>
+<li>Probability a randomly selected customer is in the 19 - 25 age group given they purchased a Duplo theme set:
+It is calculated by dividing the customer of Duplo theme purchaser under the age group of 19 - 25 by total number duplo theme set in the lego_sales.So, the Probability of a randomly selected customer is in the 19 - 25 age group given they purchased a Duplo theme set is 0.2571429.</li>
 </ol>
 <pre class="r"><code>duplo_theme_set  &lt;- age_group %&gt;%
   filter(theme==&quot;Duplo&quot;)
