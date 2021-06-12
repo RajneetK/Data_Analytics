@@ -2,10 +2,14 @@
 library(shiny)
 library(tidyverse)
 library(tidytext)
+library(dplyr)
 library(glue)
 library(plotly)
 
+tags$a(href="https://www.google.com/covid19/mobility/","Link for dataset!")
+
 #read data
+
 mobility <- read_csv("Mobility_Report.csv")
 mobility$Date <- as.Date(mobility$Date)
 mobility$Province <- as.factor(mobility$Province)
@@ -14,7 +18,8 @@ mobility$Province <- as.factor(mobility$Province)
 ui <- fluidPage(
   sidebarLayout(
     sidebarPanel(
-      h2("COVID-19 Mobility Data"),
+      h2("Mobility Data"),
+    
       selectInput(inputId = "dv", label = "Category",
                   choices = c("Retail_Recreation", "Grocery_Pharmarcy", "Parks", "Transit_Stations", "Workplaces", "Residential"),
                   selected = "Grocery_Pharmarcy"),
@@ -32,12 +37,16 @@ ui <- fluidPage(
       em("Positive and negative percentages represent an increase or decrease from the baseline period."),
       br(), br(), br(),
       DT::dataTableOutput(outputId = "table")
+      
+      
     )
   )
 )
 
 #server
-server <- function(input, output) {
+server <- function(input, output,session) {
+  
+    
   filtered_data <- reactive({
     subset(mobility,
            Province %in% input$provinces &
@@ -53,15 +62,14 @@ server <- function(input, output) {
     })
   })
   
-  output$table <- DT::renderDataTable({
-    filtered_data()
-  })
-  
+
   output$download_data <- downloadHandler(
     filename = "download_data.csv",
     content = function(file) {
       data <- filtered_data()
       write.csv(data, file, row.names = FALSE)
+     
+      
     }
   )
   
