@@ -1,0 +1,14 @@
+name: Data_Analytics
+title: Data_Analytics
+username:
+account: rajneetk
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 4243496
+bundleId: 4706656
+url: https://rajneetk.shinyapps.io/Data_Analytics/
+when: 1623436816.21065
+lastSyncTime: 1623436816.21065
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: .RData|.Rprofile|bcl-data.csv|config.yaml|covid.R|covid_19.csv|Global_Mobility_Report.csv|index.Rmd|layouts/shortcodes/blogdown/postref.html|netlify.toml|R/build.R|R/build2.R|static/.gitkeep|wine.R|content|public|themes
