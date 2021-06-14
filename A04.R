@@ -22,7 +22,7 @@ mobility$Province <- as.factor(mobility$Province)
 #ui
 ui <- fluidPage(
   
-  #tags$head(includeHTML(("https://www.google.com/covid19/mobility/"))),
+  tags$head(includeHTML(("https://www.google.com/covid19/mobility/"))),
   
   titlePanel(" Community Mobility Reports " ),
   
