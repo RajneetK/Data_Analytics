@@ -5,10 +5,10 @@ account: rajneetk
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 4243496
-bundleId: 4709683
+bundleId: 4715424
 url: https://rajneetk.shinyapps.io/Data_Analytics/
-when: 1623539729.46569
-lastSyncTime: 1623539729.46569
+when: 1623687504.51572
+lastSyncTime: 1623687504.51572
 asMultiple: FALSE
 asStatic: FALSE
-ignoredFiles: .RData|.Rprofile|bcl-data.csv|config.yaml|covid-speeches-words.rds|covid.R|index.Rmd|layouts/shortcodes/blogdown/postref.html|mo.R|netlify.toml|Provider.csv|Provider.R|R/build.R|R/build2.R|Shinny App.R|static/.gitkeep|sunshine.RDS|test.R|wine.R|WorldPhones.csv|content|public|themes
+ignoredFiles: .RData|.Rprofile|bcl-data.csv|config.yaml|covid-speeches-words.rds|covid.R|index.Rmd|layouts/shortcodes/blogdown/postref.html|mo.R|netlify.toml|Provider.csv|Provider.R|R/build.R|R/build2.R|Shinny App.R|static/.gitkeep|sunshine.RDS|test.R|wine.R|WorldPhones.csv

@@ -8,16 +8,21 @@ library(glue)
 library(plotly)
 library(htmltools)
 
+
 #read data
 
 mobility <- read_csv("Mobility_Report.csv")
+mobility <- mobility[1:10000,]
 mobility$Date <- as.Date(mobility$Date)
 mobility$Province <- as.factor(mobility$Province)
+
+
+
 
 #ui
 ui <- fluidPage(
   
-  tags$head(includeHTML(("https://www.google.com/covid19/mobility/"))),
+  #tags$head(includeHTML(("https://www.google.com/covid19/mobility/"))),
   
   titlePanel(" Community Mobility Reports " ),
   
@@ -54,9 +59,8 @@ ui <- fluidPage(
 
 #server
 server <- function(input, output,session) {
-  url <- a("dataset", href="https://www.google.com/covid19/mobility/")
   
-  filtered_data <- reactive({
+   filtered_data <- reactive({
     subset(mobility,
            Province %in% input$provinces &
              Date >= input$date[1] & Date <= input$date[2])})
@@ -87,3 +91,4 @@ server <- function(input, output,session) {
 #shinyapp
 
 shinyApp(ui = ui, server = server)
+
