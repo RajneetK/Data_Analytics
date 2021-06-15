@@ -22,7 +22,7 @@ options(dplyr.print_min = 10, dplyr.print_max = 6)
 
 #Data: Paris Paintings
 ```{r}
-pp <- read_csv("C:/Users/hskah/Documents/Data_Analytics/paris-paintings.csv", na = c("n/a", "", "NA"))
+pp <- read_csv("paris-paintings.csv", na = c("n/a", "", "NA"))
 ```
 
 #Goal: Predict height from width
@@ -41,7 +41,7 @@ ggplot(data = pp, aes(x = Width_in, y = Height_in)) +
 ```
 
 ```{r out.width="98%", echo=FALSE}
-knitr::include_graphics("C:/Users/hskah/Documents/Data_Analytics/tidymodels.png")
+knitr::include_graphics("tidymodels.png")
 ```
 
 ## Step 1: Specify model
