@@ -9,6 +9,8 @@ tags: []
 ---
 
 <script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
+<script src="{{< blogdown/postref >}}index_files/kePrint/kePrint.js"></script>
+<link href="{{< blogdown/postref >}}index_files/lightable/lightable.css" rel="stylesheet" />
 
 
 <p>#Data: Paris Paintings</p>
@@ -114,88 +116,228 @@ tags: []
 ## 5 school_pntgI       10.3       10.0     1.02  0.306  
 ## 6 school_pntgS       30.4       11.4     2.68  0.00744
 ## 7 school_pntgX        2.87      10.3     0.279 0.780</code></pre>
-<p>#Categorical predictor with 3+ levels
-.pull-left-wide[]</p>
-<pre><code>
+#Categorical predictor with 3+ levels
+.pull-left-wide[
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+school_pntg
+</th>
+<th style="text-align:center;">
+D_FL
+</th>
+<th style="text-align:center;">
+F
+</th>
+<th style="text-align:center;">
+G
+</th>
+<th style="text-align:center;">
+I
+</th>
+<th style="text-align:center;">
+S
+</th>
+<th style="text-align:center;">
+X
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:center;width: 10em; color: white !important;background-color: rgba(68, 1, 84, 1) !important;">
+0
+</td>
+<td style="text-align:center;width: 10em; color: white !important;background-color: rgba(68, 1, 84, 1) !important;">
+0
+</td>
+<td style="text-align:center;width: 10em; color: white !important;background-color: rgba(68, 1, 84, 1) !important;">
+0
+</td>
+<td style="text-align:center;width: 10em; color: white !important;background-color: rgba(68, 1, 84, 1) !important;">
+0
+</td>
+<td style="text-align:center;width: 10em; color: white !important;background-color: rgba(68, 1, 84, 1) !important;">
+0
+</td>
+<td style="text-align:center;width: 10em; color: white !important;background-color: rgba(68, 1, 84, 1) !important;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+D/FL
+</td>
+<td style="text-align:center;width: 10em; color: white !important;background-color: rgba(122, 209, 81, 1) !important;">
+1
+</td>
+<td style="text-align:center;width: 10em; color: white !important;background-color: rgba(68, 1, 84, 1) !important;">
+0
+</td>
+<td style="text-align:center;width: 10em; color: white !important;background-color: rgba(68, 1, 84, 1) !important;">
+0
+</td>
+<td style="text-align:center;width: 10em; color: white !important;background-color: rgba(68, 1, 84, 1) !important;">
+0
+</td>
+<td style="text-align:center;width: 10em; color: white !important;background-color: rgba(68, 1, 84, 1) !important;">
+0
+</td>
+<td style="text-align:center;width: 10em; color: white !important;background-color: rgba(68, 1, 84, 1) !important;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:center;width: 10em; color: white !important;background-color: rgba(68, 1, 84, 1) !important;">
+0
+</td>
+<td style="text-align:center;width: 10em; color: white !important;background-color: rgba(122, 209, 81, 1) !important;">
+1
+</td>
+<td style="text-align:center;width: 10em; color: white !important;background-color: rgba(68, 1, 84, 1) !important;">
+0
+</td>
+<td style="text-align:center;width: 10em; color: white !important;background-color: rgba(68, 1, 84, 1) !important;">
+0
+</td>
+<td style="text-align:center;width: 10em; color: white !important;background-color: rgba(68, 1, 84, 1) !important;">
+0
+</td>
+<td style="text-align:center;width: 10em; color: white !important;background-color: rgba(68, 1, 84, 1) !important;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+G
+</td>
+<td style="text-align:center;width: 10em; color: white !important;background-color: rgba(68, 1, 84, 1) !important;">
+0
+</td>
+<td style="text-align:center;width: 10em; color: white !important;background-color: rgba(68, 1, 84, 1) !important;">
+0
+</td>
+<td style="text-align:center;width: 10em; color: white !important;background-color: rgba(122, 209, 81, 1) !important;">
+1
+</td>
+<td style="text-align:center;width: 10em; color: white !important;background-color: rgba(68, 1, 84, 1) !important;">
+0
+</td>
+<td style="text-align:center;width: 10em; color: white !important;background-color: rgba(68, 1, 84, 1) !important;">
+0
+</td>
+<td style="text-align:center;width: 10em; color: white !important;background-color: rgba(68, 1, 84, 1) !important;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+I
+</td>
+<td style="text-align:center;width: 10em; color: white !important;background-color: rgba(68, 1, 84, 1) !important;">
+0
+</td>
+<td style="text-align:center;width: 10em; color: white !important;background-color: rgba(68, 1, 84, 1) !important;">
+0
+</td>
+<td style="text-align:center;width: 10em; color: white !important;background-color: rgba(68, 1, 84, 1) !important;">
+0
+</td>
+<td style="text-align:center;width: 10em; color: white !important;background-color: rgba(122, 209, 81, 1) !important;">
+1
+</td>
+<td style="text-align:center;width: 10em; color: white !important;background-color: rgba(68, 1, 84, 1) !important;">
+0
+</td>
+<td style="text-align:center;width: 10em; color: white !important;background-color: rgba(68, 1, 84, 1) !important;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+S
+</td>
+<td style="text-align:center;width: 10em; color: white !important;background-color: rgba(68, 1, 84, 1) !important;">
+0
+</td>
+<td style="text-align:center;width: 10em; color: white !important;background-color: rgba(68, 1, 84, 1) !important;">
+0
+</td>
+<td style="text-align:center;width: 10em; color: white !important;background-color: rgba(68, 1, 84, 1) !important;">
+0
+</td>
+<td style="text-align:center;width: 10em; color: white !important;background-color: rgba(68, 1, 84, 1) !important;">
+0
+</td>
+<td style="text-align:center;width: 10em; color: white !important;background-color: rgba(122, 209, 81, 1) !important;">
+1
+</td>
+<td style="text-align:center;width: 10em; color: white !important;background-color: rgba(68, 1, 84, 1) !important;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+X
+</td>
+<td style="text-align:center;width: 10em; color: white !important;background-color: rgba(68, 1, 84, 1) !important;">
+0
+</td>
+<td style="text-align:center;width: 10em; color: white !important;background-color: rgba(68, 1, 84, 1) !important;">
+0
+</td>
+<td style="text-align:center;width: 10em; color: white !important;background-color: rgba(68, 1, 84, 1) !important;">
+0
+</td>
+<td style="text-align:center;width: 10em; color: white !important;background-color: rgba(68, 1, 84, 1) !important;">
+0
+</td>
+<td style="text-align:center;width: 10em; color: white !important;background-color: rgba(68, 1, 84, 1) !important;">
+0
+</td>
+<td style="text-align:center;width: 10em; color: white !important;background-color: rgba(122, 209, 81, 1) !important;">
+1
+</td>
+</tr>
+</tbody>
+</table>
+<p>]
 .pull-right-narrow[
-.small[
-</code></pre>
-<div id="a-tibble-3393-x-3" class="section level2">
-<h2># A tibble: 3,393 x 3</h2>
-</div>
-<div id="name-height_in-school_pntg" class="section level2">
-<h2>name Height_in school_pntg</h2>
-</div>
-<div id="section" class="section level2">
-<h2><chr> <dbl> <chr></h2>
-</div>
-<div id="l1764-2-37-f" class="section level2">
-<h2>1 L1764-2 37 F</h2>
-</div>
-<div id="l1764-3-18-i" class="section level2">
-<h2>2 L1764-3 18 I</h2>
-</div>
-<div id="l1764-4-13-dfl" class="section level2">
-<h2>3 L1764-4 13 D/FL</h2>
-</div>
-<div id="l1764-5a-14-f" class="section level2">
-<h2>4 L1764-5a 14 F</h2>
-</div>
-<div id="l1764-5b-14-f" class="section level2">
-<h2>5 L1764-5b 14 F</h2>
-</div>
-<div id="l1764-6-7-i" class="section level2">
-<h2>6 L1764-6 7 I</h2>
-</div>
-<div id="l1764-7a-6-f" class="section level2">
-<h2>7 L1764-7a 6 F</h2>
-</div>
-<div id="l1764-7b-6-f" class="section level2">
-<h2>8 L1764-7b 6 F</h2>
-</div>
-<div id="l1764-8-15-i" class="section level2">
-<h2>9 L1764-8 15 I</h2>
-</div>
-<div id="l1764-9a-9-dfl" class="section level2">
-<h2>10 L1764-9a 9 D/FL</h2>
-</div>
-<div id="l1764-9b-9-dfl" class="section level2">
-<h2>11 L1764-9b 9 D/FL</h2>
-</div>
-<div id="l1764-10a-16-x" class="section level2">
-<h2>12 L1764-10a 16 X</h2>
-</div>
-<div id="l1764-10b-16-x" class="section level2">
-<h2>13 L1764-10b 16 X</h2>
-</div>
-<div id="l1764-10c-16-x" class="section level2">
-<h2>14 L1764-10c 16 X</h2>
-</div>
-<div id="l1764-11-20-dfl" class="section level2">
-<h2>15 L1764-11 20 D/FL</h2>
-</div>
-<div id="l1764-12a-14-dfl" class="section level2">
-<h2>16 L1764-12a 14 D/FL</h2>
-</div>
-<div id="l1764-12b-14-dfl" class="section level2">
-<h2>17 L1764-12b 14 D/FL</h2>
-</div>
-<div id="l1764-13a-15-dfl" class="section level2">
-<h2>18 L1764-13a 15 D/FL</h2>
-</div>
-<div id="l1764-13b-15-dfl" class="section level2">
-<h2>19 L1764-13b 15 D/FL</h2>
-</div>
-<div id="l1764-14-37-f" class="section level2">
-<h2>20 L1764-14 37 F</h2>
-</div>
-<div id="with-3373-more-rows" class="section level2">
-<h2># … with 3,373 more rows</h2>
-<p>```
-]
+.small[</p>
+<pre><code>## # A tibble: 3,393 x 3
+##    name      Height_in school_pntg
+##    &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;      
+##  1 L1764-2          37 F          
+##  2 L1764-3          18 I          
+##  3 L1764-4          13 D/FL       
+##  4 L1764-5a         14 F          
+##  5 L1764-5b         14 F          
+##  6 L1764-6           7 I          
+##  7 L1764-7a          6 F          
+##  8 L1764-7b          6 F          
+##  9 L1764-8          15 I          
+## 10 L1764-9a          9 D/FL       
+## 11 L1764-9b          9 D/FL       
+## 12 L1764-10a        16 X          
+## 13 L1764-10b        16 X          
+## 14 L1764-10c        16 X          
+## 15 L1764-11         20 D/FL       
+## 16 L1764-12a        14 D/FL       
+## 17 L1764-12b        14 D/FL       
+## 18 L1764-13a        15 D/FL       
+## 19 L1764-13b        15 D/FL       
+## 20 L1764-14         37 F          
+## # ... with 3,373 more rows</code></pre>
+<p>]
 ]</p>
 <hr />
-</div>
 <div id="relationship-between-height-and-school" class="section level2">
 <h2>Relationship between height and school</h2>
 <p>.small[</p>

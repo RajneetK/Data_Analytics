@@ -116,8 +116,7 @@ linear_reg() %>%
 
 #Categorical predictor with 3+ levels
 .pull-left-wide[
-```{r ref.label="ht-school", echo = FALSE}
-
+```{r echo=FALSE}
 dummy_df <- pp %>% 
   select(school_pntg) %>% 
   group_by(school_pntg) %>% 
@@ -141,8 +140,6 @@ dummy_df %>%
   column_spec(7, width = "10em", background = spec_color(dummy_df$X[1:7], end = 0.8), color = "white")
 ```
 ]
-```
-
 .pull-right-narrow[
 .small[
 ```{r echo=FALSE}
