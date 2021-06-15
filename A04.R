@@ -22,11 +22,15 @@ mobility$Province <- as.factor(mobility$Province)
 #ui
 ui <- fluidPage(
   
-  tags$head(includeHTML(("https://www.google.com/covid19/mobility/"))),
-  
+  #tags$head(includeHTML(("https://www.google.com/covid19/mobility/"))),
+  tags$div(class = "submit",
+           tags$a(href = "https://www.google.com/covid19/mobility/ ",
+                  "Dataset link",
+                  target="click")
+  ),
   titlePanel(" Community Mobility Reports " ),
   
-  helpText("Use this Shiny app to explore these Community Mobility Reports. Which aim to provide insights into what has changed in response to policies aimed at combating COVID-19. The reports chart movement trends over time by geography, across different categories of places such as retail and recreation, groceries and pharmacies, parks, transit stations, workplaces, and residential."),
+ helpText("Use this Shiny app to explore these Community Mobility Reports. Which aim to provide insights into what has changed in response to policies aimed at combating COVID-19. The reports chart movement trends over time by geography, across different categories of places such as retail and recreation, groceries and pharmacies, parks, transit stations, workplaces, and residential."),
   
   br(),
   

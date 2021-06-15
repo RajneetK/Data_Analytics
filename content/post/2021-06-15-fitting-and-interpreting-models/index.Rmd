@@ -1,0 +1,174 @@
+---
+title: Fitting and interpreting models
+author: Rajneetk
+date: '2021-06-15'
+slug: fitting-and-interpreting-models
+categories:
+  - Data analytics
+tags: []
+---
+```{r packages, echo = FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(tidymodels)
+library(ggtext)
+library(knitr)
+library(kableExtra)
+set.seed(1234)
+options(dplyr.print_min = 10, dplyr.print_max = 6)
+
+```
+
+
+
+#Data: Paris Paintings
+```{r}
+pp <- read_csv("C:/Users/hskah/Documents/Data_Analytics/paris-paintings.csv", na = c("n/a", "", "NA"))
+```
+
+#Goal: Predict height from width
+$$\widehat{height}_{i} = \beta_0 + \beta_1 \times width_{i}$$
+```{r height-width-plot, echo=FALSE, warning=FALSE,message=FALSE}
+ggplot(data = pp, aes(x = Width_in, y = Height_in)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE, color = "#8E2C90") + 
+  labs(
+    title = "Height vs. width of paintings",
+    subtitle = "Paris auctions, 1764 - 1780",
+    x = "Width (inches)",
+    y = "Height (inches)"
+  )
+
+```
+
+```{r out.width="98%", echo=FALSE}
+knitr::include_graphics("C:/Users/hskah/Documents/Data_Analytics/tidymodels.png")
+```
+
+## Step 1: Specify model
+```{r}
+linear_reg()
+```
+
+
+## Step 2: Set model fitting *engine*
+```{r}
+linear_reg() %>%
+  set_engine("lm") # lm: linear model
+```
+
+## Step 3: Fit model & estimate parameters
+
+```{r}
+linear_reg() %>%
+  set_engine("lm") %>%
+  fit(Height_in ~ Width_in, data = pp)
+```
+
+## A tidy look at model output
+```{r}
+linear_reg() %>%
+  set_engine("lm") %>%
+  fit(Height_in ~ Width_in, data = pp) %>%
+  tidy()
+```
+## Visualizing residuals
+```{r vis-res-1, echo=FALSE, out.width="70%", message=FALSE}
+ht_wt_fit <- linear_reg() %>%
+  set_engine("lm") %>%
+  fit(Height_in ~ Width_in, data = pp)
+ht_wt_fit_tidy <- tidy(ht_wt_fit$fit) 
+ht_wt_fit_aug  <- augment(ht_wt_fit$fit) %>%
+  mutate(res_cat = ifelse(.resid > 0, TRUE, FALSE))
+p <- ggplot(data = ht_wt_fit_aug, 
+            aes(x = Width_in, y = Height_in)) +
+  geom_point(alpha = 0.2) + 
+  labs(
+    title = "Height vs. width of paintings",
+    subtitle = "Just the data",
+    x = "Width (inches)",
+    y = "Height (inches)"
+    ) +
+  coord_cartesian(xlim = c(0, 250), ylim = c(0, 200)) +
+  theme(plot.subtitle = element_text(colour = "#E48957", face = "bold", size = rel(1.5)))+ geom_smooth(method = "lm", color = "#8E2C90", se = FALSE) +
+  geom_point(mapping = aes(y = .fitted), color = "#E48957") +
+  labs(subtitle = "Data + least squares line")+
+  geom_segment(mapping = aes(xend = Width_in, yend = .fitted), color = "#E48957", alpha = 0.4) +
+  labs(subtitle = "Data + least squares line + residuals")
+p
+```
+
+# Models with categorical explanatory variables (Height & landscape features)
+
+```{r}
+linear_reg() %>%
+  set_engine("lm") %>%
+  fit(Height_in ~ factor(landsALL), data = pp) %>%
+  tidy()
+```
+
+#Relationship between height and school
+```{r}
+linear_reg() %>%
+  set_engine("lm") %>%
+  fit(Height_in ~ school_pntg, data = pp) %>%
+  tidy()
+```
+
+#Categorical predictor with 3+ levels
+.pull-left-wide[
+```{r ref.label="ht-school", echo = FALSE}
+
+dummy_df <- pp %>% 
+  select(school_pntg) %>% 
+  group_by(school_pntg) %>% 
+  sample_n(1) %>%
+  mutate(
+    D_FL = as.integer(ifelse(school_pntg == "D/FL", 1L, 0)),
+    F    = as.integer(ifelse(school_pntg == "F", 1L, 0)),
+    G    = as.integer(ifelse(school_pntg == "G", 1L, 0)),
+    I    = as.integer(ifelse(school_pntg == "I", 1L, 0)),
+    S    = as.integer(ifelse(school_pntg == "S", 1L, 0)),
+    X    = as.integer(ifelse(school_pntg == "X", 1L, 0))
+  )
+dummy_df %>%
+  kable(align = "lcccccc") %>%
+  kable_styling() %>%
+  column_spec(2, width = "10em", background = spec_color(dummy_df$D_FL[1:7], end = 0.8), color = "white") %>%
+  column_spec(3, width = "10em", background = spec_color(dummy_df$F[1:7], end = 0.8), color = "white") %>%
+  column_spec(4, width = "10em", background = spec_color(dummy_df$G[1:7], end = 0.8), color = "white") %>%
+  column_spec(5, width = "10em", background = spec_color(dummy_df$I[1:7], end = 0.8), color = "white") %>%
+  column_spec(6, width = "10em", background = spec_color(dummy_df$S[1:7], end = 0.8), color = "white") %>%
+  column_spec(7, width = "10em", background = spec_color(dummy_df$X[1:7], end = 0.8), color = "white")
+```
+]
+```
+
+.pull-right-narrow[
+.small[
+```{r echo=FALSE}
+pp %>% 
+  select(name, Height_in, school_pntg) %>%
+  print(n = 20)
+
+```
+]
+]
+
+---
+
+
+## Relationship between height and school
+.small[
+```{r ref.label="ht-school", echo=FALSE}
+
+```
+
+- **Austrian school (A)** paintings are expected, on average, to be **14 inches** tall.
+- **Dutch/Flemish school (D/FL)** paintings are expected, on average, to be **2.33 inches taller** than *Austrian school* paintings.
+- **French school (F)** paintings are expected, on average, to be **10.2 inches taller** than *Austrian school* paintings.
+- **German school (G)** paintings are expected, on average, to be **1.65 inches taller** than *Austrian school* paintings.
+- **Italian school (I)** paintings are expected, on average, to be **10.3 inches taller** than *Austrian school* paintings.
+- **Spanish school (S)** paintings are expected, on average, to be **30.4 inches taller** than *Austrian school* paintings.
+- Paintings whose school is **unknown (X)** are expected, on average, to be **2.87 inches taller** than *Austrian school* paintings.
+]
+
