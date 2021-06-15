@@ -79,7 +79,7 @@
 
 
 <p>#Data: Paris Paintings</p>
-<pre class="r"><code>pp &lt;- read_csv(&quot;C:/Users/hskah/Documents/Data_Analytics/paris-paintings.csv&quot;, na = c(&quot;n/a&quot;, &quot;&quot;, &quot;NA&quot;))</code></pre>
+<pre class="r"><code>pp &lt;- read_csv(&quot;paris-paintings.csv&quot;, na = c(&quot;n/a&quot;, &quot;&quot;, &quot;NA&quot;))</code></pre>
 <pre><code>## 
 ## -- Column specification --------------------------------------------------------
 ## cols(
@@ -109,7 +109,7 @@
 <p>#Goal: Predict height from width
 <span class="math display">\[\widehat{height}_{i} = \beta_0 + \beta_1 \times width_{i}\]</span>
 <img src="/2021/06/15/fitting-and-interpreting-models/index_files/figure-html/height-width-plot-1.png" width="672" /></p>
-<p><img src="C:/Users/hskah/Documents/Data_Analytics/tidymodels.png" width="98%" /></p>
+<p><img src="tidymodels.png" width="98%" /></p>
 <div id="step-1-specify-model" class="section level2">
 <h2>Step 1: Specify model</h2>
 <pre class="r"><code>linear_reg()</code></pre>
@@ -130,7 +130,7 @@
   fit(Height_in ~ Width_in, data = pp)</code></pre>
 <pre><code>## parsnip model object
 ## 
-## Fit time:  0ms 
+## Fit time:  21ms 
 ## 
 ## Call:
 ## stats::lm(formula = Height_in ~ Width_in, data = data)
