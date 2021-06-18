@@ -1,0 +1,9 @@
+---
+title: A05 Assignment EDA2
+author: RajneetK
+date: '2021-06-18'
+slug: a05-assignment-eda2
+categories:
+  - Fun with r
+tags: []
+---
