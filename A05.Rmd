@@ -1,0 +1,373 @@
+---
+title: A05 Assignment EDA2
+author: RajneetK
+date: '2021-06-18'
+slug: a05-assignment-eda2
+categories:
+  - Fun with r
+tags: []
+---
+
+Exploratory Data Analysis of the Hotel Booking Demand 
+
+# Introduction
+This data set contains booking information for a city hotel and a resort hotel, including when the booking was made, length of stay, number of adults, children, and/or babies, and number of available parking spaces, among other things. All personally identifying information has been extracted from the data.
+To gain insight from the data, we will conduct exploratory data analysis.
+
+**Questions:**
+1) How would people that book the same hotels repeatedly behave? 
+2) How likely Would they cancel a booking?
+3) What kind of meal plan would they choose?
+4) How many days ahead of checking in would they book a hotel?
+
+To answer these questions seattle reservation dataset is analyzed, which is publicly accessible data, available dataset on Kaggle(....https://www.kaggle.com/jessemostipak/hotel-booking-demand).
+
+# Import Packages
+First Import necessary packages and import the dataset.
+
+```{r packages, echo = FALSE, message=FALSE, warning=FALSE}
+library(data.table)   #import data
+library(tidyverse)    #tidy data, visualisation, transformation
+library(tibble)       #create tibbles
+library(plotrix)      #3D Exploded Pie Chart
+library(tidyr)        #tidy data
+library(dplyr)        #data analysis
+library(DT)           #display data set
+library(ggplot2)      #data visualization
+library(magrittr)     #pipe oprator
+library(knitr)        #display tables
+library(gt)
+```
+
+
+## Import Seattle dataset files
+
+```{r ,echo = FALSE, message=FALSE, warning=FALSE}
+
+## Importing Data
+hotel_data <- read_csv('hotel_bookings.csv')
+hotel_data<- as_tibble(hotel_data)
+
+glimpse(hotel_data)
+```
+
+# Dataset link
+
+```{r,echo = FALSE, message=FALSE, warning=FALSE}
+
+hotel_data <- tibble(
+  Name = c("Hotel Booking Demand Dataset"),
+  link = c("https://www.kaggle.com/jessemostipak/hotel-booking-demand"))
+# using html
+hotel_data %>%
+    mutate(
+        link = map(link, ~ htmltools::a(href = .x, "Click here")),
+        link = map(link, ~ gt::html(as.character(.x)))) %>%
+    gt()
+```
+
+
+# Missing value
+
+By examining the missing values for each variable, we can see that there are only four missing values for variable "children," with no missing values in the other variables.
+```{r, echo = FALSE, message=FALSE, warning=FALSE}
+hotel_data <- read_csv('hotel_bookings.csv')
+
+colSums(is.na(hotel_data))
+
+```
+
+# Data cleaning
+
+1. Take care of the missing value
+The variable "children" has four missing values. The median value of this variable is used to impute them. Given the large sample size, this method would be appropriate.
+
+```{r, echo = FALSE, message=FALSE, warning=FALSE}
+hotel_data$children[is.na(hotel_data$children)] <- median(hotel_data$children, na.rm = TRUE)
+```
+
+2. Make data makes more sense
+
+The meal "Undefined" is imputed by "SC" because both "Undefined" and "SC" indicate that the customer chose not to eat at the hotel.
+
+```{r, echo = FALSE, message=FALSE, warning=FALSE}
+hotel_data$meal <- as.factor(hotel_data$meal)
+levels(hotel_data$meal) <- c("BB", "FB", "HB", "SC", "SC")
+```
+
+The variable "is repeated guest" is binary, it should be a factor. The same modification is required for the variable "is canceled."
+
+```{r, echo = FALSE, message=FALSE, warning=FALSE}
+hotel_data$is_repeated_guest <- as.factor(hotel_data$is_repeated_guest)
+hotel_data$is_canceled <- as.factor(hotel_data$is_canceled)
+```
+
+3. Statistical summary
+
+We can get some useful information from the statistical summary. For example, approximately 37% of bookings have been canceled. The booking data ranges from 2015 to 2017. Customers stay for two nights in half of the weekday bookings. Customers stay for three nights in 75% of the bookings. The longest stay possible is 50 nights. The average number of prior cancellations is less than one. One special request is made in 75% of all bookings. Repeat customers account for 3% of all bookings.
+
+```{r, echo = FALSE, message=FALSE, warning=FALSE}
+summary(hotel_data)
+```
+4. Glipse the data
+
+The dataset look clean and tidy now.
+
+```{r, echo = FALSE, message=FALSE, warning=FALSE}
+hotel_data %>% 
+  head(n = 20)
+```
+
+# EXPLORATION DATA ANALYSIS
+
+1) Distribution of guests:
+
+According to the table and piechart below,3.19 percent of the guests are repeat visitors, while the rest are first-time visitors. Because people do not return to the same location repeatedly, these figures make sense.
+
+```{r, echo = FALSE, message=FALSE, warning=FALSE}
+hotel_data %>% 
+  group_by(is_repeated_guest) %>% 
+  count(is_repeated_guest) %>% 
+  summarise(percent = round(n/nrow(hotel_data)*100,2), total = n)
+slices <- c(sum(hotel_data$is_repeated_guest=="1"),sum(hotel_data$is_repeated_guest=="0"))
+lbls <- c("Repeated guest","Unrepeated guest")
+pie3D(slices,labels=lbls,explode=0.1) 
+```
+
+2) The difference in lead time between two groups of guests:
+   
+I created the following two functions to display the visualisation in order to     investigate several behaviors of repeat visitors.
+
+
+```{r, echo = FALSE, message=FALSE, warning=FALSE}
+guestbehaboxplot <- function(behavior){
+   hotel_data %>%
+    ggplot(aes(x = is_repeated_guest, y = behavior)) +
+    geom_boxplot() +
+    geom_jitter(width = .15, alpha = .2) +
+    labs(title = "Behavior feature by guest type",
+         subtitle = behavior,
+         x = "Guest type (1 for repeated guests)", 
+         y = "count") +
+    theme(panel.grid.major = element_blank(),
+          panel.grid.minor = element_blank(),
+          panel.background = element_blank(), 
+          axis.line = element_line(colour = "black"))
+}
+```
+
+```{r}
+guestbehaboxplot(hotel_data$lead_time)
+```
+The lead time for the repeated guests are shorter than that of unrepeated guests significantly. The average lead time for the repeated guests is 31 days, while that for unrepeated guests is 106 days.
+
+```{r, echo = FALSE, message=FALSE, warning=FALSE}
+hotel_data %>% 
+  group_by(is_repeated_guest) %>% 
+  summarise(mean = mean(lead_time))
+```
+
+
+3) How often do repeat customers cancel their reservations?
+
+Unrepeated guests cancel 43672 bookings, accounting for 37.8 percent of total unrepeated guests. On the other hand, 552 repeat guests cancel their reservations, accounting for only 14.4 percent of the repeat group.
+
+
+```{r,echo = FALSE, message=FALSE, warning=FALSE}
+hotel_data %>% 
+  group_by(is_repeated_guest) %>% 
+  filter(is_canceled == "1") %>% 
+  count() -> filcan
+
+hotel_data %>% 
+  group_by(is_repeated_guest) %>% 
+  count() -> total
+
+as.data.frame(filcan/total)
+```
+4) Do previous guests cancel their reservations?
+
+Yes. 75.6 percent of returning guests have no cancellation history. The percentage of repeat visitors is 95.2 percent. This makes sense because unrepeated guests dress in an unrepeating manner. The average cancellation rate for repeat and non-repeated guests is 0.47 and 0.07, respectively.
+
+```{r,echo = FALSE, message=FALSE, warning=FALSE}
+guestbehaboxplot(hotel_data$previous_cancellations)
+```
+
+```{r,echo = FALSE, message=FALSE, warning=FALSE}
+hotel_data %>% 
+  group_by(is_repeated_guest) %>% 
+  filter(previous_cancellations == 0) %>% 
+  count() -> filpre
+
+as.data.frame(filpre/total)
+```
+
+```{r,echo = FALSE, message=FALSE, warning=FALSE}
+hotel_data %>% 
+  group_by(is_repeated_guest) %>% 
+  summarise(mean = mean(previous_cancellations))
+```
+
+5) How many bookings have not previously been cancelled?
+
+74.5 percent of repeat guests' bookings have not been cancelled. Unrepeated visitors account for only 0.7 percent of all visitors. Previous bookings that have not been cancelled are 3.59 and 0.02, respectively, for repeat guests and unrepeated guests.
+
+```{r,echo = FALSE, message=FALSE, warning=FALSE}
+guestbehaboxplot(hotel_data$previous_bookings_not_canceled)
+```
+```{r, echo = FALSE, message=FALSE, warning=FALSE}
+hotel_data %>% 
+  group_by(is_repeated_guest) %>% 
+  filter(previous_bookings_not_canceled > 0) %>% 
+  count() -> filno       
+
+as.data.frame(filno/total)
+```
+```{r,echo = FALSE, message=FALSE, warning=FALSE}
+hotel_data%>% 
+  group_by(is_repeated_guest) %>% 
+  summarise(mean = mean(previous_bookings_not_canceled))
+```
+
+6) What kind of hotel would returning guests choose?
+
+It turns out that City Hotel is preferred by repeat guests over Resort Hotel. However, 46.7 percent of repeat guests book Resort Hotel, while only 33.1 percent of unrepeated guests book Resort Hotel.
+
+
+```{r, echo = FALSE, message=FALSE, warning=FALSE}
+hotel_data %>% 
+  group_by(is_repeated_guest) %>% 
+  filter(hotel == "Resort Hotel") %>% 
+  count() -> filhot       
+
+as.data.frame(filhot/total)
+```
+7) Do returning guests change their reservations?
+
+81.1 percent of returning guests do not change their booking. This figure is slightly lower than that of unrepeated visitors.
+
+```{r, echo = FALSE, message=FALSE, warning=FALSE}
+guestbehaboxplot(hotel_data$booking_changes)
+```
+
+```{r, echo = FALSE, message=FALSE, warning=FALSE}
+hotel_data %>% 
+  group_by(is_repeated_guest) %>% 
+  filter(booking_changes == 0) %>% 
+  count() -> filchan      
+
+as.data.frame(filchan/total)
+```
+8) Meal preference of returning guests.
+
+When comparing the meal choices of repeat guests and unrepeated guests, repeat guests have a higher percentage of choosing Bed & Breakfast and a lower percentage of choosing the other three types of meal plans.
+
+
+```{r, echo = FALSE, message=FALSE, warning=FALSE}
+table(hotel_data$meal, hotel_data$is_repeated_guest)
+```
+
+9) Do returning visitors leave a deposit?
+
+Normally no. 98.2% of repeated guests don’t make deposit. A possiable reason is that they are reliable guests, so that they don’t need to make deposit. The percentage for unrepeated guests is 87.3%.
+
+
+```{r,echo = FALSE, message=FALSE, warning=FALSE}
+hotel_data %>% 
+  group_by(is_repeated_guest) %>% 
+  filter(deposit_type == "No Deposit") %>% 
+  count() -> fildep       
+
+as.data.frame(fildep/total)
+```
+10) Do frequent visitors make special requests?
+
+Over half of them do not. 58.2 percent of returning guests do not make any special requests. This percentage is very close to that of first-time visitors.
+
+
+```{r, echo = FALSE, message=FALSE, warning=FALSE}
+hotel_data %>% 
+  group_by(is_repeated_guest) %>% 
+  filter(total_of_special_requests == 0) %>% 
+  count() -> filspe   
+
+as.data.frame(filspe/total)
+```
+
+11) Customer type of returning visitors
+
+80.7 percent of returning guests make bookings that are not part of a group or contract and are unrelated to other transient bookings. Bookings associated with a group are made by 4.2 percent of repeat guests. Both of these figures are higher than the number of bookings made by first-time visitors.
+
+
+
+```{r, echo = FALSE, message=FALSE, warning=FALSE}
+custype <- function(type){
+  hotel_data %>% 
+  group_by(is_repeated_guest) %>% 
+  filter(customer_type == type) %>% 
+  count()
+}
+
+custype("Transient") -> filtra
+custype("Group") -> filgro
+
+as.data.frame(filtra/total) 
+```
+
+12) Distribution channel 
+
+```{r, echo = FALSE, message=FALSE, warning=FALSE}
+hotel_data%>%
+  ggplot(aes(x=distribution_channel,fill=is_canceled))+
+  geom_bar()
+
+```
+13) Histogram illustrating Days in waiting list and cancellations
+
+```{r, echo = FALSE, message=FALSE, warning=FALSE}
+hotel_data%>%
+  filter(days_in_waiting_list>1)%>%
+  ggplot(aes(x=days_in_waiting_list,fill=is_canceled))+
+  geom_histogram(binwidth = 10)
+
+```
+
+14) Data Modeling
+
+```{r, echo = FALSE, message=FALSE, warning=FALSE}
+set.seed(1)   # set a random seed 
+index <- sample(nrow(hotel_data), nrow(hotel_data)*0.3) # random selection of indices. 
+
+hotel_data <- hotel_data %>%
+              filter(market_segment!='Undefined')
+
+test <- hotel_data[index,]       # save 30% as a test dataset
+training <-hotel_data[-index,]   # save the rest as a training set
+
+```
+
+
+
+
+#SUMMARY
+
+* Only 3.19 percent of the guests are returning.
+
+* Repeated guests tend to book the hotel one month in advance of their visit, which is much shorter than that of first-time visitors. This indicates that repeat guests do not rush to book hotels because they always know which hotel to book if they visit that location.
+
+* The likelihood of a repeat guest cancelling a booking is much lower than that of an unrepeated guest. This indicates that returning visitors are extremely loyal.
+
+* 75.6 percent of returning guests have no cancellation history. 74.5 percent of repeat guests' bookings have not been cancelled. The average number of previous bookings that have not been cancelled is 3.59.
+
+* Guests who return prefer City Hotel slightly more than Resort Hotel. However, the percentage of people who choose Resort Hotel is higher than the percentage of people who choose unrepeated guests.
+
+* 81.1 percent of returning guests do not change their booking.
+
+* When booking hotels, 91.1 percent of repeat guests select Bed & Breakfast. Higher than infrequent visitors.
+
+* 98.2 percent of returning guests do not make a deposit. Higher than infrequent visitors.
+
+* More than half of returning guests do not make special requests, almost as many as first-time visitors do.
+
+* 80.7 percent of returning guests make bookings that are not part of a group or contract and are unrelated to other transient bookings.
+

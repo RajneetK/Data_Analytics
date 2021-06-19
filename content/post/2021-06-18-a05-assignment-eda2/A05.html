@@ -21,40 +21,13 @@ To gain insight from the data, we will conduct exploratory data analysis.</p>
 2) How likely Would they cancel a booking?
 3) What kind of meal plan would they choose?
 4) How many days ahead of checking in would they book a hotel?</p>
-<p>To answer these questions seattle reservation dataset is analyzed, which is publicly accessible data, available dataset on Kaggle.</p>
+<p>To answer these questions seattle reservation dataset is analyzed, which is publicly accessible data, available dataset on Kaggle(….https://www.kaggle.com/jessemostipak/hotel-booking-demand).</p>
 </div>
 <div id="import-packages" class="section level1">
 <h1>Import Packages</h1>
 <p>First Import necessary packages and import the dataset.</p>
 <div id="import-seattle-dataset-files" class="section level2">
 <h2>Import Seattle dataset files</h2>
-<pre class="r"><code>#!pip install pycountry
-
-## Importing Data
-hotel_data &lt;- read_csv(&#39;hotel_bookings.csv&#39;)</code></pre>
-<pre><code>## 
-## -- Column specification --------------------------------------------------------
-## cols(
-##   .default = col_double(),
-##   hotel = col_character(),
-##   arrival_date_month = col_character(),
-##   meal = col_character(),
-##   country = col_character(),
-##   market_segment = col_character(),
-##   distribution_channel = col_character(),
-##   reserved_room_type = col_character(),
-##   assigned_room_type = col_character(),
-##   deposit_type = col_character(),
-##   agent = col_character(),
-##   company = col_character(),
-##   customer_type = col_character(),
-##   reservation_status = col_character(),
-##   reservation_status_date = col_date(format = &quot;&quot;)
-## )
-## i Use `spec()` for the full column specifications.</code></pre>
-<pre class="r"><code>hotel_data&lt;- as_tibble(hotel_data)
-
-glimpse(hotel_data)</code></pre>
 <pre><code>## Rows: 119,390
 ## Columns: 32
 ## $ hotel                          &lt;chr&gt; &quot;Resort Hotel&quot;, &quot;Resort Hotel&quot;, &quot;Resort~
@@ -91,31 +64,366 @@ glimpse(hotel_data)</code></pre>
 ## $ reservation_status_date        &lt;date&gt; 2015-07-01, 2015-07-01, 2015-07-02, 20~</code></pre>
 </div>
 </div>
+<div id="dataset-link" class="section level1">
+<h1>Dataset link</h1>
+<div id="wirrcapbsq" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#wirrcapbsq .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#wirrcapbsq .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#wirrcapbsq .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#wirrcapbsq .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#wirrcapbsq .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wirrcapbsq .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#wirrcapbsq .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#wirrcapbsq .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#wirrcapbsq .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#wirrcapbsq .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#wirrcapbsq .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#wirrcapbsq .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#wirrcapbsq .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#wirrcapbsq .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#wirrcapbsq .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#wirrcapbsq .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#wirrcapbsq .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#wirrcapbsq .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wirrcapbsq .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#wirrcapbsq .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wirrcapbsq .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#wirrcapbsq .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#wirrcapbsq .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wirrcapbsq .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#wirrcapbsq .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#wirrcapbsq .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#wirrcapbsq .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#wirrcapbsq .gt_left {
+  text-align: left;
+}
+
+#wirrcapbsq .gt_center {
+  text-align: center;
+}
+
+#wirrcapbsq .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#wirrcapbsq .gt_font_normal {
+  font-weight: normal;
+}
+
+#wirrcapbsq .gt_font_bold {
+  font-weight: bold;
+}
+
+#wirrcapbsq .gt_font_italic {
+  font-style: italic;
+}
+
+#wirrcapbsq .gt_super {
+  font-size: 65%;
+}
+
+#wirrcapbsq .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 65%;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Name</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">link</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_left">Hotel Booking Demand Dataset</td>
+<td class="gt_row gt_center"><a href="https://www.kaggle.com/jessemostipak/hotel-booking-demand">Click here</a></td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
 <div id="missing-value" class="section level1">
 <h1>Missing value</h1>
 <p>By examining the missing values for each variable, we can see that there are only four missing values for variable “children,” with no missing values in the other variables.</p>
-<pre class="r"><code>hotel_data &lt;- read_csv(&#39;hotel_bookings.csv&#39;)</code></pre>
-<pre><code>## 
-## -- Column specification --------------------------------------------------------
-## cols(
-##   .default = col_double(),
-##   hotel = col_character(),
-##   arrival_date_month = col_character(),
-##   meal = col_character(),
-##   country = col_character(),
-##   market_segment = col_character(),
-##   distribution_channel = col_character(),
-##   reserved_room_type = col_character(),
-##   assigned_room_type = col_character(),
-##   deposit_type = col_character(),
-##   agent = col_character(),
-##   company = col_character(),
-##   customer_type = col_character(),
-##   reservation_status = col_character(),
-##   reservation_status_date = col_date(format = &quot;&quot;)
-## )
-## i Use `spec()` for the full column specifications.</code></pre>
-<pre class="r"><code>colSums(is.na(hotel_data))</code></pre>
 <pre><code>##                          hotel                    is_canceled 
 ##                              0                              0 
 ##                      lead_time              arrival_date_year 
@@ -152,24 +460,16 @@ glimpse(hotel_data)</code></pre>
 <div id="data-cleaning" class="section level1">
 <h1>Data cleaning</h1>
 <ol style="list-style-type: decimal">
-<li>Take care of the missing value
-The variable “children” has four missing values. The median value of this variable is used to impute them. Given the large sample size, this method would be appropriate.</li>
+<li><p>Take care of the missing value
+The variable “children” has four missing values. The median value of this variable is used to impute them. Given the large sample size, this method would be appropriate.</p></li>
+<li><p>Make data makes more sense</p></li>
 </ol>
-<pre class="r"><code>hotel_data$children[is.na(hotel_data$children)] &lt;- median(hotel_data$children, na.rm = TRUE)</code></pre>
-<ol start="2" style="list-style-type: decimal">
-<li>Make data makes more sense
-The meal “Undefined” is imputed by “SC” because both “Undefined” and “SC” indicate that the customer chose not to eat at the hotel.</li>
-</ol>
-<pre class="r"><code>hotel_data$meal &lt;- as.factor(hotel_data$meal)
-levels(hotel_data$meal) &lt;- c(&quot;BB&quot;, &quot;FB&quot;, &quot;HB&quot;, &quot;SC&quot;, &quot;SC&quot;)</code></pre>
+<p>The meal “Undefined” is imputed by “SC” because both “Undefined” and “SC” indicate that the customer chose not to eat at the hotel.</p>
 <p>The variable “is repeated guest” is binary, it should be a factor. The same modification is required for the variable “is canceled.”</p>
-<pre class="r"><code>hotel_data$is_repeated_guest &lt;- as.factor(hotel_data$is_repeated_guest)
-hotel_data$is_canceled &lt;- as.factor(hotel_data$is_canceled)</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>Statistical summary</li>
 </ol>
 <p>We can get some useful information from the statistical summary. For example, approximately 37% of bookings have been canceled. The booking data ranges from 2015 to 2017. Customers stay for two nights in half of the weekday bookings. Customers stay for three nights in 75% of the bookings. The longest stay possible is 50 nights. The average number of prior cancellations is less than one. One special request is made in 75% of all bookings. Repeat customers account for 3% of all bookings.</p>
-<pre class="r"><code>summary(hotel_data)</code></pre>
 <pre><code>##     hotel           is_canceled   lead_time   arrival_date_year
 ##  Length:119390      0:75166     Min.   :  0   Min.   :2015     
 ##  Class :character   1:44224     1st Qu.: 18   1st Qu.:2016     
@@ -244,8 +544,6 @@ hotel_data$is_canceled &lt;- as.factor(hotel_data$is_canceled)</code></pre>
 <li>Glipse the data</li>
 </ol>
 <p>The dataset look clean and tidy now.</p>
-<pre class="r"><code>hotel_data %&gt;% 
-  head(n = 20)</code></pre>
 <pre><code>## # A tibble: 20 x 32
 ##    hotel        is_canceled lead_time arrival_date_year arrival_date_month
 ##    &lt;chr&gt;        &lt;fct&gt;           &lt;dbl&gt;             &lt;dbl&gt; &lt;chr&gt;             
@@ -284,370 +582,126 @@ hotel_data$is_canceled &lt;- as.factor(hotel_data$is_canceled)</code></pre>
 <div id="exploration-data-analysis" class="section level1">
 <h1>EXPLORATION DATA ANALYSIS</h1>
 <ol style="list-style-type: decimal">
-<li>How would people that book the same hotels repeatedly behave?</li>
+<li>Distribution of guests:</li>
 </ol>
-<p>Distribution of guests:According to the table and piechart below,3.19 percent of the guests are repeat visitors, while the rest are first-time visitors. Because people do not return to the same location repeatedly, these figures make sense.</p>
-<pre class="r"><code>hotel_data %&gt;% 
-  group_by(is_repeated_guest) %&gt;% 
-  count(is_repeated_guest) %&gt;% 
-  summarise(percent = round(n/nrow(hotel_data)*100,2), total = n)</code></pre>
+<p>According to the table and piechart below,3.19 percent of the guests are repeat visitors, while the rest are first-time visitors. Because people do not return to the same location repeatedly, these figures make sense.</p>
 <pre><code>## # A tibble: 2 x 3
 ##   is_repeated_guest percent  total
 ##   &lt;fct&gt;               &lt;dbl&gt;  &lt;int&gt;
 ## 1 0                   96.8  115580
 ## 2 1                    3.19   3810</code></pre>
-<pre class="r"><code>slices &lt;- c(sum(hotel_data$is_repeated_guest==&quot;1&quot;),sum(hotel_data$is_repeated_guest==&quot;0&quot;))
-lbls &lt;- c(&quot;Repeated guest&quot;,&quot;Unrepeated guest&quot;)
-pie3D(slices,labels=lbls,explode=0.1) </code></pre>
-<p><img src="/post/2021-06-18-a05-assignment-eda2/A05_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
-<p>The difference in lead time between two groups of guests:I created the following two functions to display the visualisation in order to investigate several behaviors of repeat visitors.</p>
+<p><img src="/post/2021-06-18-a05-assignment-eda2/A05_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <ol start="2" style="list-style-type: decimal">
-<li>How likely Would they cancel a booking?</li>
+<li>The difference in lead time between two groups of guests:</li>
 </ol>
-</div>
-<div id="converting-variables-to-factors" class="section level1">
-<h1>Converting Variables to factors</h1>
-<pre class="r"><code>hotel_data&lt;-hotel_data%&gt;%
-  mutate(
-         hotel=as.factor(hotel),      
-         is_canceled=as.factor(is_canceled),
-         meal=as.factor(meal),
-         country=as.factor(country),
-         market_segment=as.factor(market_segment),
-         distribution_channel=as.factor(distribution_channel),
-         is_repeated_guest=as.factor(is_repeated_guest),
-         reserved_room_type=as.factor(reserved_room_type),
-         assigned_room_type=as.factor(assigned_room_type),
-         deposit_type=as.factor(deposit_type),
-         customer_type=as.factor(customer_type),
-         reservation_status=as.factor(reservation_status),
-         agent=as.factor(agent),
-         company=as.factor(company),
-         arrival_date_day_of_month=as.factor(arrival_date_day_of_month),
-         arrival_date_month=as.factor(arrival_date_month),
-         arrival_date_year=as.factor(arrival_date_year)
-
-         )</code></pre>
-<p>#Exploring the data further</p>
-<pre class="r"><code>head(hotel_data)</code></pre>
-<pre><code>## # A tibble: 6 x 32
-##   hotel is_canceled lead_time arrival_date_ye~ arrival_date_mo~ arrival_date_we~
-##   &lt;fct&gt; &lt;fct&gt;           &lt;dbl&gt; &lt;fct&gt;            &lt;fct&gt;                       &lt;dbl&gt;
-## 1 Reso~ 0                 342 2015             July                           27
-## 2 Reso~ 0                 737 2015             July                           27
-## 3 Reso~ 0                   7 2015             July                           27
-## 4 Reso~ 0                  13 2015             July                           27
-## 5 Reso~ 0                  14 2015             July                           27
-## 6 Reso~ 0                  14 2015             July                           27
-## # ... with 26 more variables: arrival_date_day_of_month &lt;fct&gt;,
-## #   stays_in_weekend_nights &lt;dbl&gt;, stays_in_week_nights &lt;dbl&gt;, adults &lt;dbl&gt;,
-## #   children &lt;dbl&gt;, babies &lt;dbl&gt;, meal &lt;fct&gt;, country &lt;fct&gt;,
-## #   market_segment &lt;fct&gt;, distribution_channel &lt;fct&gt;, is_repeated_guest &lt;fct&gt;,
-## #   previous_cancellations &lt;dbl&gt;, previous_bookings_not_canceled &lt;dbl&gt;,
-## #   reserved_room_type &lt;fct&gt;, assigned_room_type &lt;fct&gt;, booking_changes &lt;dbl&gt;,
-## #   deposit_type &lt;fct&gt;, agent &lt;fct&gt;, company &lt;fct&gt;, days_in_waiting_list &lt;dbl&gt;,
-## #   customer_type &lt;fct&gt;, adr &lt;dbl&gt;, required_car_parking_spaces &lt;dbl&gt;,
-## #   total_of_special_requests &lt;dbl&gt;, reservation_status &lt;fct&gt;,
-## #   reservation_status_date &lt;date&gt;</code></pre>
-<pre class="r"><code>tail(hotel_data)</code></pre>
-<pre><code>## # A tibble: 6 x 32
-##   hotel is_canceled lead_time arrival_date_ye~ arrival_date_mo~ arrival_date_we~
-##   &lt;fct&gt; &lt;fct&gt;           &lt;dbl&gt; &lt;fct&gt;            &lt;fct&gt;                       &lt;dbl&gt;
-## 1 City~ 0                  21 2017             August                         35
-## 2 City~ 0                  23 2017             August                         35
-## 3 City~ 0                 102 2017             August                         35
-## 4 City~ 0                  34 2017             August                         35
-## 5 City~ 0                 109 2017             August                         35
-## 6 City~ 0                 205 2017             August                         35
-## # ... with 26 more variables: arrival_date_day_of_month &lt;fct&gt;,
-## #   stays_in_weekend_nights &lt;dbl&gt;, stays_in_week_nights &lt;dbl&gt;, adults &lt;dbl&gt;,
-## #   children &lt;dbl&gt;, babies &lt;dbl&gt;, meal &lt;fct&gt;, country &lt;fct&gt;,
-## #   market_segment &lt;fct&gt;, distribution_channel &lt;fct&gt;, is_repeated_guest &lt;fct&gt;,
-## #   previous_cancellations &lt;dbl&gt;, previous_bookings_not_canceled &lt;dbl&gt;,
-## #   reserved_room_type &lt;fct&gt;, assigned_room_type &lt;fct&gt;, booking_changes &lt;dbl&gt;,
-## #   deposit_type &lt;fct&gt;, agent &lt;fct&gt;, company &lt;fct&gt;, days_in_waiting_list &lt;dbl&gt;,
-## #   customer_type &lt;fct&gt;, adr &lt;dbl&gt;, required_car_parking_spaces &lt;dbl&gt;,
-## #   total_of_special_requests &lt;dbl&gt;, reservation_status &lt;fct&gt;,
-## #   reservation_status_date &lt;date&gt;</code></pre>
-<pre class="r"><code>summary(hotel_data)</code></pre>
-<pre><code>##           hotel       is_canceled   lead_time   arrival_date_year
-##  City Hotel  :79330   0:75166     Min.   :  0   2015:21996       
-##  Resort Hotel:40060   1:44224     1st Qu.: 18   2016:56707       
-##                                   Median : 69   2017:40687       
-##                                   Mean   :104                    
-##                                   3rd Qu.:160                    
-##                                   Max.   :737                    
-##                                                                  
-##  arrival_date_month arrival_date_week_number arrival_date_day_of_month
-##  August :13877      Min.   : 1.00            17     : 4406            
-##  July   :12661      1st Qu.:16.00            5      : 4317            
-##  May    :11791      Median :28.00            15     : 4196            
-##  October:11160      Mean   :27.17            25     : 4160            
-##  April  :11089      3rd Qu.:38.00            26     : 4147            
-##  June   :10939      Max.   :53.00            9      : 4096            
-##  (Other):47873                               (Other):94068            
-##  stays_in_weekend_nights stays_in_week_nights     adults      
-##  Min.   : 0.0000         Min.   : 0.0         Min.   : 0.000  
-##  1st Qu.: 0.0000         1st Qu.: 1.0         1st Qu.: 2.000  
-##  Median : 1.0000         Median : 2.0         Median : 2.000  
-##  Mean   : 0.9276         Mean   : 2.5         Mean   : 1.856  
-##  3rd Qu.: 2.0000         3rd Qu.: 3.0         3rd Qu.: 2.000  
-##  Max.   :19.0000         Max.   :50.0         Max.   :55.000  
-##                                                               
-##     children           babies          meal          country     
-##  Min.   : 0.0000   Min.   : 0.000000   BB:92310   PRT    :48590  
-##  1st Qu.: 0.0000   1st Qu.: 0.000000   FB:  798   GBR    :12129  
-##  Median : 0.0000   Median : 0.000000   HB:14463   FRA    :10415  
-##  Mean   : 0.1039   Mean   : 0.007949   SC:11819   ESP    : 8568  
-##  3rd Qu.: 0.0000   3rd Qu.: 0.000000              DEU    : 7287  
-##  Max.   :10.0000   Max.   :10.000000              ITA    : 3766  
-##                                                   (Other):28635  
-##        market_segment  distribution_channel is_repeated_guest
-##  Online TA    :56477   Corporate: 6677      0:115580         
-##  Offline TA/TO:24219   Direct   :14645      1:  3810         
-##  Groups       :19811   GDS      :  193                       
-##  Direct       :12606   TA/TO    :97870                       
-##  Corporate    : 5295   Undefined:    5                       
-##  Complementary:  743                                         
-##  (Other)      :  239                                         
-##  previous_cancellations previous_bookings_not_canceled reserved_room_type
-##  Min.   : 0.00000       Min.   : 0.0000                A      :85994     
-##  1st Qu.: 0.00000       1st Qu.: 0.0000                D      :19201     
-##  Median : 0.00000       Median : 0.0000                E      : 6535     
-##  Mean   : 0.08712       Mean   : 0.1371                F      : 2897     
-##  3rd Qu.: 0.00000       3rd Qu.: 0.0000                G      : 2094     
-##  Max.   :26.00000       Max.   :72.0000                B      : 1118     
-##                                                        (Other): 1551     
-##  assigned_room_type booking_changes       deposit_type        agent      
-##  A      :74053      Min.   : 0.0000   No Deposit:104641   9      :31961  
-##  D      :25322      1st Qu.: 0.0000   Non Refund: 14587   NULL   :16340  
-##  E      : 7806      Median : 0.0000   Refundable:   162   240    :13922  
-##  F      : 3751      Mean   : 0.2211                       1      : 7191  
-##  G      : 2553      3rd Qu.: 0.0000                       14     : 3640  
-##  C      : 2375      Max.   :21.0000                       7      : 3539  
-##  (Other): 3530                                            (Other):42797  
-##     company       days_in_waiting_list         customer_type  
-##  NULL   :112593   Min.   :  0.000      Contract       : 4076  
-##  40     :   927   1st Qu.:  0.000      Group          :  577  
-##  223    :   784   Median :  0.000      Transient      :89613  
-##  67     :   267   Mean   :  2.321      Transient-Party:25124  
-##  45     :   250   3rd Qu.:  0.000                             
-##  153    :   215   Max.   :391.000                             
-##  (Other):  4354                                               
-##       adr          required_car_parking_spaces total_of_special_requests
-##  Min.   :  -6.38   Min.   :0.00000             Min.   :0.0000           
-##  1st Qu.:  69.29   1st Qu.:0.00000             1st Qu.:0.0000           
-##  Median :  94.58   Median :0.00000             Median :0.0000           
-##  Mean   : 101.83   Mean   :0.06252             Mean   :0.5714           
-##  3rd Qu.: 126.00   3rd Qu.:0.00000             3rd Qu.:1.0000           
-##  Max.   :5400.00   Max.   :8.00000             Max.   :5.0000           
-##                                                                         
-##  reservation_status reservation_status_date
-##  Canceled :43017    Min.   :2014-10-17     
-##  Check-Out:75166    1st Qu.:2016-02-01     
-##  No-Show  : 1207    Median :2016-08-07     
-##                     Mean   :2016-07-30     
-##                     3rd Qu.:2017-02-08     
-##                     Max.   :2017-09-14     
-## </code></pre>
-<pre class="r"><code>nrow(hotel_data)    # 119390</code></pre>
-<pre><code>## [1] 119390</code></pre>
-<pre class="r"><code>ncol(hotel_data)    # 32</code></pre>
-<pre><code>## [1] 32</code></pre>
-</div>
-<div id="exploring-the-number-of-countries-invloved" class="section level1">
-<h1>Exploring the number of countries invloved</h1>
-<pre class="r"><code>hotel_data%&gt;%
-  group_by(country)%&gt;%
-  summarise(num=n())%&gt;%
-  arrange(desc(num))</code></pre>
-<pre><code>## # A tibble: 178 x 2
-##    country   num
-##    &lt;fct&gt;   &lt;int&gt;
-##  1 PRT     48590
-##  2 GBR     12129
-##  3 FRA     10415
-##  4 ESP      8568
-##  5 DEU      7287
-##  6 ITA      3766
-##  7 IRL      3375
-##  8 BEL      2342
-##  9 BRA      2224
-## 10 NLD      2104
-## # ... with 168 more rows</code></pre>
-</div>
-<div id="checking-for-outliers" class="section level1">
-<h1>Checking for outliers</h1>
-<pre class="r"><code>hotel_data%&gt;%
-  filter(adr&gt;1000)</code></pre>
-<pre><code>## # A tibble: 1 x 32
-##   hotel is_canceled lead_time arrival_date_ye~ arrival_date_mo~ arrival_date_we~
-##   &lt;fct&gt; &lt;fct&gt;           &lt;dbl&gt; &lt;fct&gt;            &lt;fct&gt;                       &lt;dbl&gt;
-## 1 City~ 1                  35 2016             March                          13
-## # ... with 26 more variables: arrival_date_day_of_month &lt;fct&gt;,
-## #   stays_in_weekend_nights &lt;dbl&gt;, stays_in_week_nights &lt;dbl&gt;, adults &lt;dbl&gt;,
-## #   children &lt;dbl&gt;, babies &lt;dbl&gt;, meal &lt;fct&gt;, country &lt;fct&gt;,
-## #   market_segment &lt;fct&gt;, distribution_channel &lt;fct&gt;, is_repeated_guest &lt;fct&gt;,
-## #   previous_cancellations &lt;dbl&gt;, previous_bookings_not_canceled &lt;dbl&gt;,
-## #   reserved_room_type &lt;fct&gt;, assigned_room_type &lt;fct&gt;, booking_changes &lt;dbl&gt;,
-## #   deposit_type &lt;fct&gt;, agent &lt;fct&gt;, company &lt;fct&gt;, days_in_waiting_list &lt;dbl&gt;,
-## #   customer_type &lt;fct&gt;, adr &lt;dbl&gt;, required_car_parking_spaces &lt;dbl&gt;,
-## #   total_of_special_requests &lt;dbl&gt;, reservation_status &lt;fct&gt;,
-## #   reservation_status_date &lt;date&gt;</code></pre>
-<p>Since there is only one record above 1000 and has value 5000, updating that value with the mean of adr</p>
-<pre class="r"><code>hotel_data = hotel_data%&gt;%
-  mutate(adr = replace(adr, adr&gt;1000, mean(adr)))</code></pre>
-<p>#Creating two new columns to calculate total number of days stayed and total cost</p>
-<pre class="r"><code>hotel_data &lt;- hotel_data %&gt;% 
-  mutate(stay_nights_total = stays_in_weekend_nights + stays_in_week_nights,
-       stay_cost_total = adr * stay_nights_total)
-
-summary(hotel_data$stay_nights_total)</code></pre>
-<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   0.000   2.000   3.000   3.428   4.000  69.000</code></pre>
-<pre class="r"><code>summary(hotel_data$stay_cost_total)</code></pre>
-<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   -63.8   146.0   267.0   357.8   446.2  7590.0</code></pre>
-</div>
-<div id="data-visualization-scatter-plots-with-total-nights-and-total-cost" class="section level1">
-<h1>Data Visualization :scatter plots with total nights and total cost</h1>
-<pre class="r"><code>ggplot(hotel_data, aes(x=stay_nights_total,y=stay_cost_total,shape=hotel,color=is_canceled))+
-  geom_point(alpha=1)</code></pre>
-<p><img src="/post/2021-06-18-a05-assignment-eda2/A05_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
-<p>#Exploring the data across different market segments</p>
-<pre class="r"><code>ggplot(hotel_data, aes(x=stay_nights_total,y=stay_cost_total,shape=hotel,color=is_canceled))+
-  geom_point()+
-  facet_wrap(~market_segment)</code></pre>
-<p><img src="/post/2021-06-18-a05-assignment-eda2/A05_files/figure-html/unnamed-chunk-16-1.png" width="672" />
-Comparison of year of Arrival date versus cancellation, year 2016 is the one with the most bookings as well as cancellations</p>
-<pre class="r"><code>hotel_data%&gt;%
-  ggplot(aes(x=arrival_date_year,fill=is_canceled))+
-  geom_bar()</code></pre>
-<p><img src="/post/2021-06-18-a05-assignment-eda2/A05_files/figure-html/unnamed-chunk-17-1.png" width="672" />
-#Box Plot of hotel types</p>
-<pre class="r"><code>hotel_data%&gt;%
-  ggplot(aes(x=hotel,fill=is_canceled))+
-  geom_bar()</code></pre>
-<p><img src="/post/2021-06-18-a05-assignment-eda2/A05_files/figure-html/unnamed-chunk-18-1.png" width="672" />
-#Assigned room type</p>
-<pre class="r"><code>hotel_data%&gt;%
-  ggplot(aes(x=assigned_room_type,fill=is_canceled))+
-  geom_bar()</code></pre>
-<p><img src="/post/2021-06-18-a05-assignment-eda2/A05_files/figure-html/unnamed-chunk-19-1.png" width="672" />
-#Distribution channel</p>
-<pre class="r"><code>hotel_data%&gt;%
-  ggplot(aes(x=distribution_channel,fill=is_canceled))+
-  geom_bar()</code></pre>
-<p><img src="/post/2021-06-18-a05-assignment-eda2/A05_files/figure-html/unnamed-chunk-20-1.png" width="672" />
-#Histogram illustrating Days in waiting list and cancellations</p>
-<pre class="r"><code>hotel_data%&gt;%
-  filter(days_in_waiting_list&gt;1)%&gt;%
-  ggplot(aes(x=days_in_waiting_list,fill=is_canceled))+
-  geom_histogram(binwidth = 10)</code></pre>
+<p>I created the following two functions to display the visualisation in order to investigate several behaviors of repeat visitors.</p>
+<pre class="r"><code>guestbehaboxplot(hotel_data$lead_time)</code></pre>
+<p><img src="/post/2021-06-18-a05-assignment-eda2/A05_files/figure-html/unnamed-chunk-11-1.png" width="672" />
+The lead time for the repeated guests are shorter than that of unrepeated guests significantly. The average lead time for the repeated guests is 31 days, while that for unrepeated guests is 106 days.</p>
+<pre><code>## # A tibble: 2 x 2
+##   is_repeated_guest  mean
+##   &lt;fct&gt;             &lt;dbl&gt;
+## 1 0                 106. 
+## 2 1                  30.8</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>How often do repeat customers cancel their reservations?</li>
+</ol>
+<p>Unrepeated guests cancel 43672 bookings, accounting for 37.8 percent of total unrepeated guests. On the other hand, 552 repeat guests cancel their reservations, accounting for only 14.4 percent of the repeat group.</p>
+<pre><code>##   is_repeated_guest         n
+## 1                NA 0.3778508
+## 2                NA 0.1448819</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>Do previous guests cancel their reservations?</li>
+</ol>
+<p>Yes. 75.6 percent of returning guests have no cancellation history. The percentage of repeat visitors is 95.2 percent. This makes sense because unrepeated guests dress in an unrepeating manner. The average cancellation rate for repeat and non-repeated guests is 0.47 and 0.07, respectively.</p>
+<p><img src="/post/2021-06-18-a05-assignment-eda2/A05_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<pre><code>##   is_repeated_guest         n
+## 1                NA 0.9519207
+## 2                NA 0.7566929</code></pre>
+<pre><code>## # A tibble: 2 x 2
+##   is_repeated_guest   mean
+##   &lt;fct&gt;              &lt;dbl&gt;
+## 1 0                 0.0745
+## 2 1                 0.470</code></pre>
+<ol start="5" style="list-style-type: decimal">
+<li>How many bookings have not previously been cancelled?</li>
+</ol>
+<p>74.5 percent of repeat guests’ bookings have not been cancelled. Unrepeated visitors account for only 0.7 percent of all visitors. Previous bookings that have not been cancelled are 3.59 and 0.02, respectively, for repeat guests and unrepeated guests.</p>
+<p><img src="/post/2021-06-18-a05-assignment-eda2/A05_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<pre><code>##   is_repeated_guest           n
+## 1                NA 0.006765876
+## 2                NA 0.744881890</code></pre>
+<pre><code>## # A tibble: 2 x 2
+##   is_repeated_guest   mean
+##   &lt;fct&gt;              &lt;dbl&gt;
+## 1 0                 0.0234
+## 2 1                 3.59</code></pre>
+<ol start="6" style="list-style-type: decimal">
+<li>What kind of hotel would returning guests choose?</li>
+</ol>
+<p>It turns out that City Hotel is preferred by repeat guests over Resort Hotel. However, 46.7 percent of repeat guests book Resort Hotel, while only 33.1 percent of unrepeated guests book Resort Hotel.</p>
+<pre><code>##   is_repeated_guest         n
+## 1                NA 0.3312165
+## 2                NA 0.4666667</code></pre>
+<ol start="7" style="list-style-type: decimal">
+<li>Do returning guests change their reservations?</li>
+</ol>
+<p>81.1 percent of returning guests do not change their booking. This figure is slightly lower than that of unrepeated visitors.</p>
 <p><img src="/post/2021-06-18-a05-assignment-eda2/A05_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
-<pre class="r"><code>hotel_data%&gt;%
-  ggplot(aes(x=deposit_type,fill=is_canceled))+
-  geom_bar()</code></pre>
-<p><img src="/post/2021-06-18-a05-assignment-eda2/A05_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
-<p>#Lead time and hotel cancellations</p>
-<pre class="r"><code>hotel_data%&gt;%
-  ggplot(aes(x=lead_time,fill=is_canceled))+
-  geom_histogram(binwidth=10,position=&quot;stack&quot;)</code></pre>
-<p><img src="/post/2021-06-18-a05-assignment-eda2/A05_files/figure-html/unnamed-chunk-23-1.png" width="672" />
-Data Modeling</p>
-<pre class="r"><code>set.seed(1)   # set a random seed 
-index &lt;- sample(nrow(hotel_data), nrow(hotel_data)*0.3) # random selection of indices. 
-
-hotel_data &lt;- hotel_data %&gt;%
-              filter(market_segment!=&#39;Undefined&#39;)
-
-test &lt;- hotel_data[index,]       # save 30% as a test dataset
-training &lt;-hotel_data[-index,]   # save the rest as a training set</code></pre>
-<p>Based on our initial analysis lets start our modeling with 21 varaibles due to the large nature of the dataset.</p>
-<pre class="r"><code>training_1 &lt;- training[c(&#39;hotel&#39;,&#39;is_canceled&#39;,&#39;lead_time&#39;,&#39;adults&#39;,&#39;children&#39;,&#39;babies&#39;,&#39;meal&#39;,
-                         &#39;market_segment&#39;,&#39;distribution_channel&#39;,&#39;is_repeated_guest&#39;,
-                         &#39;previous_cancellations&#39;,&#39;previous_bookings_not_canceled&#39;,&#39;reserved_room_type&#39;,
-                         &#39;deposit_type&#39;,&#39;days_in_waiting_list&#39;,&#39;customer_type&#39;,&#39;adr&#39;,
-                         &#39;required_car_parking_spaces&#39;,&#39;stay_nights_total&#39;,&#39;stay_cost_total&#39;)]</code></pre>
-<pre class="r"><code>logit_training_model&lt;-glm(is_canceled~.,family=&quot;binomial&quot;,data=training_1)</code></pre>
-<pre><code>## Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred</code></pre>
-<pre class="r"><code>summary(logit_training_model)</code></pre>
-<pre><code>## 
-## Call:
-## glm(formula = is_canceled ~ ., family = &quot;binomial&quot;, data = training_1)
-## 
-## Deviance Residuals: 
-##     Min       1Q   Median       3Q      Max  
-## -8.4904  -0.8186  -0.4934   0.1861   5.4268  
-## 
-## Coefficients:
-##                                  Estimate Std. Error z value Pr(&gt;|z|)    
-## (Intercept)                    -2.542e+00  2.080e-01 -12.222  &lt; 2e-16 ***
-## hotelResort Hotel              -1.162e-02  2.264e-02  -0.513 0.607819    
-## lead_time                       3.279e-03  1.060e-04  30.923  &lt; 2e-16 ***
-## adults                          9.185e-02  1.727e-02   5.317 1.05e-07 ***
-## children                        1.140e-01  2.773e-02   4.113 3.90e-05 ***
-## babies                         -5.718e-01  1.101e-01  -5.192 2.08e-07 ***
-## mealFB                          8.813e-01  1.238e-01   7.119 1.08e-12 ***
-## mealHB                         -1.566e-01  3.126e-02  -5.008 5.51e-07 ***
-## mealSC                          1.317e-01  2.844e-02   4.632 3.62e-06 ***
-## market_segmentComplementary    -2.076e-01  2.661e-01  -0.780 0.435112    
-## market_segmentCorporate        -3.184e-01  2.029e-01  -1.569 0.116651    
-## market_segmentDirect           -2.708e-01  2.251e-01  -1.203 0.228886    
-## market_segmentGroups           -1.070e-01  2.121e-01  -0.504 0.614139    
-## market_segmentOffline TA/TO    -7.558e-01  2.130e-01  -3.549 0.000387 ***
-## market_segmentOnline TA         1.938e-01  2.120e-01   0.914 0.360628    
-## distribution_channelDirect     -4.950e-01  1.100e-01  -4.500 6.79e-06 ***
-## distribution_channelGDS        -1.309e+00  3.063e-01  -4.274 1.92e-05 ***
-## distribution_channelTA/TO       6.303e-03  8.234e-02   0.077 0.938978    
-## distribution_channelUndefined   8.731e+03  9.160e+05   0.010 0.992395    
-## is_repeated_guest1             -9.362e-01  9.857e-02  -9.498  &lt; 2e-16 ***
-## previous_cancellations          3.045e+00  7.368e-02  41.328  &lt; 2e-16 ***
-## previous_bookings_not_canceled -4.843e-01  2.918e-02 -16.600  &lt; 2e-16 ***
-## reserved_room_typeB             8.806e-03  8.658e-02   0.102 0.918986    
-## reserved_room_typeC             2.735e-01  1.038e-01   2.634 0.008448 ** 
-## reserved_room_typeD            -4.611e-02  2.530e-02  -1.823 0.068329 .  
-## reserved_room_typeE             6.800e-02  4.096e-02   1.660 0.096870 .  
-## reserved_room_typeF            -1.950e-01  6.453e-02  -3.021 0.002518 ** 
-## reserved_room_typeG             8.023e-02  7.692e-02   1.043 0.296942    
-## reserved_room_typeH             4.431e-01  1.305e-01   3.396 0.000684 ***
-## reserved_room_typeL             9.463e-01  9.693e-01   0.976 0.328921    
-## reserved_room_typeP             1.607e+01  3.104e+02   0.052 0.958712    
-## deposit_typeNon Refund          5.794e+00  1.362e-01  42.537  &lt; 2e-16 ***
-## deposit_typeRefundable          4.052e-01  2.350e-01   1.725 0.084599 .  
-## days_in_waiting_list            6.352e-04  5.768e-04   1.101 0.270786    
-## customer_typeGroup             -1.214e-01  2.053e-01  -0.591 0.554329    
-## customer_typeTransient          1.016e+00  6.291e-02  16.148  &lt; 2e-16 ***
-## customer_typeTransient-Party    4.904e-01  6.709e-02   7.311 2.66e-13 ***
-## adr                             2.434e-03  3.405e-04   7.146 8.91e-13 ***
-## required_car_parking_spaces    -8.745e+03  9.160e+05  -0.010 0.992383    
-## stay_nights_total               1.555e-02  6.923e-03   2.246 0.024710 *  
-## stay_cost_total                 2.550e-04  6.310e-05   4.041 5.32e-05 ***
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## (Dispersion parameter for binomial family taken to be 1)
-## 
-##     Null deviance: 110170  on 83571  degrees of freedom
-## Residual deviance:  75264  on 83531  degrees of freedom
-## AIC: 75346
-## 
-## Number of Fisher Scoring iterations: 13</code></pre>
-<p>#Predictions for Logistic Regression</p>
-<pre class="r"><code>test$logit_pred_prob&lt;-predict(logit_training_model,test,type=&quot;response&quot;)
-test$logit_pred_class&lt;-ifelse(test$logit_pred_prob&gt;0.5,&quot;1&quot;,&quot;0&quot;) 
-
-table(test$is_canceled==test$logit_pred_class)</code></pre>
-<pre><code>## 
-## FALSE  TRUE 
-##  7861 27955</code></pre>
-<p>#Confusion Matrix</p>
-<pre class="r"><code>table(test$logit_pred_class,test$is_canceled, dnn=c(&quot;predicted&quot;,&quot;actual&quot;))</code></pre>
-<pre><code>##          actual
-## predicted     0     1
-##         0 21646  6964
-##         1   897  6309</code></pre>
-<pre class="r"><code>27939/nrow(test)</code></pre>
-<pre><code>## [1] 0.7800486</code></pre>
-<p>Logistic Regression shows an accuracy of 78%.</p>
+<pre><code>##   is_repeated_guest         n
+## 1                NA 0.8498183
+## 2                NA 0.8115486</code></pre>
+<ol start="8" style="list-style-type: decimal">
+<li>Meal preference of returning guests.</li>
+</ol>
+<p>When comparing the meal choices of repeat guests and unrepeated guests, repeat guests have a higher percentage of choosing Bed &amp; Breakfast and a lower percentage of choosing the other three types of meal plans.</p>
+<pre><code>##     
+##          0     1
+##   BB 88837  3473
+##   FB   789     9
+##   HB 14277   186
+##   SC 11677   142</code></pre>
+<ol start="9" style="list-style-type: decimal">
+<li>Do returning visitors leave a deposit?</li>
+</ol>
+<p>Normally no. 98.2% of repeated guests don’t make deposit. A possiable reason is that they are reliable guests, so that they don’t need to make deposit. The percentage for unrepeated guests is 87.3%.</p>
+<pre><code>##   is_repeated_guest         n
+## 1                NA 0.8729798
+## 2                NA 0.9821522</code></pre>
+<ol start="10" style="list-style-type: decimal">
+<li>Do frequent visitors make special requests?</li>
+</ol>
+<p>Over half of them do not. 58.2 percent of returning guests do not make any special requests. This percentage is very close to that of first-time visitors.</p>
+<pre><code>##   is_repeated_guest         n
+## 1                NA 0.5892109
+## 2                NA 0.5818898</code></pre>
+<ol start="11" style="list-style-type: decimal">
+<li>Customer type of returning visitors</li>
+</ol>
+<p>80.7 percent of returning guests make bookings that are not part of a group or contract and are unrelated to other transient bookings. Bookings associated with a group are made by 4.2 percent of repeat guests. Both of these figures are higher than the number of bookings made by first-time visitors.</p>
+<pre><code>##   is_repeated_guest         n
+## 1                NA 0.7487455
+## 2                NA 0.8065617</code></pre>
+<ol start="12" style="list-style-type: decimal">
+<li>Distribution channel</li>
+</ol>
+<p><img src="/post/2021-06-18-a05-assignment-eda2/A05_files/figure-html/unnamed-chunk-27-1.png" width="672" />
+13) Histogram illustrating Days in waiting list and cancellations</p>
+<p><img src="/post/2021-06-18-a05-assignment-eda2/A05_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+<ol start="14" style="list-style-type: decimal">
+<li>Data Modeling</li>
+</ol>
+<p>#SUMMARY</p>
+<ul>
+<li><p>Only 3.19 percent of the guests are returning.</p></li>
+<li><p>Repeated guests tend to book the hotel one month in advance of their visit, which is much shorter than that of first-time visitors. This indicates that repeat guests do not rush to book hotels because they always know which hotel to book if they visit that location.</p></li>
+<li><p>The likelihood of a repeat guest cancelling a booking is much lower than that of an unrepeated guest. This indicates that returning visitors are extremely loyal.</p></li>
+<li><p>75.6 percent of returning guests have no cancellation history. 74.5 percent of repeat guests’ bookings have not been cancelled. The average number of previous bookings that have not been cancelled is 3.59.</p></li>
+<li><p>Guests who return prefer City Hotel slightly more than Resort Hotel. However, the percentage of people who choose Resort Hotel is higher than the percentage of people who choose unrepeated guests.</p></li>
+<li><p>81.1 percent of returning guests do not change their booking.</p></li>
+<li><p>When booking hotels, 91.1 percent of repeat guests select Bed &amp; Breakfast. Higher than infrequent visitors.</p></li>
+<li><p>98.2 percent of returning guests do not make a deposit. Higher than infrequent visitors.</p></li>
+<li><p>More than half of returning guests do not make special requests, almost as many as first-time visitors do.</p></li>
+<li><p>80.7 percent of returning guests make bookings that are not part of a group or contract and are unrelated to other transient bookings.</p></li>
+</ul>
 </div>

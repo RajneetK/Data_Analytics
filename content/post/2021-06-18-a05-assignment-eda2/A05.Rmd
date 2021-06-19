@@ -57,15 +57,20 @@ hotel_data <- read_csv('hotel_bookings.csv')
 colSums(is.na(hotel_data))
 
 ```
+
 # Data cleaning
+
 1. Take care of the missing value
 The variable "children" has four missing values. The median value of this variable is used to impute them. Given the large sample size, this method would be appropriate.
+
 ```{r}
 hotel_data$children[is.na(hotel_data$children)] <- median(hotel_data$children, na.rm = TRUE)
 ```
 
 2. Make data makes more sense
+
 The meal "Undefined" is imputed by "SC" because both "Undefined" and "SC" indicate that the customer chose not to eat at the hotel.
+
 ```{r}
 hotel_data$meal <- as.factor(hotel_data$meal)
 levels(hotel_data$meal) <- c("BB", "FB", "HB", "SC", "SC")
@@ -207,7 +212,7 @@ hotel_data%>%
   summarise(mean = mean(previous_bookings_not_canceled))
 ```
 
-6)What kind of hotel would returning guests choose?
+6) What kind of hotel would returning guests choose?
 
 It turns out that City Hotel is preferred by repeat guests over Resort Hotel. However, 46.7 percent of repeat guests book Resort Hotel, while only 33.1 percent of unrepeated guests book Resort Hotel.
 
@@ -223,7 +228,7 @@ hotel_data %>%
 
 as.data.frame(filhot/total)
 ```
-7)Do returning guests change their reservations?
+7) Do returning guests change their reservations?
 
 81.1 percent of returning guests do not change their booking. This figure is slightly lower than that of unrepeated visitors.
 
