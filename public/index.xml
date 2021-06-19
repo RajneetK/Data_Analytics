@@ -8,12 +8,13 @@
     <language>en-us</language>
     <lastBuildDate>Fri, 18 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>A05 Assignment EDA2</title>
+      <title>A05 Assignment: EDA2</title>
       <link>/2021/06/18/a05-assignment-eda2/</link>
       <pubDate>Fri, 18 Jun 2021 00:00:00 +0000</pubDate>
       
       <guid>/2021/06/18/a05-assignment-eda2/</guid>
-      <description></description>
+      <description>Exploratory Data Analysis of the Hotel Booking Demand
+IntroductionThis data set contains booking information for a city hotel and a resort hotel, including when the booking was made, length of stay, number of adults, children, and/or babies, and number of available parking spaces, among other things. All personally identifying information has been extracted from the data.To gain insight from the data, we will conduct exploratory data analysis.</description>
     </item>
     
     <item>

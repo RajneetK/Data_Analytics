@@ -8,7 +8,7 @@
     <loc>/categories/</loc>
     <lastmod>2021-06-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/categories/fun-with-r/</loc>
+    <loc>/categories/data-analytics/</loc>
     <lastmod>2021-06-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/post/</loc>
@@ -16,9 +16,6 @@
   </url><url>
     <loc>/</loc>
     <lastmod>2021-06-18T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/categories/data-analytics/</loc>
-    <lastmod>2021-06-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/2021/06/15/fitting-and-interpreting-models/</loc>
     <lastmod>2021-06-15T00:00:00+00:00</lastmod>
@@ -42,6 +39,9 @@
     <lastmod>2021-05-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/2021/05/25/fun-with-r/</loc>
+    <lastmod>2021-05-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/fun-with-r/</loc>
     <lastmod>2021-05-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/2021/05/20/assignment-a01-on-mtcars-dataset/</loc>
