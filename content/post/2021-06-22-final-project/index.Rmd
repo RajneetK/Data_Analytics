@@ -1,0 +1,434 @@
+---
+title: Final Project
+author: Rajneetk
+date: '2021-06-22'
+slug: final-project
+categories:
+  - Data analytics
+tags: []
+---
+
+
+Data exploration of monthly rent index in USA for 2010 - 2017
+
+# Introduction:
+
+1. Problem Statement: The goal of this project is to investigate data for median rent estimates (rent index) and rent per square foot over a 7-year period across counties and metropolitan areas in the United States in order to help citizens determine how much they would spend on rent in a specific location.
+
+2. Motivation for selecting this topic: We are always concerned about the cost of living in various regions and which city is the best place to live in order to spend less and save more on a daily basis. I am sure everyone would agree that house rent is a significant component of a person's monthly expenses. I was curious about the trend of rents in major counties and cities in the United States, as well as the factors that influence them. As a result, I decided to take on this project.
+
+3. Solution Overview: Using data exploration and visualisation tools, analyse and identify the trend of the rent index over time.
+
+Packages required:
+
+The following packages were used :-
+
+* knitr: Used for displaying an aligned table on the screen
+* readr: Used for importing .csv files
+* tidyr: Used for tidying the data
+* dplyr: Used for data manipulation
+* printr: Used for displaying dataframes as tables on the screen
+* DT: Used to display the data on the screen in scrollable format
+* stringr: Used for string manipulation operations
+* plotly: Used for visualization of data
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#Loading the required packages
+library(flexdashboard)
+library(knitr)
+library(readr)
+library(tidyr)
+library(dplyr)
+library(printr)
+library(DT)
+library(stringr)
+library(plotly)
+```
+
+
+# Data Preparation:
+
+**Data Import**
+
+Data source: Kaggle's Zillow Rent Index, 2010-Present.
+
+This dataset was obtained from [Kaggle](https://www.kaggle.com/zillow/rent-index) and is made available by Zillow. There are two spreadsheets in the dataset:
+
+1. Zillow Rent Index: It consists of the median estimated monthly rental price(rent index) information for a given area
+2. Rent per square ft: It consists of the monthly rent per sq ft information for a given area
+
+Both spreadsheets have 81 variables and thousands of records for different regions of the United States.
+
+In addition, I was curious about the evolution of the relationship between rent and population over time. As a result, I imported another dataset containing state-by-state population data from the [United States Census Bureau](https://www.census.gov/data/datasets/time-series/demo/popest/2010s-state-total.html).
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#Import data 
+rentsqft.raw <- read_csv("https://raw.githubusercontent.com/andhrurk12/Data-Wrangling-with-R/master/pricepersqft.csv")
+rentind.raw <- read_csv("https://raw.githubusercontent.com/andhrurk12/Data-Wrangling-with-R/master/price.csv")
+#Get the datatype of imported data
+class(rentsqft.raw)
+```
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+class(rentind.raw)
+```
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+pop <- read_csv("https://raw.githubusercontent.com/andhrurk12/Data-Wrangling-with-R/master/Populationestimates.csv") 
+```
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#Display the dimensions of raw dataset
+dim(rentsqft.raw)
+```
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+dim(rentind.raw)
+```
+
+Variables in the dataset
+
+The variables in the datasets are as follows:
+
+City Code: An identification code for the city
+City: City name
+Metro: Metropolitan area name
+County: County Name
+State: State code
+Population Rank: Rank of the city with respect to population
+November 2010 - January 2017: Information about Zillow Rent Index or Rent per sq ft
+
+**Data Cleaning**
+
+Columns from November 2010 to January 2017 in the imported datasets contain the same information, which is either a rent index or a rent per square foot. So, for a better understanding of the data, we'd like to first combine these columns into a single variable Month that contains the same price values across all regions.
+
+The variables in the dataset are as follows:
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#Transform from a wide dataset to a long dataset
+rentsqft.raw1 <- gather(rentsqft.raw, Month, Rentpersqft, `November 2010`:`January 2017`)
+names(rentsqft.raw1)
+```
+
+```{r}
+rentind.raw1 <- gather(rentind.raw, Month, Rent.index, `November 2010`:`January 2017`)
+names(rentind.raw1)
+```
+
+We can tell that the dataset has been transformed based on the variable names. To tidy up the population dataset, some more transformations are required.
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#Tidy the population dataset
+pop.tidy <- pop %>% gather(Year, Population, `2010`:`2016`)
+```
+
+Now that we have two datasets, one for rent index and one for rent per square foot, we will merge them to create a single dataset that includes both rent index and rent per square foot. Furthermore, we will divide the column Month into Month and Year.
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#Combine datasets
+rent.join <- left_join(rentind.raw1, rentsqft.raw1)
+rent.join1 <- separate(rent.join, Month, c("Month", "Year"), sep = " ")
+```
+
+Looking through the dataset, we notice that the rent index and rent per square foot columns have some missing values. I've decided to delete the observations where both the rent index and the price per square foot columns are NA because they won't be useful in our future data exploration. There are some missing observations for the variable Metro as well. However, I have decided to keep these observations because they will be useful for future analyses and also contain important information about rent values.
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#Filter the dataset to exclude NA 
+rent.cleaned <- filter(rent.join1, !is.na(Rent.index) | !is.na(Rentpersqft))
+```
+
+We will now have a look at the summary statistics of the cleaned dataset for our variables of interest:
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#Summary statistics of the data
+summ.rentind <- summary(rent.cleaned$Rent.index)
+summ.rentsq <- summary(rent.cleaned$Rentpersqft)
+
+summ <- bind_rows(summ.rentind, summ.rentsq)
+
+#Display summary statistics for the cleaned data
+kable(summ)
+```
+
+The number of complete records is:
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#No of complete records
+sum(!complete.cases(rent.cleaned))
+```
+
+The dimensions of the cleaned dataset are:
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#Dimensions of the cleaned dataset
+dim(rent.cleaned)
+```
+
+The summary statistics show that there are a large number of rows with missing values for Rent per sqft as a result of the join operation, but I will not delete these rows for the time being because they contain information for the variable Rent.index. Furthermore, the rent index ranges from $22274, which is quite high. We can see that the Rentpersqft range is $3.356, implying a difference of $3356 per 1000 sq ft of area. There are now 960571 observations and 10 variables in the cleaned dataset.
+
+**Data Preview**
+
+The following code gives us a glimpse of our cleaned data:
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#Overview of the cleaned dataset
+datatable(head(rent.cleaned, 100)) %>% formatCurrency(c('Rent.index', 'Rentpersqft'), '$')
+```
+
+Each row in the dataset gives us information about the rent index and rent estimates for a specific region and a specific time.
+
+
+After cleaning, the dataset consists of 11 variables. Let us see what the datatype of each variable is:
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+Var.name <- names(rent.cleaned)
+Var.type <- lapply(rent.cleaned, class)
+var.desc <- as_data_frame(cbind(Var.name, Var.type))
+names(var.desc) <- c("Variable Name", "Data type")
+kable(var.desc)
+```
+
+# Exploratory Data Analysis:
+
+I visualized the dataset for various factors, which yielded some intriguing results. I used the plotly package to visualize the dataset because it has interesting options for making a graph interactive and studying the relationship between variables in the dataset.
+
+**Visualization of Rent Index**
+
+First, I would make a histogram to see how the distribution of median rent estimates looks.
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#Summarize the median rent index
+med.rent.ind <- rent.cleaned %>% summarize(median = median(Rent.index, na.rm = T))
+
+#Plot a histogram
+histogram <- ggplot(rent.cleaned,aes(Rent.index)) +
+             geom_histogram(binwidth = 500,fill="pink") + 
+             geom_vline(xintercept = med.rent.ind$median, color = "blue") +
+             xlab("Median rent estimates") +
+             ylab("Frequency") + 
+             scale_y_continuous(labels = scales::comma) +
+             scale_x_continuous(labels = scales::dollar) +
+             ggtitle("Distribution of Rent Estimates from 2010-2017") +  
+             theme( axis.text = element_text(size = 12),
+                    axis.title = element_text(size = 12,face = "bold",  margin(b = 20, t = 20, r = 20, l = 20)),
+                    plot.title = element_text(size = 14, face = "bold"),
+                    plot.margin = margin(5,20,20,20)) 
+
+#Use ggplotly for interactive graphs
+ggplotly(histogram, height = 900)
+```
+
+We can see that the distribution of median rent estimates is slightly skewed to the right. With a frequency of about 496191, the peak occurs around a value of $1000. The lowest rent estimate is approximately $500, while the highest rent estimate is approximately $5500. By plotting an intercept at $1213, the median of the rent index, we can see that half of the datapoints fall below this value.
+To see how the density of the rent indices has changed over time, I plotted the density of the Rent Index by year.
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#Group the data by Year
+year <- rent.cleaned %>% group_by(Year)
+
+#Plot the density curve of Rent Index
+density <- ggplot(year, aes(Rent.index, color = Year)) + 
+           geom_density(alpha = 1) + ggtitle("Density curve of Rent Index over the years") +
+           xlab("Rent Index") +
+           ylab("Density") +
+           scale_y_continuous(labels = scales::comma) +
+           scale_x_continuous(labels = scales::dollar) +
+           theme(axis.text = element_text(size = 12),
+                  axis.title = element_text(size = 12,face = "bold", 
+                  margin(b = 20, t = 20, r = 20, l = 20)),
+                  plot.title = element_text(size = 14, face = "bold"),
+                  plot.margin = margin(5,20,20,20))
+
+#interactive plot
+ggplotly(density)
+```
+
+The density plot shows that the maximum values of the Rent Index are greater than $20,000. The highest peak was in 2010, with a value of $1167.42. All of the density curves have a peak between $1100 and $1300, which is understandable given that the median obtained was $1292.
+
+To understand the trend of median rent estimates over time, I first grouped the data by ‘State' and ‘Year,' then calculated the average values for these two variables.
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#Summarize the mean rent index grouping by State and Year
+mean.rent.index <- rent.cleaned %>% filter(State != 'NA') %>% 
+                   group_by(State, Year) %>% summarise(avg = max(Rent.index, na.rm = TRUE))
+
+colnames(mean.rent.index)[3] <- "Mean.Rent.Index"
+
+mean.rent.index$State <- state.name[match(mean.rent.index$State, state.abb)] 
+mean.rent.index1 <- na.omit(mean.rent.index)
+
+#Plot a heatmap for each state wrt each year for the average rent index
+heat_map <- ggplot(mean.rent.index1,aes(Year,State)) +
+            geom_tile(aes(fill = Mean.Rent.Index),colour = "white") +
+            scale_fill_gradient(low = "light blue",high = "dark blue") +
+            xlab("Rent Year") +
+            ylab("State") +
+            ggtitle("Heat Map: Variation of Average Rent Index over the years by State") +
+            guides(fill = FALSE) + 
+            theme(axis.text.y = element_text(angle = 45, hjust = 1), 
+                  axis.text = element_text(size = 12),
+                  axis.title = element_text(size = 12,face = "bold", 
+                  margin(b = 20, t = 20, r = 20, l = 20)),
+                  plot.title = element_text(size = 14, face = "bold"),
+                  plot.margin = margin(5,20,20,20))
+
+
+ggplotly(heat_map, height = 900, width = 700)
+```
+
+According to the above plot, the state of Florida has the highest average median rent estimates when compared to other states. There is a clear disparity between Florida's and other states' values. Following in the footsteps of Florida, the state of California appears to have a high rent estimate. In Florida, the median rent estimate for 2014 is as high as $22744. The highest average median rent estimates in California were in 2016, with a value of $17786. One possible explanation for California's high rent prices is a housing shortage in comparison to demand.
+
+**Visualization of different region**
+
+I created a box plot of the data by simply grouping the data by state to analyse the range of the variable Rent per sqft for the given states.
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#Summarise the dataset and group by State
+by.state <- rent.cleaned %>% group_by(State)
+
+by.state$State <- state.name[match(by.state$State, state.abb)] 
+by.state1 <- na.omit(by.state)
+
+#Boxplot of all the states for the given period 
+box.plot <- ggplot(by.state1, aes(State, Rentpersqft)) + geom_boxplot(fill="Red") + 
+            coord_flip() +
+            xlab("State") + ylab("Rent per square ft") + 
+            scale_y_continuous(labels = scales::dollar) + 
+            ggtitle("Box Plot: Variation of Rent per sq ft among the states") + 
+            theme(axis.text.y = element_text(angle = 45, hjust = 1), 
+                  axis.text = element_text(size = 12),
+                  axis.title = element_text(size = 12,face = "bold", 
+                  margin(b = 20, t = 20, r = 20, l = 20)),
+                  plot.title = element_text(size = 14, face = "bold"),
+                  plot.margin = margin(5,20,20,20))
+#interactive boxplot
+ggplotly(box.plot, height = 800)
+```
+
+Again, the boxplot shows that California has a high number of outliers, as well as a wide range of rent per square foot. There appear to be obvious outliers in Florida as well. New Jersey also has higher rent per square foot values because the upper tail of the boxplot is quite long. California has the highest value at $3.74/sqft, followed by New Jersey at $2.53/sqft and Massachusetts at $2.52/sqft. In the state of Ohio, the lowest value is 0.38/sqft. Rent per square foot is also quite high in the state of Hawaii. We can pretty much say that California is the most expensive state to live in on average.
+
+To investigate the average cost of housing in various cities, the average rent is calculated for all cities over a seven-year period from 2010 to 2017. Then, only the top and bottom ten records were filtered to see how much the citizens paid on average for a 1000 square foot apartment.
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#Calculate the price of a 1000 sqft apartment
+by.city <- rent.cleaned %>% group_by(City) %>% 
+           summarise(Avg.City.Rent = mean(Rentpersqft, na.rm = TRUE) * 1000) %>% 
+           arrange(desc(Avg.City.Rent)) 
+
+#Plot the top 10 cities with highest average rent values
+avgcity <- by.city %>% head(10) %>% 
+           ggplot(aes(City, Avg.City.Rent)) + 
+           geom_bar(stat = "identity", width = 0.9,fill="orange") + 
+           xlab("City") + 
+           ylab("Rent per 1000 square ft") + 
+           scale_y_continuous(labels = scales::dollar) + 
+           ggtitle("10 cities with highest average rent") + 
+           theme(axis.text.x = element_text(angle = 20, hjust = 1),
+                axis.text = element_text(size = 12),
+                axis.title = element_text(size = 12,face = "bold", 
+                margin(b = 20, t = 20, r = 20, l = 20)),
+                plot.title = element_text(size = 14, face = "bold"),
+                plot.margin = margin(5,20,20,20))
+
+ggplotly(avgcity, width = 550)
+```
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#Plot the bar plot for 10 cities with lowest average rent for a 1000 sq ft apartment
+by.city <- rent.cleaned %>% group_by(City) %>% 
+           summarise(Avg.City.Rent = mean(Rentpersqft, na.rm = TRUE) * 1000) %>% 
+           arrange(desc(Avg.City.Rent)) 
+
+by.city1 <- na.omit(by.city)
+
+avgcity1 <- by.city1 %>% tail(10) %>% 
+            ggplot(aes(City, Avg.City.Rent)) + 
+            geom_bar(stat = "identity", width = 0.9,fill="light blue") + 
+            xlab("City") + ylab("Rent per 1000 sq ft") + 
+            ggtitle("10 cities with lowest average rent") + 
+            scale_y_continuous(labels = scales::dollar) + 
+            theme(axis.text.x = element_text(angle = 20, hjust = 1), 
+                  axis.text = element_text(size = 12),
+                  axis.title = element_text(size = 12,face = "bold", margin(b = 20, t = 20, r = 20, l = 20)),
+                  plot.title = element_text(size = 14, face = "bold"),
+                  plot.margin = margin(5,20,20,20))
+ggplotly(avgcity1, width = 550)
+```
+
+According to the above two plots, the average rent for a 1000 square foot area is highest in Palo Alto at $3009.733, and the lowest in Youngstown at $439.92. Palo Alto is closely followed by San Francisco, which has an average rent of $2829.78 for a 1000 square foot apartment. Both of these cities are in the state of California, which explains why rent estimates in California are so high. We can also see that there is a significant difference in the highest and lowest average rents across the country.
+
+To visualise the greatest change in rent over time, I calculated the percent change in average rent between 2017 and 2010, grouping the regions by various 'Metro'.
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#Summarize the average rent index to study the highest change in average rent over the given period
+by_time <- rent.cleaned %>% 
+           select(Metro, Year, Rentpersqft) %>% 
+           group_by(Metro, Year) %>% 
+           filter(Year == 2010 || Year == 2017) %>% 
+           summarise(Avg.Sqft = mean(Rentpersqft, na.rm = TRUE))
+
+colnames(by_time)[3] = "Avg.Sqft"
+
+
+#Calculate the percent change
+diff <- by_time %>% spread(Year, Avg.Sqft) %>% 
+        mutate(Diff.Rent = (`2017` - `2010`)/`2010` * 100) %>% 
+        arrange(desc(Diff.Rent)) %>% head(10)
+#Barplot
+change <- ggplot(diff, aes(Metro, Diff.Rent)) + 
+          geom_bar(stat = "identity",fill="light green") + 
+          xlab("City") + ylab("Percent Change in rent(%)") + 
+          ggtitle("Top metros with highest change in average rent, 2010-2017") + 
+          theme(axis.text.x = element_text(angle = 40, hjust = 1),
+                axis.text =  element_text(size = 12),axis.title = element_text(size = 12,face = "bold", 
+                margin(b = 20, t = 20, r = 20, l = 20)),
+                plot.title = element_text(size = 14, face = "bold"),
+                plot.margin = margin(5,20,20,20))
+
+#interactive plot
+ggplotly(change)
+```
+
+According to the findings, the Cincinnati metro area has experienced the greatest increase in rent since 2010. Cincinnati's change is approximately 55%, which is quite significant. According to a [Department of Numbers report](https://www.deptofnumbers.com/rent/ohio/cincinnati/), the rental vacancy rate in Cincinnati has decreased over the years. This could be a major contributor to the overall increase in rent per square foot. The next metro to see a significant increase in rent is Denver, which has seen a 53 percent increase.
+
+**Visualization for Population**
+
+Economists frequently assert that there is a link between population and housing prices. This effect can be explained using a simple demand and supply equation. For example, it has been observed that as the number of immigrants increases, so does the increase in rent prices. To investigate whether such a relationship exists, I used another dataset containing population estimates for the years 2010 to 2017.
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+pop.tidy$State <- state.abb[match(pop.tidy$State, state.name)]
+
+#Join the tables
+rent.pop <- rent.cleaned %>% group_by(State, Year) %>% 
+            summarise(Avg.Rent.Ind = mean(Rent.index, na.rm = TRUE)) %>% 
+            inner_join(pop.tidy)
+
+#Scatter plot
+plot.pop <- ggplot(rent.pop, aes(Population, Avg.Rent.Ind, color = Year)) + 
+            geom_point( )  + 
+            scale_x_continuous(name = "Population", labels = scales::comma) + 
+            scale_y_continuous(name = "Average rent index", labels = scales::dollar) + 
+            coord_cartesian(xlim = c(1e+06, 1e+08), ylim = c(1000, 2500)) +
+            ggtitle("Rent Index vs Population estimates for 2010 - 2016") + 
+            theme(axis.text = element_text(size = 11),
+                  axis.title = element_text(size = 12,face = "bold", 
+                  margin(b = 25, t = 20, r = 20, l = 20)),
+                  plot.title = element_text(size = 13, face = "bold"),
+                  plot.margin = margin(30,10,10,25))
+
+#interactive plot
+ggplotly(plot.pop, height = 700, width = 1000)
+```
+
+Despite the fact that there is no perfect linear relationship between the two quantities, we can still see some effect as the population grows. As can be seen from the plots above, there are some areas with a high population and a high rent, while others have a high rent despite a low population. These could be outliers representing rent estimates for sparsely populated states such as Hawaii.
+
+# Summary
+
+Data exploration and visualization have yielded some intriguing insights into the rent values in the United States. The findings can be summarized as follows:
+
+* Rent estimates from 2010 to 2017 ranged from $500 to $5500, with a median of $1213, implying that half of all rent estimates are below this value.
+* The average rent estimates for all years are around $1100 - $1300.
+* The highest average rent estimate was discovered in Florida in 2014, with a value of $22744, while California had an average rent estimate of $17786 in 2016.
+* Rent estimates in Florida, California, Texas, and New York are generally high.
+* The lowest rent per square foot value, $0.38, was found in Ohio, which is surprising given that Cincinnati has seen the greatest increase in rent values over the last six years.
+* As expected, Palo Alto, San Francisco, Washington, Jersey City, and Boston were among the top ten most expensive cities to live in, while Youngstown, Montgomery, and Kingsport were among the cities with the lowest average rent.
+* Cincinnati, San Jose, Portland, and San Francisco have the highest percentage increase in rent values between 2010 and 2017.

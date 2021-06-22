@@ -83,7 +83,7 @@ colSums(is.na(hotel_data))
 1. Take care of the missing value
 The variable "children" has four missing values. The median value of this variable is used to impute them. Given the large sample size, this method would be appropriate.
 
-```{r, echo = FALSE, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE}
 hotel_data$children[is.na(hotel_data$children)] <- median(hotel_data$children, na.rm = TRUE)
 ```
 
@@ -91,14 +91,14 @@ hotel_data$children[is.na(hotel_data$children)] <- median(hotel_data$children, n
 
 The meal "Undefined" is imputed by "SC" because both "Undefined" and "SC" indicate that the customer chose not to eat at the hotel.
 
-```{r, echo = FALSE, message=FALSE, warning=FALSE}
+```{r,  message=FALSE, warning=FALSE}
 hotel_data$meal <- as.factor(hotel_data$meal)
 levels(hotel_data$meal) <- c("BB", "FB", "HB", "SC", "SC")
 ```
 
 The variable "is repeated guest" is binary, it should be a factor. The same modification is required for the variable "is canceled."
 
-```{r, echo = FALSE, message=FALSE, warning=FALSE}
+```{r,  message=FALSE, warning=FALSE}
 hotel_data$is_repeated_guest <- as.factor(hotel_data$is_repeated_guest)
 hotel_data$is_canceled <- as.factor(hotel_data$is_canceled)
 ```
@@ -107,7 +107,7 @@ hotel_data$is_canceled <- as.factor(hotel_data$is_canceled)
 
 We can get some useful information from the statistical summary. For example, approximately 37% of bookings have been canceled. The booking data ranges from 2015 to 2017. Customers stay for two nights in half of the weekday bookings. Customers stay for three nights in 75% of the bookings. The longest stay possible is 50 nights. The average number of prior cancellations is less than one. One special request is made in 75% of all bookings. Repeat customers account for 3% of all bookings.
 
-```{r, echo = FALSE, message=FALSE, warning=FALSE}
+```{r,  message=FALSE, warning=FALSE}
 summary(hotel_data)
 ```
 4. Glipse the data

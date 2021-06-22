@@ -6,7 +6,26 @@
     <description>Recent content in Posts on RajneetK-Fundamentals of Analytics</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 18 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 22 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Final Project</title>
+      <link>/2021/06/22/final-project/</link>
+      <pubDate>Tue, 22 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/2021/06/22/final-project/</guid>
+      <description>Data exploration of monthly rent index in USA for 2010 - 2017
+Introduction:Problem Statement: The goal of this project is to investigate data for median rent estimates (rent index) and rent per square foot over a 7-year period across counties and metropolitan areas in the United States in order to help citizens determine how much they would spend on rent in a specific location.</description>
+    </item>
+    
+    <item>
+      <title>website</title>
+      <link>/2021/06/22/website/</link>
+      <pubDate>Tue, 22 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/2021/06/22/website/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>A05 Assignment: EDA2</title>
       <link>/2021/06/18/a05-assignment-eda2/</link>
