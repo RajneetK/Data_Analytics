@@ -1,138 +1,237 @@
 <!DOCTYPE html>
-<html lang="en">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><script type="application/ld+json">
-    {
-        "@context" : "http://schema.org",
-        "@type" : "BlogPosting",
-        "mainEntityOfPage": {
-             "@type": "WebPage",
-             "@id": "\/"
-        },
-        "articleSection" : "post",
-        "name" : "Final Project",
-        "headline" : "Final Project",
-        "description" : "This the website for my Course Fundamentals of Analytics",
-        "inLanguage" : "en",
-        "author" : "",
-        "creator" : "",
-        "publisher": "",
-        "accountablePerson" : "",
-        "copyrightHolder" : "",
-        "copyrightYear" : "2021",
-        "datePublished": "2021-06-22T00:00:00Z",
-        "dateModified" : "2021-06-22T00:00:00Z",
-        "url" : "\/2021\/06\/22\/final-project\/",
-        "wordCount" : "47302",
-        "keywords" : [ "Blog" ]
+<style>
+    html {
+        height: 100vh;
     }
-</script>
-<title>
-    Final Project &ndash; RajneetK-Fundamentals of Analytics
-</title><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-<meta name="description" content="This the website for my Course Fundamentals of Analytics">
-<meta name="author" content="">
-<link rel="icon" href="/favicon.ico">
+    body {
+        min-height: 100vh;
+        display: grid;
+        grid-template-rows: 1fr auto;
+    }
+    .footer {
+        grid-row-start: 2;
+        grid-row-end: 3;
+    }
+</style>
+<html lang="en-us"><head>
+  <meta charset="utf-8">
+  <title>RajneetK-Fundamentals of Analytics</title>
 
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta itemprop="name" content="Final Project">
-<meta itemprop="description" content="Data exploration of monthly rent index in USA for 2010 - 2017
-Introduction:Problem Statement: The goal of this project is to investigate data for median rent estimates (rent index) and rent per square foot over a 7-year period across counties and metropolitan areas in the United States in order to help citizens determine how much they would spend on rent in a specific location."><meta itemprop="datePublished" content="2021-06-22T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2021-06-22T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="47302">
-<meta itemprop="keywords" content="" />
-<meta property="og:title" content="Final Project" />
-<meta property="og:description" content="Data exploration of monthly rent index in USA for 2010 - 2017
-Introduction:Problem Statement: The goal of this project is to investigate data for median rent estimates (rent index) and rent per square foot over a 7-year period across counties and metropolitan areas in the United States in order to help citizens determine how much they would spend on rent in a specific location." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/2021/06/22/final-project/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2021-06-22T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2021-06-22T00:00:00&#43;00:00" />
+  <meta name="description" property="og:description" content="This the website for my Course Fundamentals of Analytics">
+  <meta name="image" property="og:image" content="/">
+  <meta name="author" content="">
+  <meta name="generator" content="Hugo 0.83.1" />
 
+  <!-- plugins -->
+  
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Final Project"/>
-<meta name="twitter:description" content="Data exploration of monthly rent index in USA for 2010 - 2017
-Introduction:Problem Statement: The goal of this project is to investigate data for median rent estimates (rent index) and rent per square foot over a 7-year period across counties and metropolitan areas in the United States in order to help citizens determine how much they would spend on rent in a specific location."/>
+  <!-- Main Stylesheet -->
+  
+  <link rel="stylesheet" href="/css/style.min.css" integrity="" media="screen">
+  
+  <link rel="stylesheet" href="/css/syntax.min.css" integrity="" media="screen">
 
+  <script src="https://cdn.jsdelivr.net/npm/mailgo@0.9.14/dist/mailgo.min.js" defer></script>
 
-<link rel="alternate" href="/index.xml" type="application/rss+xml" title="RajneetK-Fundamentals of Analytics"/>
+  <!--Favicon-->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
 
+</head>
+<body class="post">
+    <div class="wrapper"><div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; bottom: #transparent-sticky-navbar">
+    <nav class="uk-navbar-container uk-margin" uk-navbar="mode: click;" style="padding-right: 3rem">
+        <div class="uk-navbar-right">
+            <ul class="uk-navbar-nav uk-visible@s">
+                
+                <li><a style="font-size: 18px; text-transform: none" href="/"></a></li>
 
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <li><a style="font-size: 18px; text-transform: none" href="/about/">About</a></li>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <li><a style="font-size: 18px; text-transform: none" href="https://github.com/RajneetK">GitHub</a></li>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <li><a style="font-size: 18px; text-transform: none" href="https://twitter.com/Rajneet74968819">Twitter</a></li>
+                
+                
+            </ul>
 
+            <a class="uk-navbar-toggle uk-hidden@s" uk-toggle="target: #sidenav" uk-navbar-toggle-icon href="#"></a>
 
+        </div>
+    </nav>
+</div>
 
+<div id="sidenav" uk-offcanvas="overlay: true">
+    <div class="uk-offcanvas-bar uk-flex uk-flex-column">
 
+        <ul class="uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical">
+            
+            <li><a style="font-size: 18px" href="/"></a></li>
 
-
-
-
-<link rel="stylesheet" href="/css/vendor.min.7231e82f1eaa8de7c3886edb742a2508adcdcfef711e078d158e41d88adf7cac24b313ec212478e8c7e543a14095a9bf3747722562f699767dcd379407c8c003.css" integrity="sha512-cjHoLx6qjefDiG7bdColCK3Nz&#43;9xHgeNFY5B2IrffKwksxPsISR46MflQ6FAlam/N0dyJWL2mXZ9zTeUB8jAAw==">
-
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-<body><nav class="light-blue" role="navigation">
-    <div class="nav-wrapper container">
-        <a id="logo-container" href="/" class="brand-logo">RajneetK-Fundamentals of Analytics</a>
-        <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-        <ul class="right hide-on-med-and-down">
             
             
-                
-                    <li><a href="/about/"> About</a></li>
-                
             
-                
-                    <li><a href="https://github.com/RajneetK"> GitHub</a></li>
-                
             
-                
-                    <li><a href="https://twitter.com/Rajneet74968819"> Twitter</a></li>
-                
+            
+            
+            
+            
+            
+            <li><a style="font-size: 18px" href="/about/">About</a></li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li><a style="font-size: 18px" href="https://github.com/RajneetK">GitHub</a></li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <li><a style="font-size: 18px" href="https://twitter.com/Rajneet74968819">Twitter</a></li>
+            
             
         </ul>
 
-        <ul id="nav-mobile" class="sidenav">
-            
-                
-                    <li><a href="/about/"> About</a></li>
-                
-            
-                
-                    <li><a href="https://github.com/RajneetK"> GitHub</a></li>
-                
-            
-                
-                    <li><a href="https://twitter.com/Rajneet74968819"> Twitter</a></li>
-                
-            
-        </ul>
     </div>
-</nav>
+</div>
 
 
-    <div class="container"><div class="card">
+
+
+<style>
+  p {
+    margin: 0
+  }
+
+  .people-wrap {
+    display: inline-flex;
+    margin-top: 10px;
+  }
+
+  .people-image {
+    display: block;
+    border-radius: 50%;
+     
+  }
+
+  .people {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .name {
+    margin: auto;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #000;
+    font-family: Roboto, sans-serif;
+    line-height: 1.2;
+    margin-top: 2rem;
+  }
+
+  .content img {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom:30px;
+  }
+
+  p { margin-bottom: 1em; }
+
+  body p:last-child { margin-bottom: 0em; }
+
+  img.skills{
+    height: 80px;
+  }
+
+  @media only screen and (min-width: 960px) {
+    .content img{max-width:60vw; max-height:60vh}
+
+  .content img{
+      max-width:60vw;
+      max-height:60vh
+  }
+  }
+  .content{
+      width: 90vw;
+      max-width: 1200px
+  }
+
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+
+</style>
+
+
+<section>
+  <div class="uk-container uk-margin-large-bottom uk-margin-medium-top">
+    <h1 class="uk-text-center uk-heading-medium">Final Project</h1>
+    <p class="uk-text-center uk-text-lead"></p>
+    <p class="uk-text-center">Published on Jun 22, 2021</p>
+    <p class="uk-text-center">Reading time: 215 minutes.</p>
     
+
+    <hr class="full-width">
     
 
-
-
-
-<div class="card-content">
-    <h1 class="card-title"><a href="/2021/06/22/final-project/" class="light-blue-text">Final Project</a></h1>
-    <h6 class="grey-text">
-        <i class="tiny material-icons">calendar_today</i>&nbsp;22.06.2021 -
-        <i class="tiny material-icons">person</i>&nbsp;
-        
-            
-                - <i class="tiny material-icons">timer</i>&nbsp;~223 Minutes
-            
-        
-    </h6>
-
-    
-
-    
-        <p class="card-text">
+    <div class="content">
+      
 <script src="/2021/06/22/final-project/index_files/header-attrs/header-attrs.js"></script>
 <script src="/2021/06/22/final-project/index_files/htmlwidgets/htmlwidgets.js"></script>
 <script src="/2021/06/22/final-project/index_files/jquery/jquery.min.js"></script>
@@ -352,129 +451,53 @@ To see how the density of the rent indices has changed over time, I plotted the 
 <li>Cincinnati, San Jose, Portland, and San Francisco have the highest percentage increase in rent values between 2010 and 2017.</li>
 </ul>
 </div>
-</p>
+
+    </div>
+  </div>
+  </div>
+</section>
+
+
+
+    </div>
+<footer class="footer">
+  <div class="uk-container">
+
+
+    <div class="uk-grid-small uk-child-width-1-4@m uk-text-center uk-flex-center uk-margin-medium-bottom" uk-grid>
+      <div class="uk-margin-small-bottom">
+        <h5 class="uk-margin-small-bottom">Email</h5>
+        <a href="mailto:"></a>
+
+      </div>
+      <div>
+        <h5 class="uk-margin-small-bottom">Address</h5>
+                  <div uk-lightbox>
+                    <a href="" data-caption=""
+                      data-type="iframe"></a>
+      </div>
+      </div>
+
+    </div>
+
+
+
+
+
+  <div class="footer-copyright uk-text-center" style="padding-bottom: 1rem">
+    <img loading="lazy" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" style="height: 1.2em;
+  width: 1.2em;" alt="Creative Commons">
+    <img loading="lazy" src="https://mirrors.creativecommons.org/presskit/icons/by.svg" style="height: 1.2em;
+  width: 1.2em;" alt="CC-BY">
+    2020
     
-</div>
-<div class="card-action">
-    <small>
-        
-            
-                
-                    <a href="/categories/#data-analytics" class="orange-text text-lighten-3">+Data analytics</a>
-                
-            
-            
-        
-    </small>
-</div>
-</div>
-</div>
 
-<footer class="page-footer orange">
-    <div class="container">
-        <div class="row">
-            <div class="col l4 s12">
-                <h5 class="white-text">RajneetK-Fundamentals of Analytics</h5>
-                <p class="grey-text text-lighten-4">This the website for my Course Fundamentals of Analytics</p>
-            </div>
-            <div class="col l4 s12">
-            <h5 class="white-text">Social</h5>
-                <ul>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</ul>
-            </div>
-            <div class="col l4 s12">
-                
-
-                <h5 class="white-text">Site</h5>
-                <ul>
-                    
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="footer-copyright">
-        <div class="container">
-            &copy; 2021 .
-            Theme by <a class="orange-text text-lighten-3" href="https://www.spech.de" target="_blank" rel="noopener noreferrer">Sebastian Pech</a>.
-            Made by <a class="orange-text text-lighten-3" href="http://materializecss.com" target="_blank" rel="noopener noreferrer">Materialize</a>.
-        </div>
-    </div>
+  </div>
 </footer>
 
 
-
-
-
-<script src="/js/vendor.min.f71d4854bf0eb8ccda5a95608939479e6a7ece9604a19c648ff92a648f809da606ff526d6b1c1b2a2eb42b0f25806bcdd9870be007acfb486f1cf905ff16a30b.js" integrity="sha512-9x1IVL8OuMzaWpVgiTlHnmp&#43;zpYEoZxkj/kqZI&#43;AnaYG/1JtaxwbKi60Kw8lgGvN2YcL4Aes&#43;0hvHPkF/xajCw=="></script>
-
+<!-- JS Plugins -->
 
 </body>
 </html>
