@@ -1,92 +1,111 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="en"><head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="robots" content="index, follow" />
+	<meta name="googlebot" content="index, follow, noarchive" />
+	<title>RajneetK-Fundamentals of Analytics</title>
+	<link rel="icon" href="/favicon.ico" />
+	<meta name="description" content="This the website for my Course Fundamentals of Analytics" />
 
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="generator" content="Hugo 0.83.1" />
+
+	
+
+	<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="A03 Assignment EDA1"/>
+<meta name="twitter:description" content="Import Lego_sales.csv fileIn this assignment we will work with the tidyverse package as usual.We will simulate the data from Lego sales for a sample of customers who bought Legos in the US. The dataset is called lego_sales and is loaded in the data folder.
+library(tidyverse)## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --## v ggplot2 3.3.3 v purrr 0.3.4## v tibble 3.1.1 v dplyr 1.0.6## v tidyr 1."/>
+
+	<meta property="og:title" content="A03 Assignment EDA1" />
+<meta property="og:description" content="Import Lego_sales.csv fileIn this assignment we will work with the tidyverse package as usual.We will simulate the data from Lego sales for a sample of customers who bought Legos in the US. The dataset is called lego_sales and is loaded in the data folder.
+library(tidyverse)## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --## v ggplot2 3.3.3 v purrr 0.3.4## v tibble 3.1.1 v dplyr 1.0.6## v tidyr 1." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/2021/06/04/a03-assignment-eda1/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-06-04T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2021-06-04T00:00:00&#43;00:00" />
+
+
+
+	
+	<style>
+	:root {
+		 
+		--text:  #fdfdfd ;
+		--background:  #282a36 ;
+		--accent:  #44475a ;
+		--foreground:  #f8f8f2 ;
+		--separator:  #6272a4 ;
+		--cyan:  #8be9fd ;
+		--green:  #50fa7b ;
+		--orange:  #ffb86c ;
+		--pink:  #ff79c6 ;
+		--purple:  #bd93f9 ;
+		--red:  #ff5555 ;
+		--yellow:  #f1fa8c ;
+
+		 
+		--base:  1em ;
+		--p:  1.25em ;
+		--h4:  1.563em ;
+		--h3:  1.953em ;
+		--h2:  2.2441em ;
+		--h1:  3.052em ;
+	}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/bundle.min.css">
+
+
+
+	
+	
+</head><body>
+	
+
+	<main class="main">
+<article class="single">
+    
+    
 
     
-    <meta name="description" content="/">
-    
+    <header class="single__header bkg-image" style=" ">
+        <h1 class="single__header__title">A03 Assignment EDA1</h1>
 
-    <meta property="og:site_name" content="RajneetK-Fundamentals of Analytics">
-    <meta property="og:title" content="
-  A03 Assignment EDA1 - RajneetK-Fundamentals of Analytics
-">
-    <meta property="og:description" content="">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="/2021/06/04/a03-assignment-eda1/">
-    <meta property="og:image" content="/">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="/2021/06/04/a03-assignment-eda1/">
-    <meta name="twitter:image" content="/">
-
-    <base href="/2021/06/04/a03-assignment-eda1/">
-    <title>
-  A03 Assignment EDA1 - RajneetK-Fundamentals of Analytics
-</title>
-
-    <link rel="canonical" href="/2021/06/04/a03-assignment-eda1/">
-    
-    <link  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono:400,700">
-    <link rel="stylesheet" href="/css/normalize.min.css">
-    <link rel="stylesheet" href="/css/style.min.css">
-
-    
-
-    
-
-    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
-
-    
-      <link rel="alternate" href="/index.xml" type="application/rss+xml" title="RajneetK-Fundamentals of Analytics">
-      <link href="/index.xml" rel="feed" type="application/rss+xml" title="RajneetK-Fundamentals of Analytics" />
-    
-
-    <meta name="generator" content="Hugo 0.83.1" />
-  </head>
-
-  <body class="">
-    <main class="wrapper">
-      <nav class="navigation">
-  <section class="container">
-    <a class="navigation-title" href="/">RajneetK-Fundamentals of Analytics</a>
-    <input type="checkbox" id="menu-control"/>
-    <label class="menu-mobile  float-right " for="menu-control">
-      <span class="btn-mobile  float-right ">&#9776;</span>
-      <ul class="navigation-list">
         
-          
-            <li class="navigation-item   align-left  ">
-              <a class="navigation-link" href="/about/">About</a>
-            </li>
-          
-            <li class="navigation-item   align-left  ">
-              <a class="navigation-link" href="https://github.com/RajneetK">GitHub</a>
-            </li>
-          
-            <li class="navigation-item   align-left  ">
-              <a class="navigation-link" href="https://twitter.com/Rajneet74968819">Twitter</a>
-            </li>
-          
+        <p class="single__header__date">
+            
+            June 4, 2021
+            
+        </p>
         
-        
-      </ul>
-    </label>
-  </section>
-</nav>
 
-
-      <div class="content">
         
-  <section class="container page">
-  <article>
-    <header>
-      <h1>A03 Assignment EDA1</h1>
+        <p class="single__header__author">
+            By Rajneetk
+        </p>
+        
+
+        
+
     </header>
 
     
+    <main class="single__content">
+        
 <script src="/2021/06/04/a03-assignment-eda1/index_files/header-attrs/header-attrs.js"></script>
 
 
@@ -384,17 +403,58 @@ legosales %&gt;%
 <p><img src="/2021/06/04/a03-assignment-eda1/index_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 </div>
 
-  </article>
-</section>
-
-
-      </div>
-      
     </main>
 
     
+    <footer class="single__footer">
+        
+    </footer>
 
-  <script src="/js/app.js"></script>
-  
-  </body>
+</article>
+
+	</main><footer class="footer" id="footer">
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    <div class="footer__copy">
+        
+        © 2021 - RajneetK-Fundamentals of Analytics
+        
+    </div>
+
+    
+    
+
+
+
+
+<script>
+    let activeSW = false;
+    
+</script>
+
+<script defer src="/sw.min.js"></script>
+<script defer src="/js/bundle.min.js"></script>
+
+    
+    
+    
+
+
+
+
+
+<script defer src="" crossorigin="anonymous"></script>
+    
+
+</footer></body>
+
 </html>
