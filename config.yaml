@@ -1,6 +1,6 @@
 baseurl: /
 languageCode: en-us
-title: RajneetK-Fundamentals of Analytics
+title: Fundamentals of Analytics
 theme: "hugo-clarity"
 googleAnalytics: ''
 disqusShortname: ''
@@ -33,9 +33,9 @@ params:
   highlightjsVersion: 9.12.0
   logo:
     alt: Logo
-    height: 50
+    height: 100
     url: logo.png
-    width: 50
+    width: 100
 markup:
   defaultMarkdownHandler: goldmark
   goldmark:
