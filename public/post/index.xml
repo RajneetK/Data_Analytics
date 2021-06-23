@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on RajneetK-Fundamentals of Analytics</title>
@@ -5,11 +6,7 @@
     <description>Recent content in Posts on RajneetK-Fundamentals of Analytics</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 22 Jun 2021 00:00:00 +0000</lastBuildDate>
-    
-        <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 22 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Final Project</title>
       <link>/2021/06/22/final-project/</link>
@@ -17,6 +14,8 @@
       
       <guid>/2021/06/22/final-project/</guid>
       <description>
+        
+          
 &lt;script src=&#34;/2021/06/22/final-project/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;script src=&#34;/2021/06/22/final-project/index_files/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
 &lt;script src=&#34;/2021/06/22/final-project/index_files/jquery/jquery.min.js&#34;&gt;&lt;/script&gt;
@@ -236,7 +235,9 @@ To see how the density of the rent indices has changed over time, I plotted the 
 &lt;li&gt;Cincinnati, San Jose, Portland, and San Francisco have the highest percentage increase in rent values between 2010 and 2017.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-</description>
+
+        
+      </description>
     </item>
     
     <item>
@@ -246,6 +247,8 @@ To see how the density of the rent indices has changed over time, I plotted the 
       
       <guid>/2021/06/18/a05-assignment-eda2/</guid>
       <description>
+        
+          
 &lt;script src=&#34;/2021/06/18/a05-assignment-eda2/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
@@ -940,7 +943,9 @@ The lead time for the repeated guests are shorter than that of unrepeated guests
 &lt;li&gt;&lt;p&gt;80.7 percent of returning guests make bookings that are not part of a group or contract and are unrelated to other transient bookings.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-</description>
+
+        
+      </description>
     </item>
     
     <item>
@@ -950,6 +955,8 @@ The lead time for the repeated guests are shorter than that of unrepeated guests
       
       <guid>/2021/06/15/fitting-and-interpreting-models/</guid>
       <description>
+        
+          
 &lt;script src=&#34;/2021/06/15/fitting-and-interpreting-models/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;script src=&#34;/2021/06/15/fitting-and-interpreting-models/index_files/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
 &lt;link href=&#34;/2021/06/15/fitting-and-interpreting-models/index_files/lightable/lightable.css&#34; rel=&#34;stylesheet&#34; /&gt;
@@ -1295,7 +1302,9 @@ X
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description>
+
+        
+      </description>
     </item>
     
     <item>
@@ -1305,6 +1314,8 @@ X
       
       <guid>/2021/06/04/a03-assignment-eda1/</guid>
       <description>
+        
+          
 &lt;script src=&#34;/2021/06/04/a03-assignment-eda1/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
@@ -1601,7 +1612,9 @@ legosales %&amp;gt;%
   coord_flip() &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/2021/06/04/a03-assignment-eda1/index_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
-</description>
+
+        
+      </description>
     </item>
     
     <item>
@@ -1611,6 +1624,8 @@ legosales %&amp;gt;%
       
       <guid>/2021/06/01/data-io/</guid>
       <description>
+        
+          
 &lt;script src=&#34;/2021/06/01/data-io/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
@@ -1852,7 +1867,9 @@ fav_food_clean &amp;lt;- read_csv(&amp;quot;fav-food-clean.csv&amp;quot;)&lt;/co
 ## 4          4 Leon Rossini     Anchovies          Lunch only             NA Midd~
 ## 5          5 Chidiegwu Dunkel Pizza              Breakfast and lunch     5 High&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-</description>
+
+        
+      </description>
     </item>
     
     <item>
@@ -1862,6 +1879,8 @@ fav_food_clean &amp;lt;- read_csv(&amp;quot;fav-food-clean.csv&amp;quot;)&lt;/co
       
       <guid>/2021/06/01/data-io-data-recoding/</guid>
       <description>
+        
+          
 &lt;script src=&#34;/2021/06/01/data-io-data-recoding/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
@@ -1937,7 +1956,9 @@ ggplot(rel_inc_long, aes(y = religion, x = frequency)) +
     )&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/2021/06/01/data-io-data-recoding/index_files/figure-html/unnamed-chunk-4-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
-</description>
+
+        
+      </description>
     </item>
     
     <item>
@@ -1947,6 +1968,8 @@ ggplot(rel_inc_long, aes(y = religion, x = frequency)) +
       
       <guid>/2021/05/28/assignment-a02/</guid>
       <description>
+        
+          
 &lt;script src=&#34;/2021/05/28/assignment-a02/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
@@ -2522,7 +2545,9 @@ paste(&amp;quot;Number of Missing Values&amp;quot;, sum(is.na(df_na_filled)))&lt
 df_na_replaced &amp;lt;- df %&amp;gt;% 
                     mutate_if(is.numeric, replace_na,0)&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-</description>
+
+        
+      </description>
     </item>
     
     <item>
@@ -2532,6 +2557,8 @@ df_na_replaced &amp;lt;- df %&amp;gt;%
       
       <guid>/2021/05/25/data-wrangling-using-tidyverse/</guid>
       <description>
+        
+          
 &lt;script src=&#34;/2021/05/25/data-wrangling-using-tidyverse/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
@@ -2764,7 +2791,9 @@ summary&lt;/code&gt;&lt;/pre&gt;
 ## 2 Resort Hotel     95.0&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description>
+
+        
+      </description>
     </item>
     
     <item>
@@ -2774,6 +2803,8 @@ summary&lt;/code&gt;&lt;/pre&gt;
       
       <guid>/2021/05/25/fun-with-r/</guid>
       <description>
+        
+          
 &lt;script src=&#34;/2021/05/25/fun-with-r/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
@@ -2891,7 +2922,9 @@ DF&lt;/code&gt;&lt;/pre&gt;
 ## Ally      Male  152.0     81  42
 ## Belinda   Male  171.5     93  38&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-</description>
+
+        
+      </description>
     </item>
     
     <item>
@@ -2901,6 +2934,8 @@ DF&lt;/code&gt;&lt;/pre&gt;
       
       <guid>/2021/05/20/assignment-a01-on-mtcars-dataset/</guid>
       <description>
+        
+          
 &lt;script src=&#34;/2021/05/20/assignment-a01-on-mtcars-dataset/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
@@ -3044,7 +3079,9 @@ ggplot(mtcars, aes(hp)) +
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description>
+
+        
+      </description>
     </item>
     
     <item>
@@ -3054,6 +3091,8 @@ ggplot(mtcars, aes(hp)) +
       
       <guid>/2021/05/18/data-and-visualization/</guid>
       <description>
+        
+          
 &lt;script src=&#34;/2021/05/18/data-and-visualization/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
@@ -3108,7 +3147,9 @@ quartet %&amp;gt;%
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description>
+
+        
+      </description>
     </item>
     
     <item>
@@ -3118,6 +3159,8 @@ quartet %&amp;gt;%
       
       <guid>/2021/05/18/data-visulization-using-ggplot2/</guid>
       <description>
+        
+          
 &lt;script src=&#34;/2021/05/18/data-visulization-using-ggplot2/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
@@ -3125,7 +3168,9 @@ quartet %&amp;gt;%
 &lt;h2&gt;Palmer Penguins Data Visualisation&lt;/h2&gt;
 &lt;p&gt;&lt;img src=&#34;/2021/05/18/data-visulization-using-ggplot2/index_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
-</description>
+
+        
+      </description>
     </item>
     
   </channel>
