@@ -1,62 +1,158 @@
 <!DOCTYPE html>
-<html lang="en-us"><head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta name="referrer" content="strict-origin" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<html lang="en-us">
 
-  <title>Data and Visualization &middot; RajneetK-Fundamentals of Analytics</title>
-  
-  <meta name="description" content="This the website for my Course Fundamentals of Analytics" />
-   <link rel="icon" href="favicon.ico" /> 
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="/css/main.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
-</head>
-<body>
-<header>
-  <nav>
-    <div class="nav-left">
-      <ul>
+    
+    <meta name="description" content="/">
+    
+
+    <meta property="og:site_name" content="RajneetK-Fundamentals of Analytics">
+    <meta property="og:title" content="
+  Data and Visualization - RajneetK-Fundamentals of Analytics
+">
+    <meta property="og:description" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="/2021/05/18/data-and-visualization/">
+    <meta property="og:image" content="/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="/2021/05/18/data-and-visualization/">
+    <meta name="twitter:image" content="/">
+
+    <base href="/2021/05/18/data-and-visualization/">
+    <title>
+  Data and Visualization - RajneetK-Fundamentals of Analytics
+</title>
+
+    <link rel="canonical" href="/2021/05/18/data-and-visualization/">
+    
+    <link  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono:400,700">
+    <link rel="stylesheet" href="/css/normalize.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+    
+      <link rel="alternate" href="/index.xml" type="application/rss+xml" title="RajneetK-Fundamentals of Analytics">
+      <link href="/index.xml" rel="feed" type="application/rss+xml" title="RajneetK-Fundamentals of Analytics" />
+    
+
+    <meta name="generator" content="Hugo 0.83.1" />
+  </head>
+
+  <body class="">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">RajneetK-Fundamentals of Analytics</a>
+    <input type="checkbox" id="menu-control"/>
+    <label class="menu-mobile  float-right " for="menu-control">
+      <span class="btn-mobile  float-right ">&#9776;</span>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="https://github.com/RajneetK">GitHub</a>
+            </li>
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="https://twitter.com/Rajneet74968819">Twitter</a>
+            </li>
+          
+        
         
       </ul>
-    </div>
-    <div class="nav-right">
-      <ul class="datetime">
-        <li class="date">
-          <i class="far fa-calendar"></i>&nbsp;
-          <span id="current_date"></span>
-        </li>
-        <li class="time">
-          <i class="far fa-clock"></i>&nbsp;
-          <span id="current_time"></span>
-        </li>
-      </ul>
-    </div>
-  </nav>
-</header>
-<main>
-    </main><script>
-  var timer = setInterval(function() {
-    localTimer();
-  }, 1000);
-
-  function addZero(i) {
-    if (i < 10) {
-      i = "0" + i;
-    }
-    return i;
-  }
-
-  function localTimer() {
-    var today = new Date();
-    var time = addZero(today.getHours()) + ":" + addZero(today.getMinutes()) + ":" + addZero(today.getSeconds());
-    document.getElementById("current_time").innerHTML = time;
-
-    var date = today.getDate()+' . '+(today.getMonth()+1)+' . '+today.getFullYear();
-    document.getElementById("current_date").innerHTML = date;
-}
-</script>
+    </label>
+  </section>
+</nav>
 
 
-</body>
+      <div class="content">
+        
+  <section class="container page">
+  <article>
+    <header>
+      <h1>Data and Visualization</h1>
+    </header>
+
+    
+<script src="/2021/05/18/data-and-visualization/index_files/header-attrs/header-attrs.js"></script>
+
+
+<div id="data-visualization-exercise" class="section level2">
+<h2>Data Visualization Exercise</h2>
+<pre class="r"><code>library(dplyr)
+starwars</code></pre>
+<pre><code>## # A tibble: 87 x 14
+##    name    height  mass hair_color  skin_color eye_color birth_year sex   gender
+##    &lt;chr&gt;    &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
+##  1 Luke S~    172    77 blond       fair       blue            19   male  mascu~
+##  2 C-3PO      167    75 &lt;NA&gt;        gold       yellow         112   none  mascu~
+##  3 R2-D2       96    32 &lt;NA&gt;        white, bl~ red             33   none  mascu~
+##  4 Darth ~    202   136 none        white      yellow          41.9 male  mascu~
+##  5 Leia O~    150    49 brown       light      brown           19   fema~ femin~
+##  6 Owen L~    178   120 brown, grey light      blue            52   male  mascu~
+##  7 Beru W~    165    75 brown       light      blue            47   fema~ femin~
+##  8 R5-D4       97    32 &lt;NA&gt;        white, red red             NA   none  mascu~
+##  9 Biggs ~    183    84 black       light      brown           24   male  mascu~
+## 10 Obi-Wa~    182    77 auburn, wh~ fair       blue-gray       57   male  mascu~
+## # ... with 77 more rows, and 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;,
+## #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
+<div id="mass-vs-weight" class="section level3">
+<h3>Mass vs weight</h3>
+<p>we will study the mass vs weight relationship through a scatterplot</p>
+<pre class="r"><code>library(ggplot2)
+ggplot(starwars,aes(x=height, y= mass))+geom_point()+labs(title = &quot;Mass vs. height of Starwars characters&quot;,
+       x = &quot;Height (cm)&quot;, y = &quot;Weight (kg)&quot;)</code></pre>
+<p><img src="/2021/05/18/data-and-visualization/index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<div id="anscombes-quartet" class="section level4">
+<h4>Anscombe’s Quartet</h4>
+<p>We summarize the quartet information by each set of data</p>
+<pre class="r"><code>library(Tmisc)
+quartet %&gt;%
+  group_by(set) %&gt;%
+  summarise(
+    mean_x = mean(x), 
+    mean_y = mean(y),
+    sd_x = sd(x),
+    sd_y = sd(y),
+    r = cor(x, y)
+  )</code></pre>
+<pre><code>## # A tibble: 4 x 6
+##   set   mean_x mean_y  sd_x  sd_y     r
+##   &lt;fct&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 I          9   7.50  3.32  2.03 0.816
+## 2 II         9   7.50  3.32  2.03 0.816
+## 3 III        9   7.5   3.32  2.03 0.816
+## 4 IV         9   7.50  3.32  2.03 0.817</code></pre>
+<p>we visualize all four set</p>
+<p><img src="/2021/05/18/data-and-visualization/index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+</div>
+</div>
+
+  </article>
+</section>
+
+
+      </div>
+      
+    </main>
+
+    
+
+  <script src="/js/app.js"></script>
+  
+  </body>
 </html>
