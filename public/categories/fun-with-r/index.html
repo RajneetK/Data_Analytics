@@ -1,208 +1,62 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Fun with r</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="/assets/css/main.css"/>
-    <link rel="canonical" href="/categories/fun-with-r/">
-    <noscript><link rel="stylesheet" href="/assets/css/noscript.css"/></noscript>
-    <style>
-        :root{--site-background : url("/images/bg.jpg")};
-    </style> 
-    
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<html lang="en-us"><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="referrer" content="strict-origin" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Fun with r &middot; RajneetK-Fundamentals of Analytics</title>
+  
+  <meta name="description" content="This the website for my Course Fundamentals of Analytics" />
+   <link rel="icon" href="favicon.ico" /> 
+
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
 </head>
+<body>
+<header>
+  <nav>
+    <div class="nav-left">
+      <ul>
+        
+      </ul>
+    </div>
+    <div class="nav-right">
+      <ul class="datetime">
+        <li class="date">
+          <i class="far fa-calendar"></i>&nbsp;
+          <span id="current_date"></span>
+        </li>
+        <li class="time">
+          <i class="far fa-clock"></i>&nbsp;
+          <span id="current_time"></span>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+<main>
+    </main><script>
+  var timer = setInterval(function() {
+    localTimer();
+  }, 1000);
 
+  function addZero(i) {
+    if (i < 10) {
+      i = "0" + i;
+    }
+    return i;
+  }
 
-<body class="is-preload">
+  function localTimer() {
+    var today = new Date();
+    var time = addZero(today.getHours()) + ":" + addZero(today.getMinutes()) + ":" + addZero(today.getSeconds());
+    document.getElementById("current_time").innerHTML = time;
 
-    
-        <div id="wrapper">
+    var date = today.getDate()+' . '+(today.getMonth()+1)+' . '+today.getFullYear();
+    document.getElementById("current_date").innerHTML = date;
+}
+</script>
 
-            
-                <header id="header">
-                    <div class="logo">
-                        <a href="/">
-                            <span class="icon">
-                                <img src="">
-                            </span>
-                        </a>
-                    </div>
-                    <div class="content">
-                        <div class="inner">
-                            <h1>Fun with r</h1>
-                            
-                        </div>
-                    </div>
-                    <nav>
-                        <ul>
-                            
-                                
-                                    
-                                        <li>
-                                            <a href="#fun-with-r">Fun with R</a>
-                                        </li>
-                                    
-                                
-                            
-                        </ul>
-                    </nav>
-                </header>
-
-            
-                <div id="main">
-
-                    
-                        
-                            
-                                <article id="fun-with-r">
-                                    <h2 class="major">Fun with R</h2>
-                                    <span class="image main"><img src="" alt="" /></span>
-                                    
-<script src="/2021/05/25/fun-with-r/index_files/header-attrs/header-attrs.js"></script>
-
-
-<div id="variables-and-numbers" class="section level2">
-<h2>Variables and Numbers</h2>
-<pre class="r"><code>x&lt;- 1
-y = 2
-3 -&gt; z
-x+y</code></pre>
-<pre><code>## [1] 3</code></pre>
-<pre class="r"><code>x*z</code></pre>
-<pre><code>## [1] 3</code></pre>
-<pre class="r"><code>y/x</code></pre>
-<pre><code>## [1] 2</code></pre>
-</div>
-<div id="vectors" class="section level2">
-<h2>Vectors</h2>
-<pre class="r"><code>a &lt;- 0:10
-print(a)</code></pre>
-<pre><code>##  [1]  0  1  2  3  4  5  6  7  8  9 10</code></pre>
-<pre class="r"><code>b &lt;- 10:-4
-print(b)</code></pre>
-<pre><code>##  [1] 10  9  8  7  6  5  4  3  2  1  0 -1 -2 -3 -4</code></pre>
-<pre class="r"><code>class(a)</code></pre>
-<pre><code>## [1] &quot;integer&quot;</code></pre>
-<pre class="r"><code>str(a)</code></pre>
-<pre><code>##  int [1:11] 0 1 2 3 4 5 6 7 8 9 ...</code></pre>
-<pre class="r"><code>a[c(1,5,10)]</code></pre>
-<pre><code>## [1] 0 4 9</code></pre>
-<pre class="r"><code>head(a,4)</code></pre>
-<pre><code>## [1] 0 1 2 3</code></pre>
-<pre class="r"><code>tail(b,5)</code></pre>
-<pre><code>## [1]  0 -1 -2 -3 -4</code></pre>
-</div>
-<div id="combine-operator-for-creating-vectors" class="section level2">
-<h2>Combine Operator for creating vectors</h2>
-<p>when we create a vector with multiple data types, R coerces the vector to the most data type</p>
-<pre class="r"><code>c &lt;- c(1:5,10.5,&#39;red&#39;,&#39;yellow&#39;,&#39;green&#39;)
-print(c)</code></pre>
-<pre><code>## [1] &quot;1&quot;      &quot;2&quot;      &quot;3&quot;      &quot;4&quot;      &quot;5&quot;      &quot;10.5&quot;   &quot;red&quot;    &quot;yellow&quot;
-## [9] &quot;green&quot;</code></pre>
-<pre class="r"><code>class(c)</code></pre>
-<pre><code>## [1] &quot;character&quot;</code></pre>
-<pre class="r"><code>str(c)</code></pre>
-<pre><code>##  chr [1:9] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; &quot;5&quot; &quot;10.5&quot; &quot;red&quot; &quot;yellow&quot; &quot;green&quot;</code></pre>
-<pre class="r"><code>d &lt;- c(1:5,10.5)
-print(d)</code></pre>
-<pre><code>## [1]  1.0  2.0  3.0  4.0  5.0 10.5</code></pre>
-<pre class="r"><code>class(d)</code></pre>
-<pre><code>## [1] &quot;numeric&quot;</code></pre>
-<pre class="r"><code>str(d)</code></pre>
-<pre><code>##  num [1:6] 1 2 3 4 5 10.5</code></pre>
-</div>
-<div id="sequence-operator-application" class="section level2">
-<h2>Sequence Operator Application</h2>
-<pre class="r"><code>x &lt;- seq(0, 8*pi,length.out=200)
-y&lt;- sin(x)
-plot(x,y)</code></pre>
-<p><img src="/2021/05/25/fun-with-r/index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
-</div>
-<div id="dropping-missing-values-and-summarizing-values" class="section level2">
-<h2>Dropping Missing Values and Summarizing values</h2>
-<pre class="r"><code>a &lt;- c(3,-2,4,NA,-1,8,-4,9,NA, 11,3,8,NA)
-a [!is.na(a)]</code></pre>
-<pre><code>##  [1]  3 -2  4 -1  8 -4  9 11  3  8</code></pre>
-<pre class="r"><code>a &lt;-c(2,3,-1,3,5,2,-3,1)
-
-print(paste0(&quot;The sum of positive integers in a=&quot; ,sum(a[a &gt; 0])))</code></pre>
-<pre><code>## [1] &quot;The sum of positive integers in a=16&quot;</code></pre>
-<pre class="r"><code>cat(&quot;The sum of positive integers in a=&quot; ,sum(a[a &gt; 0]))</code></pre>
-<pre><code>## The sum of positive integers in a= 16</code></pre>
-</div>
-<div id="creating-the-matrix" class="section level2">
-<h2>Creating the matrix</h2>
-<pre class="r"><code>M1 &lt;- matrix(1:12, ncol = 4, byrow = TRUE)
-M1 </code></pre>
-<pre><code>##      [,1] [,2] [,3] [,4]
-## [1,]    1    2    3    4
-## [2,]    5    6    7    8
-## [3,]    9   10   11   12</code></pre>
-<pre class="r"><code>M1[2,2]</code></pre>
-<pre><code>## [1] 6</code></pre>
-<pre class="r"><code>M2 &lt;- matrix(1:12, nrow = 4)
-M2 </code></pre>
-<pre><code>##      [,1] [,2] [,3]
-## [1,]    1    5    9
-## [2,]    2    6   10
-## [3,]    3    7   11
-## [4,]    4    8   12</code></pre>
-<p>##Accessing Matrix Element</p>
-<pre class="r"><code>M1 &lt;- matrix(1:20, ncol=4)
-M1[c(3,5),c(2,4)]</code></pre>
-<pre><code>##      [,1] [,2]
-## [1,]    8   18
-## [2,]   10   20</code></pre>
-</div>
-<div id="creating-the-data-frame" class="section level2">
-<h2>Creating the Data Frame</h2>
-<pre class="r"><code>DF &lt;-data.frame(
-gender =c(&quot;Male&quot;, &quot;Male&quot;,&quot;Female&quot;),
-height =c(152, 171.5, 165),
-weight =c(81,93, 78),
-age =c(42,38,26),
-row.names=c(&#39;Ally&#39;,&#39;Belinda&#39;,&#39;Alfred&#39;)
-)
-DF</code></pre>
-<pre><code>##         gender height weight age
-## Ally      Male  152.0     81  42
-## Belinda   Male  171.5     93  38
-## Alfred  Female  165.0     78  26</code></pre>
-<pre class="r"><code>DF$age</code></pre>
-<pre><code>## [1] 42 38 26</code></pre>
-<pre class="r"><code>DF[DF$gender == &quot;Male&quot;,]</code></pre>
-<pre><code>##         gender height weight age
-## Ally      Male  152.0     81  42
-## Belinda   Male  171.5     93  38</code></pre>
-</div>
-
-                                </article>
-                            
-                        
-                    
-
-                </div>
-
-                
-<footer id="footer">
-    <p class="copyright">&copy; Design: <a href="https://github.com/d-asnaghi">d-asnaghi</a> and <a href="https://html5up.net">HTML5 UP</a>.</p>
-</footer>
-
-        </div>
-
-    
-    <div id="bg"></div>
 
 </body>
-
-
-    
-    <script src=/assets/js/jquery.min.js></script>
-    <script src=/assets/js/browser.min.js></script>
-    <script src=/assets/js/breakpoints.min.js></script>
-    <script src=/assets/js/util.js></script>
-    <script src=/assets/js/main.js></script>
-
 </html>

@@ -1,103 +1,72 @@
 <!DOCTYPE html>
-<html>
-<head>
+<html lang="en-us"><head>
 	<meta name="generator" content="Hugo 0.83.1" />
-    <title>Title</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="/assets/css/main.css"/>
-    <link rel="canonical" href="/">
-    <noscript><link rel="stylesheet" href="/assets/css/noscript.css"/></noscript>
-    <style>
-        :root{--site-background : url("/images/bg.jpg")};
-    </style> 
-    
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="referrer" content="strict-origin" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>RajneetK-Fundamentals of Analytics</title>
+  
+  <meta name="description" content="This the website for my Course Fundamentals of Analytics" />
+   <link rel="icon" href="favicon.ico" /> 
+
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
 </head>
+<body>
+<header>
+  <nav>
+    <div class="nav-left">
+      <ul>
+        
+      </ul>
+    </div>
+    <div class="nav-right">
+      <ul class="datetime">
+        <li class="date">
+          <i class="far fa-calendar"></i>&nbsp;
+          <span id="current_date"></span>
+        </li>
+        <li class="time">
+          <i class="far fa-clock"></i>&nbsp;
+          <span id="current_time"></span>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+<main>
 
 
-<body class="is-preload">
 
-    
-        <div id="wrapper">
 
-            
-                <header id="header">
-                    <div class="logo">
-                        <a href="/">
-                            <span class="icon">
-                                <img src="">
-                            </span>
-                        </a>
-                    </div>
-                    <div class="content">
-                        <div class="inner">
-                            <h1>RajneetK-Fundamentals of Analytics</h1>
-                            
-                        </div>
-                    </div>
-                    <nav>
-                        <ul>
-                            
-                                
-                                    
-                                        <li>
-                                            <a href="#fundamentals-of-data-analytics">Fundamentals of Data Analytics</a>
-                                        </li>
-                                    
-                                
-                            
-                                
-                                    
-                                        <li><a href="/post/">Posts</a></li>
-                                    
-                                
-                            
-                        </ul>
-                    </nav>
-                </header>
+<section class="cards">
+  
+</section>
 
-            
-                <div id="main">
 
-                    
-                        
-                            
-                        
-                    
-                        
-                            
-                                <article id="fundamentals-of-data-analytics">
-                                    <h2 class="major">Fundamentals of Data Analytics</h2>
-                                    <span class="image main"><img src="" alt="" /></span>
-                                    <h1 id="overview">overview</h1>
-<p>This is a website for learning the course &ldquo;Fundamentals of Data Analytics&rdquo;.</p>
+    </main><script>
+  var timer = setInterval(function() {
+    localTimer();
+  }, 1000);
 
-                                </article>
-                            
-                        
-                    
+  function addZero(i) {
+    if (i < 10) {
+      i = "0" + i;
+    }
+    return i;
+  }
 
-                </div>
+  function localTimer() {
+    var today = new Date();
+    var time = addZero(today.getHours()) + ":" + addZero(today.getMinutes()) + ":" + addZero(today.getSeconds());
+    document.getElementById("current_time").innerHTML = time;
 
-                
-<footer id="footer">
-    <p class="copyright">&copy; Design: <a href="https://github.com/d-asnaghi">d-asnaghi</a> and <a href="https://html5up.net">HTML5 UP</a>.</p>
-</footer>
+    var date = today.getDate()+' . '+(today.getMonth()+1)+' . '+today.getFullYear();
+    document.getElementById("current_date").innerHTML = date;
+}
+</script>
 
-        </div>
-
-    
-    <div id="bg"></div>
 
 </body>
-
-
-    
-    <script src=/assets/js/jquery.min.js></script>
-    <script src=/assets/js/browser.min.js></script>
-    <script src=/assets/js/breakpoints.min.js></script>
-    <script src=/assets/js/util.js></script>
-    <script src=/assets/js/main.js></script>
-
 </html>
