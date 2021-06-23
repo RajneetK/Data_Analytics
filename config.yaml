@@ -1,7 +1,7 @@
 baseurl: /
 languageCode: en-us
 title: RajneetK-Fundamentals of Analytics
-theme: "bento"
+theme: "hugo-theme-codex"
 googleAnalytics: ''
 disqusShortname: ''
 ignoreFiles:
