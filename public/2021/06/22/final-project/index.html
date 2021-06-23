@@ -1,62 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-us">
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
-    
-    
-    <title>RajneetK-Fundamentals of Analytics | Final Project</title>
-    
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta itemprop="name" content="Final Project">
+<meta itemprop="description" content="Data exploration of monthly rent index in USA for 2010 - 2017
+Introduction:Problem Statement: The goal of this project is to investigate data for median rent estimates (rent index) and rent per square foot over a 7-year period across counties and metropolitan areas in the United States in order to help citizens determine how much they would spend on rent in a specific location."><meta itemprop="datePublished" content="2021-06-22T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2021-06-22T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="47302">
+<meta itemprop="keywords" content="" /><meta property="og:title" content="Final Project" />
+<meta property="og:description" content="Data exploration of monthly rent index in USA for 2010 - 2017
+Introduction:Problem Statement: The goal of this project is to investigate data for median rent estimates (rent index) and rent per square foot over a 7-year period across counties and metropolitan areas in the United States in order to help citizens determine how much they would spend on rent in a specific location." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/2021/06/22/final-project/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-06-22T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2021-06-22T00:00:00&#43;00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Final Project"/>
+<meta name="twitter:description" content="Data exploration of monthly rent index in USA for 2010 - 2017
+Introduction:Problem Statement: The goal of this project is to investigate data for median rent estimates (rent index) and rent per square foot over a 7-year period across counties and metropolitan areas in the United States in order to help citizens determine how much they would spend on rent in a specific location."/>
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+	<link rel="shortcut icon" href="/favicon.ico">
+
+	<title>Final Project</title>
+	<link rel="stylesheet" href="/css/style.min.037b6ee8f8c1baab6a3d0a9da11c3ff18a7552471f16c59fd98538d5ce99208b.css" integrity="sha256-A3tu6PjBuqtqPQqdoRw/8Yp1UkcfFsWf2YU41c6ZIIs=" crossorigin="anonymous">
+	
 </head>
 
-<body>
-    <div id="nav-border" class="container">
-    <nav id="nav" class="nav justify-content-center">
-        
-        <a class="nav-link" href="/about/">
-        
-        
-        About
-        </a>
-        
-        <a class="nav-link" href="https://github.com/RajneetK">
-        
-        
-        GitHub
-        </a>
-        
-        <a class="nav-link" href="https://twitter.com/Rajneet74968819">
-        
-        
-        Twitter
-        </a>
-        
-    </nav>
-</div>
-    
-    <div class="container">
-        <main id="main">
-            
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="/">RajneetK-Fundamentals of Analytics</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="/about/">About</a>
+				<a href="https://github.com/RajneetK">GitHub</a>
+				<a href="https://twitter.com/Rajneet74968819">Twitter</a>
 
-<h1>Final Project</h1>
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="/about/">About</a></li>
+			<li><a href="https://github.com/RajneetK">GitHub</a></li>
+			<li><a href="https://twitter.com/Rajneet74968819">Twitter</a></li>
+		</ul>
+	</div>
 
 
-<i data-feather="calendar"></i> <time datetime="2021-06-22">Jun 22, 2021</time>
-<span id="social">
-    <i data-feather="share-2"></i></a>
-    <a href="https://twitter.com/share?url=%2f2021%2f06%2f22%2ffinal-project%2f&text=Final%20Project&via="
-        class="btn btn-sm btn-outline-dark share-btn" data-show-count="false" aria-label="Share on Twitter">
-        <i class="feather-16" data-feather="twitter"></i></a>
-    <a href="https://www.linkedin.com/shareArticle?mini=true&url=%2f2021%2f06%2f22%2ffinal-project%2f&summary=Data%20exploration%20of%20monthly%20rent%20index%20in%20USA%20for%202010%20-%202017%0aIntroduction%3a%0dProblem%20Statement%3a%20The%20goal%20of%20this%20project%20is%20to%20investigate%20data%20for%20median%20rent%20estimates%20%28rent%20index%29%20and%20rent%20per%20square%20foot%20over%20a%207-year%20period%20across%20counties%20and%20metropolitan%20areas%20in%20the%20United%20States%20in%20order%20to%20help%20citizens%20determine%20how%20much%20they%20would%20spend%20on%20rent%20in%20a%20specific%20location.&source=Retrolog.io"
-        class="btn btn-sm btn-outline-dark share-btn" data-show-count="false" aria-label="Share on LinkedIn">
-        <i class="feather-16" data-feather="linkedin"></i></a>
-</span>
-
-<br><br>
-
+	<main class="site-main section-inner thin animated fadeIn faster">
+		<h1>Final Project</h1>
+		<div class="content">
+			
 <script src="/2021/06/22/final-project/index_files/header-attrs/header-attrs.js"></script>
 <script src="/2021/06/22/final-project/index_files/htmlwidgets/htmlwidgets.js"></script>
 <script src="/2021/06/22/final-project/index_files/jquery/jquery.min.js"></script>
@@ -277,15 +289,21 @@ To see how the density of the rent indices has changed over time, I plotted the 
 </ul>
 </div>
 
-<p class="footer text-center">Copyright (c) 2021 </p>
+		</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2021 <a href="/"></a></p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
+	</footer>
 
 
-        </main>
-    </div>
-    <script src="/js/feather.min.js"></script>
-<script>
-  feather.replace()
-</script>
+
+	<script src="/js/bundle.min.7d8545daa55d62427355498dd8da13f98ff79a7938ce7d2a5e2ae1ec0de3beb8.js" integrity="sha256-fYVF2qVdYkJzVUmN2NoT+Y/3mnk4zn0qXirh7A3jvrg=" crossorigin="anonymous"></script>
+	
+
 </body>
 
 </html>

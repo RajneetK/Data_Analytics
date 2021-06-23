@@ -1,62 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-us">
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
-    
-    
-    <title>RajneetK-Fundamentals of Analytics | Data visualisation using ggplot2</title>
-    
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta itemprop="name" content="Data visualisation using ggplot2">
+<meta itemprop="description" content="Palmer Penguins Data Visualisation"><meta itemprop="datePublished" content="2021-05-18T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2021-05-18T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="4">
+<meta itemprop="keywords" content="" /><meta property="og:title" content="Data visualisation using ggplot2" />
+<meta property="og:description" content="Palmer Penguins Data Visualisation" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/2021/05/18/data-visulization-using-ggplot2/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-05-18T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2021-05-18T00:00:00&#43;00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Data visualisation using ggplot2"/>
+<meta name="twitter:description" content="Palmer Penguins Data Visualisation"/>
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+	<link rel="shortcut icon" href="/favicon.ico">
+
+	<title>Data visualisation using ggplot2</title>
+	<link rel="stylesheet" href="/css/style.min.037b6ee8f8c1baab6a3d0a9da11c3ff18a7552471f16c59fd98538d5ce99208b.css" integrity="sha256-A3tu6PjBuqtqPQqdoRw/8Yp1UkcfFsWf2YU41c6ZIIs=" crossorigin="anonymous">
+	
 </head>
 
-<body>
-    <div id="nav-border" class="container">
-    <nav id="nav" class="nav justify-content-center">
-        
-        <a class="nav-link" href="/about/">
-        
-        
-        About
-        </a>
-        
-        <a class="nav-link" href="https://github.com/RajneetK">
-        
-        
-        GitHub
-        </a>
-        
-        <a class="nav-link" href="https://twitter.com/Rajneet74968819">
-        
-        
-        Twitter
-        </a>
-        
-    </nav>
-</div>
-    
-    <div class="container">
-        <main id="main">
-            
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="/">RajneetK-Fundamentals of Analytics</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="/about/">About</a>
+				<a href="https://github.com/RajneetK">GitHub</a>
+				<a href="https://twitter.com/Rajneet74968819">Twitter</a>
 
-<h1>Data visualisation using ggplot2</h1>
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="/about/">About</a></li>
+			<li><a href="https://github.com/RajneetK">GitHub</a></li>
+			<li><a href="https://twitter.com/Rajneet74968819">Twitter</a></li>
+		</ul>
+	</div>
 
 
-<i data-feather="calendar"></i> <time datetime="2021-05-18">May 18, 2021</time>
-<span id="social">
-    <i data-feather="share-2"></i></a>
-    <a href="https://twitter.com/share?url=%2f2021%2f05%2f18%2fdata-visulization-using-ggplot2%2f&text=Data%20visualisation%20using%20ggplot2&via="
-        class="btn btn-sm btn-outline-dark share-btn" data-show-count="false" aria-label="Share on Twitter">
-        <i class="feather-16" data-feather="twitter"></i></a>
-    <a href="https://www.linkedin.com/shareArticle?mini=true&url=%2f2021%2f05%2f18%2fdata-visulization-using-ggplot2%2f&summary=%0d%0dPalmer%20Penguins%20Data%20Visualisation%0d%0d&source=Retrolog.io"
-        class="btn btn-sm btn-outline-dark share-btn" data-show-count="false" aria-label="Share on LinkedIn">
-        <i class="feather-16" data-feather="linkedin"></i></a>
-</span>
-
-<br><br>
-
+	<main class="site-main section-inner thin animated fadeIn faster">
+		<h1>Data visualisation using ggplot2</h1>
+		<div class="content">
+			
 <script src="/2021/05/18/data-visulization-using-ggplot2/index_files/header-attrs/header-attrs.js"></script>
 
 
@@ -65,15 +74,21 @@
 <p><img src="/2021/05/18/data-visulization-using-ggplot2/index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
 </div>
 
-<p class="footer text-center">Copyright (c) 2021 </p>
+		</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2021 <a href="/"></a></p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
+	</footer>
 
 
-        </main>
-    </div>
-    <script src="/js/feather.min.js"></script>
-<script>
-  feather.replace()
-</script>
+
+	<script src="/js/bundle.min.7d8545daa55d62427355498dd8da13f98ff79a7938ce7d2a5e2ae1ec0de3beb8.js" integrity="sha256-fYVF2qVdYkJzVUmN2NoT+Y/3mnk4zn0qXirh7A3jvrg=" crossorigin="anonymous"></script>
+	
+
 </body>
 
 </html>
