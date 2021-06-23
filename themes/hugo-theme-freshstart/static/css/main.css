@@ -1,0 +1,202 @@
+/* --------------------------
+ * global
+*/
+
+* {
+  color: rgb(200, 200, 200);
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: url(../images/bg.webp) top fixed no-repeat;
+  background-size: cover;
+  content-visibility: auto;
+  font-size: 16px;
+  font-family: system-ui, sans-serif;
+  font-weight: 400;
+}
+
+a:link, a:active, a:hover { text-decoration: none; }
+
+h3 {
+  font-size: 1rem;
+}
+
+@media screen and (min-width: 320px) {
+  html {
+    font-size: calc(16px + 6 * ((100vw - 320px) / 680));
+  }
+}
+@media screen and (min-width: 1000px) {
+  html {
+    font-size: 22px;
+  }
+}
+
+
+/* --------------------------
+ * colors
+*/
+.amber        { color: rgb(255, 193, 7); }
+.aqua         { color: rgb(0, 255, 255); }
+.black        { color: rgb(0, 0, 0); }
+.blue         { color: rgb(33, 150, 243); }
+.blue-grey    { color: rgb(96, 125, 139); }
+.brown        { color: rgb(121, 85, 72); }
+.cyan         { color: rgb(0, 188, 212); }
+.dark-grey    { color: rgb(97, 97, 97); }
+.deep-orange  { color: rgb(255, 87, 34); }
+.deep-purple  { color: rgb(103, 58, 183); }
+.green        { color: rgb(76, 175, 80); }
+.grey         { color: rgb(158, 158, 158); }
+.indigo       { color: rgb(63, 81, 181); }
+.khaki        { color: rgb(240, 230, 140); }
+.light-blue   { color: rgb(135, 206, 235); }
+.light-green  { color: rgb(139, 195, 74); }
+.light-grey   { color: rgb(241, 241, 241); }
+.lime         { color: rgb(205, 220, 57); }
+.orange       { color: rgb(255, 152, 0); }
+.pale-blue    { color: rgb(221, 255, 255); }
+.pale-green   { color: rgb(221, 255, 221); }
+.pale-red     { color: rgb(255, 221, 221); }
+.pale-yellow  { color: rgb(255, 255, 204); }
+.pink         { color: rgb(233, 30, 99); }
+.purple       { color: rgb(156, 39, 176); }
+.red          { color: rgb(244, 67, 54); }
+.sand         { color: rgb(253, 245, 230); }
+.teal         { color: rgb(0, 150, 136); }
+.white        { color: rgb(255, 255, 255); }
+.yellow       { color: rgb(255, 235, 59); }
+
+
+/* --------------------------
+ * efects
+*/
+.clearfix:after {
+  clear: both;
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  visibility: hidden;
+}
+
+.shadow { box-shadow: 10px 20px 50px 10px rgb(0, 0, 0); }
+
+
+/* --------------------------
+ * header
+*/
+header {
+  backdrop-filter: blur(.2rem);
+  background-color: rgba(0,0,0, 0.5);
+  font-size: 1rem;
+  padding: 0.5rem;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  font-size: 0.7rem;
+}
+
+nav ul {
+  display: flex;
+  flex-wrap: nowrap;
+  list-style: none;
+  margin: 0.1rem 0;
+}
+
+.nav-left { margin-right: auto; }
+.nav-left ul li { padding: 0 0.3rem; }
+.nav-right ul li { padding: 0 0.6rem; }
+
+
+/* --------------------------
+ * search
+*/
+.search {
+  backdrop-filter: blur(.1rem);
+  background-color: rgba(30, 30, 30, 0.7);
+  border-radius: 2rem;
+  margin: 3rem auto;
+  padding: 1rem;
+  text-align: center;
+  width: 30vw;
+}
+.searchbox {
+  display: flex;
+  flex-direction: column;
+}
+.searchbox form {
+  padding: 0.5rem;
+}
+.searchbox input {
+  background: none;
+  border: 0;
+  border-bottom: solid 3px rgb(244, 67, 54);
+  line-height: 26px;
+  padding: 4px;
+  width: 70%;
+}
+
+
+/* --------------------------
+ * cards
+*/
+.cards {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  margin: 0 2rem 2rem 2rem;
+  place-items: top;
+}
+
+.card {
+  backdrop-filter: blur(.2rem);
+  background-color: rgba(30, 30, 30, 0.7);
+  border-radius: 1rem;
+  display: grid;
+  padding: 1rem;
+}
+
+.card:hover h3 i {
+  color: rgb(244, 67, 54);
+  transition: all .4s linear;
+}
+
+.card h3 {
+  text-transform: lowercase;
+  text-align: center;
+  margin: 0 0 0.5rem 0;
+}
+
+.card ul {
+  list-style: none;
+  column-gap: 0.3rem;
+  columns: 4 100px;
+
+}
+
+.card ul li {
+  margin: 0.2rem;
+  width: max-content;
+  height: max-content;
+}
+
+.card ul li * {
+  color: rgb(200, 200, 200);
+  transition: all .3s linear;
+}
+
+.card ul li:hover * {
+  color: #f44336;
+}
+
+.card ul li::first-letter,
+.card ul li i {
+  color: #f44336;
+  font-weight: bold;
+}
