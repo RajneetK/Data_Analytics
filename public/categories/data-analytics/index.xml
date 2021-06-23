@@ -1,30 +1,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>RajneetK-Fundamentals of Analytics – Data analytics</title>
+    <title>Data analytics on RajneetK-Fundamentals of Analytics</title>
     <link>/categories/data-analytics/</link>
     <description>Recent content in Data analytics on RajneetK-Fundamentals of Analytics</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 22 Jun 2021 00:00:00 +0000</lastBuildDate>
     
-	  <atom:link href="/categories/data-analytics/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-      
-        
-      
+        <atom:link href="/categories/data-analytics/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Post: Final Project</title>
+      <title>Final Project</title>
       <link>/2021/06/22/final-project/</link>
       <pubDate>Tue, 22 Jun 2021 00:00:00 +0000</pubDate>
       
       <guid>/2021/06/22/final-project/</guid>
       <description>
-        
-        
-        
 &lt;script src=&#34;/2021/06/22/final-project/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;script src=&#34;/2021/06/22/final-project/index_files/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
 &lt;script src=&#34;/2021/06/22/final-project/index_files/jquery/jquery.min.js&#34;&gt;&lt;/script&gt;
@@ -244,20 +236,16 @@ To see how the density of the rent indices has changed over time, I plotted the 
 &lt;li&gt;Cincinnati, San Jose, Portland, and San Francisco have the highest percentage increase in rent values between 2010 and 2017.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-
-      </description>
+</description>
     </item>
     
     <item>
-      <title>Post: A05 Assignment: EDA2</title>
+      <title>A05 Assignment: EDA2</title>
       <link>/2021/06/18/a05-assignment-eda2/</link>
       <pubDate>Fri, 18 Jun 2021 00:00:00 +0000</pubDate>
       
       <guid>/2021/06/18/a05-assignment-eda2/</guid>
       <description>
-        
-        
-        
 &lt;script src=&#34;/2021/06/18/a05-assignment-eda2/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
@@ -952,20 +940,16 @@ The lead time for the repeated guests are shorter than that of unrepeated guests
 &lt;li&gt;&lt;p&gt;80.7 percent of returning guests make bookings that are not part of a group or contract and are unrelated to other transient bookings.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-
-      </description>
+</description>
     </item>
     
     <item>
-      <title>Post: Fitting and interpreting models</title>
+      <title>Fitting and interpreting models</title>
       <link>/2021/06/15/fitting-and-interpreting-models/</link>
       <pubDate>Tue, 15 Jun 2021 00:00:00 +0000</pubDate>
       
       <guid>/2021/06/15/fitting-and-interpreting-models/</guid>
       <description>
-        
-        
-        
 &lt;script src=&#34;/2021/06/15/fitting-and-interpreting-models/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 &lt;script src=&#34;/2021/06/15/fitting-and-interpreting-models/index_files/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
 &lt;link href=&#34;/2021/06/15/fitting-and-interpreting-models/index_files/lightable/lightable.css&#34; rel=&#34;stylesheet&#34; /&gt;
@@ -1311,20 +1295,16 @@ X
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-
-      </description>
+</description>
     </item>
     
     <item>
-      <title>Post: A03 Assignment EDA1</title>
+      <title>A03 Assignment EDA1</title>
       <link>/2021/06/04/a03-assignment-eda1/</link>
       <pubDate>Fri, 04 Jun 2021 00:00:00 +0000</pubDate>
       
       <guid>/2021/06/04/a03-assignment-eda1/</guid>
       <description>
-        
-        
-        
 &lt;script src=&#34;/2021/06/04/a03-assignment-eda1/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
@@ -1621,20 +1601,16 @@ legosales %&amp;gt;%
   coord_flip() &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/2021/06/04/a03-assignment-eda1/index_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
-
-      </description>
+</description>
     </item>
     
     <item>
-      <title>Post: Data IO</title>
+      <title>Data IO</title>
       <link>/2021/06/01/data-io/</link>
       <pubDate>Tue, 01 Jun 2021 00:00:00 +0000</pubDate>
       
       <guid>/2021/06/01/data-io/</guid>
       <description>
-        
-        
-        
 &lt;script src=&#34;/2021/06/01/data-io/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
@@ -1876,20 +1852,16 @@ fav_food_clean &amp;lt;- read_csv(&amp;quot;fav-food-clean.csv&amp;quot;)&lt;/co
 ## 4          4 Leon Rossini     Anchovies          Lunch only             NA Midd~
 ## 5          5 Chidiegwu Dunkel Pizza              Breakfast and lunch     5 High&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-
-      </description>
+</description>
     </item>
     
     <item>
-      <title>Post: Data IO- Data Recoding</title>
+      <title>Data IO- Data Recoding</title>
       <link>/2021/06/01/data-io-data-recoding/</link>
       <pubDate>Tue, 01 Jun 2021 00:00:00 +0000</pubDate>
       
       <guid>/2021/06/01/data-io-data-recoding/</guid>
       <description>
-        
-        
-        
 &lt;script src=&#34;/2021/06/01/data-io-data-recoding/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
@@ -1965,20 +1937,16 @@ ggplot(rel_inc_long, aes(y = religion, x = frequency)) +
     )&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;/2021/06/01/data-io-data-recoding/index_files/figure-html/unnamed-chunk-4-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
-
-      </description>
+</description>
     </item>
     
     <item>
-      <title>Post: Assignment A02</title>
+      <title>Assignment A02</title>
       <link>/2021/05/28/assignment-a02/</link>
       <pubDate>Fri, 28 May 2021 00:00:00 +0000</pubDate>
       
       <guid>/2021/05/28/assignment-a02/</guid>
       <description>
-        
-        
-        
 &lt;script src=&#34;/2021/05/28/assignment-a02/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
@@ -2554,20 +2522,16 @@ paste(&amp;quot;Number of Missing Values&amp;quot;, sum(is.na(df_na_filled)))&lt
 df_na_replaced &amp;lt;- df %&amp;gt;% 
                     mutate_if(is.numeric, replace_na,0)&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-
-      </description>
+</description>
     </item>
     
     <item>
-      <title>Post: Assignment A01 based on mtcars dataset</title>
+      <title>Assignment A01 based on mtcars dataset</title>
       <link>/2021/05/20/assignment-a01-on-mtcars-dataset/</link>
       <pubDate>Thu, 20 May 2021 00:00:00 +0000</pubDate>
       
       <guid>/2021/05/20/assignment-a01-on-mtcars-dataset/</guid>
       <description>
-        
-        
-        
 &lt;script src=&#34;/2021/05/20/assignment-a01-on-mtcars-dataset/index_files/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
 
 
@@ -2711,8 +2675,7 @@ ggplot(mtcars, aes(hp)) +
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-
-      </description>
+</description>
     </item>
     
   </channel>

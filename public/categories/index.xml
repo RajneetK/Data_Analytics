@@ -1,19 +1,41 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>RajneetK-Fundamentals of Analytics – Categories</title>
+    <title>Categories on RajneetK-Fundamentals of Analytics</title>
     <link>/categories/</link>
     <description>Recent content in Categories on RajneetK-Fundamentals of Analytics</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 22 Jun 2021 00:00:00 +0000</lastBuildDate>
     
-	  <atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
+    <item>
+      <title>Data analytics</title>
+      <link>/categories/data-analytics/</link>
+      <pubDate>Tue, 22 Jun 2021 00:00:00 +0000</pubDate>
       
-        
-      
+      <guid>/categories/data-analytics/</guid>
+      <description></description>
+    </item>
     
+    <item>
+      <title>Fun with r</title>
+      <link>/categories/fun-with-r/</link>
+      <pubDate>Tue, 25 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/fun-with-r/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ggplot2</title>
+      <link>/categories/ggplot2/</link>
+      <pubDate>Tue, 18 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/ggplot2/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

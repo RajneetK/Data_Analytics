@@ -1,127 +1,61 @@
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.83.1" /><META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    
+    
+    <title>RajneetK-Fundamentals of Analytics | Assignment A02</title>
+    
+</head>
 
-
-<link rel="shortcut icon" href="/favicons/favicon.ico" >
-<link rel="apple-touch-icon" href="/favicons/apple-touch-icon-180x180.png" sizes="180x180">
-<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
-<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="/favicons/android-36x36.png" sizes="36x36">
-<link rel="icon" type="image/png" href="/favicons/android-48x48.png" sizes="48x48">
-<link rel="icon" type="image/png" href="/favicons/android-72x72.png" sizes="72x72">
-<link rel="icon" type="image/png" href="/favicons/android-96x96.png" sizes="96x96">
-<link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
-<link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
-
-<title>Assignment A02 | RajneetK-Fundamentals of Analytics</title>
-<meta name="description" content="This the website for my Course Fundamentals of Analytics"><meta property="og:title" content="Assignment A02" />
-<meta property="og:description" content="Exploring Phishing Dataset for Machine Learning with Tidyverse.
-Description:
-The Phishing dataset is downloaded from kaggle website.
-Dataset information
-This dataset contains 48 features taken from 5000 phishing web pages and 5000 legitimate web pages downloaded between January and May and June 2015.
-Tidyverse and dplyr library would be used.
-Importing data from phishing.csv filelibrary(tidyverse)## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --## v ggplot2 3." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/2021/05/28/assignment-a02/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2021-05-28T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2021-05-28T00:00:00&#43;00:00" />
-
-<meta itemprop="name" content="Assignment A02">
-<meta itemprop="description" content="Exploring Phishing Dataset for Machine Learning with Tidyverse.
-Description:
-The Phishing dataset is downloaded from kaggle website.
-Dataset information
-This dataset contains 48 features taken from 5000 phishing web pages and 5000 legitimate web pages downloaded between January and May and June 2015.
-Tidyverse and dplyr library would be used.
-Importing data from phishing.csv filelibrary(tidyverse)## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --## v ggplot2 3."><meta itemprop="datePublished" content="2021-05-28T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2021-05-28T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="3190">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Assignment A02"/>
-<meta name="twitter:description" content="Exploring Phishing Dataset for Machine Learning with Tidyverse.
-Description:
-The Phishing dataset is downloaded from kaggle website.
-Dataset information
-This dataset contains 48 features taken from 5000 phishing web pages and 5000 legitimate web pages downloaded between January and May and June 2015.
-Tidyverse and dplyr library would be used.
-Importing data from phishing.csv filelibrary(tidyverse)## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --## v ggplot2 3."/>
-
-
-
-
-<link rel="preload" href="/scss/main.scss" as="style">
-<link href="/scss/main.scss" rel="stylesheet" integrity="">
-
-
-<script
-  src="https://code.jquery.com/jquery-3.5.1.min.js"
-  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-  crossorigin="anonymous"></script>
-
-
-
-
-
-  </head>
-  <body class="td-page">
-    <header>
-      
-<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
-        <a class="navbar-brand" href="/">
-		<span class="navbar-logo"></span><span class="text-uppercase font-weight-bold">RajneetK-Fundamentals of Analytics</span>
-	</a>
-	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
-		<ul class="navbar-nav mt-2 mt-lg-0">
-			
-			
-			<li class="nav-item mr-4 mb-2 mb-lg-0">
-				
-				
-				
-				
-				
-				
-				<a class="nav-link" href="/about/" ><span>About</span></a>
-			</li>
-			
-			<li class="nav-item mr-4 mb-2 mb-lg-0">
-				
-				
-				
-				
-				
-				
-				<a class="nav-link" href="https://github.com/RajneetK" target="_blank" ><span>GitHub</span></a>
-			</li>
-			
-			<li class="nav-item mr-4 mb-2 mb-lg-0">
-				
-				
-				
-				
-				
-				
-				<a class="nav-link" href="https://twitter.com/Rajneet74968819" target="_blank" ><span>Twitter</span></a>
-			</li>
-			
-			
-			
-		</ul>
-	</div>
-	<div class="navbar-nav d-none d-lg-block">
-</div>
-</nav>
-
-    </header>
-    <div class="container-fluid td-default td-outer">
-      <main role="main" class="td-main">
+<body>
+    <div id="nav-border" class="container">
+    <nav id="nav" class="nav justify-content-center">
         
+        <a class="nav-link" href="/about/">
+        
+        
+        About
+        </a>
+        
+        <a class="nav-link" href="https://github.com/RajneetK">
+        
+        
+        GitHub
+        </a>
+        
+        <a class="nav-link" href="https://twitter.com/Rajneet74968819">
+        
+        
+        Twitter
+        </a>
+        
+    </nav>
+</div>
+    
+    <div class="container">
+        <main id="main">
+            
 
+<h1>Assignment A02</h1>
+
+
+<i data-feather="calendar"></i> <time datetime="2021-05-28">May 28, 2021</time>
+<span id="social">
+    <i data-feather="share-2"></i></a>
+    <a href="https://twitter.com/share?url=%2f2021%2f05%2f28%2fassignment-a02%2f&text=Assignment%20A02&via="
+        class="btn btn-sm btn-outline-dark share-btn" data-show-count="false" aria-label="Share on Twitter">
+        <i class="feather-16" data-feather="twitter"></i></a>
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=%2f2021%2f05%2f28%2fassignment-a02%2f&summary=Exploring%20Phishing%20Dataset%20for%20Machine%20Learning%20with%20Tidyverse.%0aDescription%3a%0aThe%20Phishing%20dataset%20is%20downloaded%20from%20kaggle%20website.%0aDataset%20information%0aThis%20dataset%20contains%2048%20features%20taken%20from%205000%20phishing%20web%20pages%20and%205000%20legitimate%20web%20pages%20downloaded%20between%20January%20and%20May%20and%20June%202015.%0a%0dTidyverse%20and%20dplyr%20library%20would%20be%20used.%0a%0d%0dImporting%20data%20from%20phishing.csv%20file%0dlibrary%28tidyverse%29%0d%23%23%20--%20Attaching%20packages%20---------------------------------------%20tidyverse%201.3.1%20--%0d%23%23%20v%20ggplot2%203.&source=Retrolog.io"
+        class="btn btn-sm btn-outline-dark share-btn" data-show-count="false" aria-label="Share on LinkedIn">
+        <i class="feather-16" data-feather="linkedin"></i></a>
+</span>
+
+<br><br>
 
 <script src="/2021/05/28/assignment-a02/index_files/header-attrs/header-attrs.js"></script>
 
@@ -699,56 +633,15 @@ df_na_replaced &lt;- df %&gt;%
                     mutate_if(is.numeric, replace_na,0)</code></pre>
 </div>
 
+<p class="footer text-center">Copyright (c) 2021 </p>
 
 
-      </main>
-      
-<footer class="bg-dark py-5 row d-print-none">
-  <div class="container-fluid mx-sm-5">
-    <div class="row">
-      <div class="col-6 col-sm-4 text-xs-center order-sm-2">
-        
-      </div>
-      <div class="col-6 col-sm-4 text-right text-xs-center order-sm-3">
-        
-      </div>
-      <div class="col-12 col-sm-4 text-center py-2 order-sm-2">
-        
-        
-	
-		<p class="mt-2"><a href="/about/">Fundamentals of Data Analytics</a></p>
-	
-      </div>
+        </main>
     </div>
-  </div>
-</footer>
+    <script src="/js/feather.min.js"></script>
+<script>
+  feather.replace()
+</script>
+</body>
 
-
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-<script src="/js/main.min.5c74b870c6953931a705f390a49c7e4c0a842ec5c83b24354758dd674343ed0d.js" integrity="sha256-XHS4cMaVOTGnBfOQpJx&#43;TAqELsXIOyQ1R1jdZ0ND7Q0=" crossorigin="anonymous"></script>
-
-
-
-
-  </body>
 </html>

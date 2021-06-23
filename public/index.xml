@@ -1,18 +1,34 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>RajneetK-Fundamentals of Analytics – RajneetK-Fundamentals of Analytics</title>
+    <title>RajneetK-Fundamentals of Analytics</title>
     <link>/</link>
     <description>Recent content on RajneetK-Fundamentals of Analytics</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 22 Jun 2021 00:00:00 +0000</lastBuildDate>
     
-	  <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
     
+    <item>
+      <title>Posts</title>
+      <link>/post/</link>
+      <pubDate>Tue, 22 Jun 2021 00:00:00 +0000</pubDate>
       
-      
+      <guid>/post/</guid>
+      <description></description>
+    </item>
     
+    <item>
+      <title>Fundamentals of Data Analytics</title>
+      <link>/about/</link>
+      <pubDate>Thu, 05 May 2016 21:48:51 -0700</pubDate>
+      
+      <guid>/about/</guid>
+      <description>&lt;h1 id=&#34;overview&#34;&gt;overview&lt;/h1&gt;
+&lt;p&gt;This is a website for learning the course &amp;ldquo;Fundamentals of Data Analytics&amp;rdquo;.&lt;/p&gt;
+</description>
+    </item>
     
   </channel>
 </rss>
