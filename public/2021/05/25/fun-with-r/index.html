@@ -1,401 +1,58 @@
 <!DOCTYPE html>
-<style>
-    html {
-        height: 100vh;
-    }
-    body {
-        min-height: 100vh;
-        display: grid;
-        grid-template-rows: 1fr auto;
-    }
-    .footer {
-        grid-row-start: 2;
-        grid-row-end: 3;
-    }
-</style>
-<html lang="en-us"><head>
-  <meta charset="utf-8">
-  <title>RajneetK-Fundamentals of Analytics</title>
-
-  <!-- mobile responsive meta -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <meta name="description" property="og:description" content="This the website for my Course Fundamentals of Analytics">
-  <meta name="image" property="og:image" content="/">
-  <meta name="author" content="">
-  <meta name="generator" content="Hugo 0.83.1" />
-
-  <!-- plugins -->
-  
-
-  <!-- Main Stylesheet -->
-  
-  <link rel="stylesheet" href="/css/style.min.css" integrity="" media="screen">
-  
-  <link rel="stylesheet" href="/css/syntax.min.css" integrity="" media="screen">
-
-  <script src="https://cdn.jsdelivr.net/npm/mailgo@0.9.14/dist/mailgo.min.js" defer></script>
-
-  <!--Favicon-->
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
-
+<html>
+<head>
+    <title>Fun with R</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="/assets/css/main.css"/>
+    <link rel="canonical" href="/2021/05/25/fun-with-r/">
+    <noscript><link rel="stylesheet" href="/assets/css/noscript.css"/></noscript>
+    <style>
+        :root{--site-background : url("/images/bg.jpg")};
+    </style> 
+    
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
-<body class="post">
-    <div class="wrapper"><div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; bottom: #transparent-sticky-navbar">
-    <nav class="uk-navbar-container uk-margin" uk-navbar="mode: click;" style="padding-right: 3rem">
-        <div class="uk-navbar-right">
-            <ul class="uk-navbar-nav uk-visible@s">
-                
-                <li><a style="font-size: 18px; text-transform: none" href="/"></a></li>
-
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                <li><a style="font-size: 18px; text-transform: none" href="/about/">About</a></li>
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                <li><a style="font-size: 18px; text-transform: none" href="https://github.com/RajneetK">GitHub</a></li>
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                <li><a style="font-size: 18px; text-transform: none" href="https://twitter.com/Rajneet74968819">Twitter</a></li>
-                
-                
-            </ul>
-
-            <a class="uk-navbar-toggle uk-hidden@s" uk-toggle="target: #sidenav" uk-navbar-toggle-icon href="#"></a>
-
-        </div>
-    </nav>
-</div>
-
-<div id="sidenav" uk-offcanvas="overlay: true">
-    <div class="uk-offcanvas-bar uk-flex uk-flex-column">
-
-        <ul class="uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical">
-            
-            <li><a style="font-size: 18px" href="/"></a></li>
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            <li><a style="font-size: 18px" href="/about/">About</a></li>
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            <li><a style="font-size: 18px" href="https://github.com/RajneetK">GitHub</a></li>
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            <li><a style="font-size: 18px" href="https://twitter.com/Rajneet74968819">Twitter</a></li>
-            
-            
-        </ul>
-
-    </div>
-</div>
 
 
+<body class="is-preload">
 
-
-<style>
-  p {
-    margin: 0
-  }
-
-  .people-wrap {
-    display: inline-flex;
-    margin-top: 10px;
-  }
-
-  .people-image {
-    display: block;
-    border-radius: 50%;
-     
-  }
-
-  .people {
-    margin-left: 20px;
-    margin-right: 20px;
-  }
-
-  .name {
-    margin: auto;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    color: #000;
-    font-family: Roboto, sans-serif;
-    line-height: 1.2;
-    margin-top: 2rem;
-  }
-
-  .content img {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom:30px;
-  }
-
-  p { margin-bottom: 1em; }
-
-  body p:last-child { margin-bottom: 0em; }
-
-  img.skills{
-    height: 80px;
-  }
-
-  @media only screen and (min-width: 960px) {
-    .content img{max-width:60vw; max-height:60vh}
-
-  .content img{
-      max-width:60vw;
-      max-height:60vh
-  }
-  }
-  .content{
-      width: 90vw;
-      max-width: 1200px
-  }
-
-  table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-  }
-
-  td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-  }
-
-</style>
-
-
-<section>
-  <div class="uk-container uk-margin-large-bottom uk-margin-medium-top">
-    <h1 class="uk-text-center uk-heading-medium">Fun with R</h1>
-    <p class="uk-text-center uk-text-lead"></p>
-    <p class="uk-text-center">Published on May 25, 2021</p>
-    <p class="uk-text-center">Reading time: 2 minutes.</p>
     
+        <div id="wrapper">
 
-    <hr class="full-width">
-    
+            
+                <header id="header">
+                    <div class="logo">
+                        <span class="icon fa-gem"></span>
+                    </div>
+                    <div class="content">
+                        <div class="inner">
+                            <h1><a href="/">Go Home</a></h1>
+                            <p>
+                                Nothing to see here
+                            </p>
+                        </div>
+                    </div>
+                </header>
 
-    <div class="content">
-      
-<script src="/2021/05/25/fun-with-r/index_files/header-attrs/header-attrs.js"></script>
-
-
-<div id="variables-and-numbers" class="section level2">
-<h2>Variables and Numbers</h2>
-<pre class="r"><code>x&lt;- 1
-y = 2
-3 -&gt; z
-x+y</code></pre>
-<pre><code>## [1] 3</code></pre>
-<pre class="r"><code>x*z</code></pre>
-<pre><code>## [1] 3</code></pre>
-<pre class="r"><code>y/x</code></pre>
-<pre><code>## [1] 2</code></pre>
-</div>
-<div id="vectors" class="section level2">
-<h2>Vectors</h2>
-<pre class="r"><code>a &lt;- 0:10
-print(a)</code></pre>
-<pre><code>##  [1]  0  1  2  3  4  5  6  7  8  9 10</code></pre>
-<pre class="r"><code>b &lt;- 10:-4
-print(b)</code></pre>
-<pre><code>##  [1] 10  9  8  7  6  5  4  3  2  1  0 -1 -2 -3 -4</code></pre>
-<pre class="r"><code>class(a)</code></pre>
-<pre><code>## [1] &quot;integer&quot;</code></pre>
-<pre class="r"><code>str(a)</code></pre>
-<pre><code>##  int [1:11] 0 1 2 3 4 5 6 7 8 9 ...</code></pre>
-<pre class="r"><code>a[c(1,5,10)]</code></pre>
-<pre><code>## [1] 0 4 9</code></pre>
-<pre class="r"><code>head(a,4)</code></pre>
-<pre><code>## [1] 0 1 2 3</code></pre>
-<pre class="r"><code>tail(b,5)</code></pre>
-<pre><code>## [1]  0 -1 -2 -3 -4</code></pre>
-</div>
-<div id="combine-operator-for-creating-vectors" class="section level2">
-<h2>Combine Operator for creating vectors</h2>
-<p>when we create a vector with multiple data types, R coerces the vector to the most data type</p>
-<pre class="r"><code>c &lt;- c(1:5,10.5,&#39;red&#39;,&#39;yellow&#39;,&#39;green&#39;)
-print(c)</code></pre>
-<pre><code>## [1] &quot;1&quot;      &quot;2&quot;      &quot;3&quot;      &quot;4&quot;      &quot;5&quot;      &quot;10.5&quot;   &quot;red&quot;    &quot;yellow&quot;
-## [9] &quot;green&quot;</code></pre>
-<pre class="r"><code>class(c)</code></pre>
-<pre><code>## [1] &quot;character&quot;</code></pre>
-<pre class="r"><code>str(c)</code></pre>
-<pre><code>##  chr [1:9] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; &quot;5&quot; &quot;10.5&quot; &quot;red&quot; &quot;yellow&quot; &quot;green&quot;</code></pre>
-<pre class="r"><code>d &lt;- c(1:5,10.5)
-print(d)</code></pre>
-<pre><code>## [1]  1.0  2.0  3.0  4.0  5.0 10.5</code></pre>
-<pre class="r"><code>class(d)</code></pre>
-<pre><code>## [1] &quot;numeric&quot;</code></pre>
-<pre class="r"><code>str(d)</code></pre>
-<pre><code>##  num [1:6] 1 2 3 4 5 10.5</code></pre>
-</div>
-<div id="sequence-operator-application" class="section level2">
-<h2>Sequence Operator Application</h2>
-<pre class="r"><code>x &lt;- seq(0, 8*pi,length.out=200)
-y&lt;- sin(x)
-plot(x,y)</code></pre>
-<p><img src="/2021/05/25/fun-with-r/index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
-</div>
-<div id="dropping-missing-values-and-summarizing-values" class="section level2">
-<h2>Dropping Missing Values and Summarizing values</h2>
-<pre class="r"><code>a &lt;- c(3,-2,4,NA,-1,8,-4,9,NA, 11,3,8,NA)
-a [!is.na(a)]</code></pre>
-<pre><code>##  [1]  3 -2  4 -1  8 -4  9 11  3  8</code></pre>
-<pre class="r"><code>a &lt;-c(2,3,-1,3,5,2,-3,1)
-
-print(paste0(&quot;The sum of positive integers in a=&quot; ,sum(a[a &gt; 0])))</code></pre>
-<pre><code>## [1] &quot;The sum of positive integers in a=16&quot;</code></pre>
-<pre class="r"><code>cat(&quot;The sum of positive integers in a=&quot; ,sum(a[a &gt; 0]))</code></pre>
-<pre><code>## The sum of positive integers in a= 16</code></pre>
-</div>
-<div id="creating-the-matrix" class="section level2">
-<h2>Creating the matrix</h2>
-<pre class="r"><code>M1 &lt;- matrix(1:12, ncol = 4, byrow = TRUE)
-M1 </code></pre>
-<pre><code>##      [,1] [,2] [,3] [,4]
-## [1,]    1    2    3    4
-## [2,]    5    6    7    8
-## [3,]    9   10   11   12</code></pre>
-<pre class="r"><code>M1[2,2]</code></pre>
-<pre><code>## [1] 6</code></pre>
-<pre class="r"><code>M2 &lt;- matrix(1:12, nrow = 4)
-M2 </code></pre>
-<pre><code>##      [,1] [,2] [,3]
-## [1,]    1    5    9
-## [2,]    2    6   10
-## [3,]    3    7   11
-## [4,]    4    8   12</code></pre>
-<p>##Accessing Matrix Element</p>
-<pre class="r"><code>M1 &lt;- matrix(1:20, ncol=4)
-M1[c(3,5),c(2,4)]</code></pre>
-<pre><code>##      [,1] [,2]
-## [1,]    8   18
-## [2,]   10   20</code></pre>
-</div>
-<div id="creating-the-data-frame" class="section level2">
-<h2>Creating the Data Frame</h2>
-<pre class="r"><code>DF &lt;-data.frame(
-gender =c(&quot;Male&quot;, &quot;Male&quot;,&quot;Female&quot;),
-height =c(152, 171.5, 165),
-weight =c(81,93, 78),
-age =c(42,38,26),
-row.names=c(&#39;Ally&#39;,&#39;Belinda&#39;,&#39;Alfred&#39;)
-)
-DF</code></pre>
-<pre><code>##         gender height weight age
-## Ally      Male  152.0     81  42
-## Belinda   Male  171.5     93  38
-## Alfred  Female  165.0     78  26</code></pre>
-<pre class="r"><code>DF$age</code></pre>
-<pre><code>## [1] 42 38 26</code></pre>
-<pre class="r"><code>DF[DF$gender == &quot;Male&quot;,]</code></pre>
-<pre><code>##         gender height weight age
-## Ally      Male  152.0     81  42
-## Belinda   Male  171.5     93  38</code></pre>
-</div>
-
-    </div>
-  </div>
-  </div>
-</section>
-
-
-
-    </div>
-<footer class="footer">
-  <div class="uk-container">
-
-
-    <div class="uk-grid-small uk-child-width-1-4@m uk-text-center uk-flex-center uk-margin-medium-bottom" uk-grid>
-      <div class="uk-margin-small-bottom">
-        <h5 class="uk-margin-small-bottom">Email</h5>
-        <a href="mailto:"></a>
-
-      </div>
-      <div>
-        <h5 class="uk-margin-small-bottom">Address</h5>
-                  <div uk-lightbox>
-                    <a href="" data-caption=""
-                      data-type="iframe"></a>
-      </div>
-      </div>
-
-    </div>
-
-
-
-
-
-  <div class="footer-copyright uk-text-center" style="padding-bottom: 1rem">
-    <img loading="lazy" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" style="height: 1.2em;
-  width: 1.2em;" alt="Creative Commons">
-    <img loading="lazy" src="https://mirrors.creativecommons.org/presskit/icons/by.svg" style="height: 1.2em;
-  width: 1.2em;" alt="CC-BY">
-    2020
-    
-
-
-  </div>
+                
+<footer id="footer">
+    <p class="copyright">&copy; Design: <a href="https://github.com/d-asnaghi">d-asnaghi</a> and <a href="https://html5up.net">HTML5 UP</a>.</p>
 </footer>
 
+        </div>
 
-<!-- JS Plugins -->
+    
+    <div id="bg"></div>
 
 </body>
+
+
+    
+    <script src=/assets/js/jquery.min.js></script>
+    <script src=/assets/js/browser.min.js></script>
+    <script src=/assets/js/breakpoints.min.js></script>
+    <script src=/assets/js/util.js></script>
+    <script src=/assets/js/main.js></script>
+
 </html>
