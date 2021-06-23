@@ -1,58 +1,393 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Data Wrangling using tidyverse</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="/assets/css/main.css"/>
-    <link rel="canonical" href="/2021/05/25/data-wrangling-using-tidyverse/">
-    <noscript><link rel="stylesheet" href="/assets/css/noscript.css"/></noscript>
-    <style>
-        :root{--site-background : url("/images/bg.jpg")};
-    </style> 
-    
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-</head>
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.83.1" /><META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 
 
-<body class="is-preload">
+<link rel="shortcut icon" href="/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-    
-        <div id="wrapper">
+<title>Data Wrangling using tidyverse | RajneetK-Fundamentals of Analytics</title>
+<meta name="description" content="This the website for my Course Fundamentals of Analytics"><meta property="og:title" content="Data Wrangling using tidyverse" />
+<meta property="og:description" content="Import the Hotels.csv filelibrary(tidyverse)## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --## v ggplot2 3.3.3 v purrr 0.3.4## v tibble 3.1.1 v dplyr 1.0.6## v tidyr 1.1.3 v stringr 1.4.0## v readr 1.4.0 v forcats 0.5.1## -- Conflicts ------------------------------------------ tidyverse_conflicts() --## x dplyr::filter() masks stats::filter()## x dplyr::lag() masks stats::lag()hotels &lt;- read_csv(&quot;hotels.csv&quot;)## ## -- Column specification --------------------------------------------------------## cols(## ." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/2021/05/25/data-wrangling-using-tidyverse/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-05-25T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2021-05-25T00:00:00&#43;00:00" />
 
-            
-                <header id="header">
-                    <div class="logo">
-                        <span class="icon fa-gem"></span>
-                    </div>
-                    <div class="content">
-                        <div class="inner">
-                            <h1><a href="/">Go Home</a></h1>
-                            <p>
-                                Nothing to see here
-                            </p>
-                        </div>
-                    </div>
-                </header>
+<meta itemprop="name" content="Data Wrangling using tidyverse">
+<meta itemprop="description" content="Import the Hotels.csv filelibrary(tidyverse)## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --## v ggplot2 3.3.3 v purrr 0.3.4## v tibble 3.1.1 v dplyr 1.0.6## v tidyr 1.1.3 v stringr 1.4.0## v readr 1.4.0 v forcats 0.5.1## -- Conflicts ------------------------------------------ tidyverse_conflicts() --## x dplyr::filter() masks stats::filter()## x dplyr::lag() masks stats::lag()hotels &lt;- read_csv(&quot;hotels.csv&quot;)## ## -- Column specification --------------------------------------------------------## cols(## ."><meta itemprop="datePublished" content="2021-05-25T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2021-05-25T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="1188">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Data Wrangling using tidyverse"/>
+<meta name="twitter:description" content="Import the Hotels.csv filelibrary(tidyverse)## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --## v ggplot2 3.3.3 v purrr 0.3.4## v tibble 3.1.1 v dplyr 1.0.6## v tidyr 1.1.3 v stringr 1.4.0## v readr 1.4.0 v forcats 0.5.1## -- Conflicts ------------------------------------------ tidyverse_conflicts() --## x dplyr::filter() masks stats::filter()## x dplyr::lag() masks stats::lag()hotels &lt;- read_csv(&quot;hotels.csv&quot;)## ## -- Column specification --------------------------------------------------------## cols(## ."/>
 
-                
-<footer id="footer">
-    <p class="copyright">&copy; Design: <a href="https://github.com/d-asnaghi">d-asnaghi</a> and <a href="https://html5up.net">HTML5 UP</a>.</p>
+
+
+
+<link rel="preload" href="/scss/main.scss" as="style">
+<link href="/scss/main.scss" rel="stylesheet" integrity="">
+
+
+<script
+  src="https://code.jquery.com/jquery-3.5.1.min.js"
+  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+  crossorigin="anonymous"></script>
+
+
+
+
+
+  </head>
+  <body class="td-page">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+        <a class="navbar-brand" href="/">
+		<span class="navbar-logo"></span><span class="text-uppercase font-weight-bold">RajneetK-Fundamentals of Analytics</span>
+	</a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/about/" ><span>About</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="https://github.com/RajneetK" target="_blank" ><span>GitHub</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="https://twitter.com/Rajneet74968819" target="_blank" ><span>Twitter</span></a>
+			</li>
+			
+			
+			
+		</ul>
+	</div>
+	<div class="navbar-nav d-none d-lg-block">
+</div>
+</nav>
+
+    </header>
+    <div class="container-fluid td-default td-outer">
+      <main role="main" class="td-main">
+        
+
+
+<script src="/2021/05/25/data-wrangling-using-tidyverse/index_files/header-attrs/header-attrs.js"></script>
+
+
+<div id="import-the-hotels.csv-file" class="section level2">
+<h2>Import the Hotels.csv file</h2>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --</code></pre>
+<pre><code>## v ggplot2 3.3.3     v purrr   0.3.4
+## v tibble  3.1.1     v dplyr   1.0.6
+## v tidyr   1.1.3     v stringr 1.4.0
+## v readr   1.4.0     v forcats 0.5.1</code></pre>
+<pre><code>## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>hotels &lt;- read_csv(&quot;hotels.csv&quot;)</code></pre>
+<pre><code>## 
+## -- Column specification --------------------------------------------------------
+## cols(
+##   .default = col_double(),
+##   hotel = col_character(),
+##   arrival_date_month = col_character(),
+##   meal = col_character(),
+##   country = col_character(),
+##   market_segment = col_character(),
+##   distribution_channel = col_character(),
+##   reserved_room_type = col_character(),
+##   assigned_room_type = col_character(),
+##   deposit_type = col_character(),
+##   agent = col_character(),
+##   company = col_character(),
+##   customer_type = col_character(),
+##   reservation_status = col_character(),
+##   reservation_status_date = col_date(format = &quot;&quot;)
+## )
+## i Use `spec()` for the full column specifications.</code></pre>
+<pre class="r"><code>head(hotels)</code></pre>
+<pre><code>## # A tibble: 6 x 32
+##   hotel is_canceled lead_time arrival_date_ye~ arrival_date_mo~ arrival_date_we~
+##   &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;            &lt;dbl&gt; &lt;chr&gt;                       &lt;dbl&gt;
+## 1 Reso~           0       342             2015 July                           27
+## 2 Reso~           0       737             2015 July                           27
+## 3 Reso~           0         7             2015 July                           27
+## 4 Reso~           0        13             2015 July                           27
+## 5 Reso~           0        14             2015 July                           27
+## 6 Reso~           0        14             2015 July                           27
+## # ... with 26 more variables: arrival_date_day_of_month &lt;dbl&gt;,
+## #   stays_in_weekend_nights &lt;dbl&gt;, stays_in_week_nights &lt;dbl&gt;, adults &lt;dbl&gt;,
+## #   children &lt;dbl&gt;, babies &lt;dbl&gt;, meal &lt;chr&gt;, country &lt;chr&gt;,
+## #   market_segment &lt;chr&gt;, distribution_channel &lt;chr&gt;, is_repeated_guest &lt;dbl&gt;,
+## #   previous_cancellations &lt;dbl&gt;, previous_bookings_not_canceled &lt;dbl&gt;,
+## #   reserved_room_type &lt;chr&gt;, assigned_room_type &lt;chr&gt;, booking_changes &lt;dbl&gt;,
+## #   deposit_type &lt;chr&gt;, agent &lt;chr&gt;, company &lt;chr&gt;, days_in_waiting_list &lt;dbl&gt;,
+## #   customer_type &lt;chr&gt;, adr &lt;dbl&gt;, required_car_parking_spaces &lt;dbl&gt;,
+## #   total_of_special_requests &lt;dbl&gt;, reservation_status &lt;chr&gt;,
+## #   reservation_status_date &lt;date&gt;</code></pre>
+<pre class="r"><code>names(hotels)</code></pre>
+<pre><code>##  [1] &quot;hotel&quot;                          &quot;is_canceled&quot;                   
+##  [3] &quot;lead_time&quot;                      &quot;arrival_date_year&quot;             
+##  [5] &quot;arrival_date_month&quot;             &quot;arrival_date_week_number&quot;      
+##  [7] &quot;arrival_date_day_of_month&quot;      &quot;stays_in_weekend_nights&quot;       
+##  [9] &quot;stays_in_week_nights&quot;           &quot;adults&quot;                        
+## [11] &quot;children&quot;                       &quot;babies&quot;                        
+## [13] &quot;meal&quot;                           &quot;country&quot;                       
+## [15] &quot;market_segment&quot;                 &quot;distribution_channel&quot;          
+## [17] &quot;is_repeated_guest&quot;              &quot;previous_cancellations&quot;        
+## [19] &quot;previous_bookings_not_canceled&quot; &quot;reserved_room_type&quot;            
+## [21] &quot;assigned_room_type&quot;             &quot;booking_changes&quot;               
+## [23] &quot;deposit_type&quot;                   &quot;agent&quot;                         
+## [25] &quot;company&quot;                        &quot;days_in_waiting_list&quot;          
+## [27] &quot;customer_type&quot;                  &quot;adr&quot;                           
+## [29] &quot;required_car_parking_spaces&quot;    &quot;total_of_special_requests&quot;     
+## [31] &quot;reservation_status&quot;             &quot;reservation_status_date&quot;</code></pre>
+</div>
+<div id="select-a-variable" class="section level2">
+<h2>Select a variable</h2>
+<pre class="r"><code># select(hotels, hotel,lead_time)
+hotels %&gt;%
+  select(hotel, lead_time) %&gt;%
+  arrange(desc(lead_time))</code></pre>
+<pre><code>## # A tibble: 119,390 x 2
+##    hotel        lead_time
+##    &lt;chr&gt;            &lt;dbl&gt;
+##  1 Resort Hotel       737
+##  2 Resort Hotel       709
+##  3 City Hotel         629
+##  4 City Hotel         629
+##  5 City Hotel         629
+##  6 City Hotel         629
+##  7 City Hotel         629
+##  8 City Hotel         629
+##  9 City Hotel         629
+## 10 City Hotel         629
+## # ... with 119,380 more rows</code></pre>
+<p>##Select a range of variable</p>
+<pre class="r"><code>hotels %&gt;%
+  select(hotel:arrival_date_month)</code></pre>
+<pre><code>## # A tibble: 119,390 x 5
+##    hotel        is_canceled lead_time arrival_date_year arrival_date_month
+##    &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;             &lt;dbl&gt; &lt;chr&gt;             
+##  1 Resort Hotel           0       342              2015 July              
+##  2 Resort Hotel           0       737              2015 July              
+##  3 Resort Hotel           0         7              2015 July              
+##  4 Resort Hotel           0        13              2015 July              
+##  5 Resort Hotel           0        14              2015 July              
+##  6 Resort Hotel           0        14              2015 July              
+##  7 Resort Hotel           0         0              2015 July              
+##  8 Resort Hotel           0         9              2015 July              
+##  9 Resort Hotel           1        85              2015 July              
+## 10 Resort Hotel           1        75              2015 July              
+## # ... with 119,380 more rows</code></pre>
+<pre class="r"><code>hotels %&gt;%
+  select(starts_with(&quot;arrival&quot;))</code></pre>
+<pre><code>## # A tibble: 119,390 x 4
+##    arrival_date_year arrival_date_mon~ arrival_date_week_n~ arrival_date_day_of~
+##                &lt;dbl&gt; &lt;chr&gt;                            &lt;dbl&gt;                &lt;dbl&gt;
+##  1              2015 July                                27                    1
+##  2              2015 July                                27                    1
+##  3              2015 July                                27                    1
+##  4              2015 July                                27                    1
+##  5              2015 July                                27                    1
+##  6              2015 July                                27                    1
+##  7              2015 July                                27                    1
+##  8              2015 July                                27                    1
+##  9              2015 July                                27                    1
+## 10              2015 July                                27                    1
+## # ... with 119,380 more rows</code></pre>
+</div>
+<div id="select-a-range-of-rows-cases" class="section level2">
+<h2>Select a range of rows / cases</h2>
+<pre class="r"><code>hotels %&gt;%
+  # we will select 1st, 5th,8th and 10th row
+  slice(c(1,5,8,10))</code></pre>
+<pre><code>## # A tibble: 4 x 32
+##   hotel is_canceled lead_time arrival_date_ye~ arrival_date_mo~ arrival_date_we~
+##   &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;            &lt;dbl&gt; &lt;chr&gt;                       &lt;dbl&gt;
+## 1 Reso~           0       342             2015 July                           27
+## 2 Reso~           0        14             2015 July                           27
+## 3 Reso~           0         9             2015 July                           27
+## 4 Reso~           1        75             2015 July                           27
+## # ... with 26 more variables: arrival_date_day_of_month &lt;dbl&gt;,
+## #   stays_in_weekend_nights &lt;dbl&gt;, stays_in_week_nights &lt;dbl&gt;, adults &lt;dbl&gt;,
+## #   children &lt;dbl&gt;, babies &lt;dbl&gt;, meal &lt;chr&gt;, country &lt;chr&gt;,
+## #   market_segment &lt;chr&gt;, distribution_channel &lt;chr&gt;, is_repeated_guest &lt;dbl&gt;,
+## #   previous_cancellations &lt;dbl&gt;, previous_bookings_not_canceled &lt;dbl&gt;,
+## #   reserved_room_type &lt;chr&gt;, assigned_room_type &lt;chr&gt;, booking_changes &lt;dbl&gt;,
+## #   deposit_type &lt;chr&gt;, agent &lt;chr&gt;, company &lt;chr&gt;, days_in_waiting_list &lt;dbl&gt;,
+## #   customer_type &lt;chr&gt;, adr &lt;dbl&gt;, required_car_parking_spaces &lt;dbl&gt;,
+## #   total_of_special_requests &lt;dbl&gt;, reservation_status &lt;chr&gt;,
+## #   reservation_status_date &lt;date&gt;</code></pre>
+<pre class="r"><code>hotels %&gt;%
+  filter(hotel == &quot;City Hotel&quot;)</code></pre>
+<pre><code>## # A tibble: 79,330 x 32
+##    hotel      is_canceled lead_time arrival_date_year arrival_date_month
+##    &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;             &lt;dbl&gt; &lt;chr&gt;             
+##  1 City Hotel           0         6              2015 July              
+##  2 City Hotel           1        88              2015 July              
+##  3 City Hotel           1        65              2015 July              
+##  4 City Hotel           1        92              2015 July              
+##  5 City Hotel           1       100              2015 July              
+##  6 City Hotel           1        79              2015 July              
+##  7 City Hotel           0         3              2015 July              
+##  8 City Hotel           1        63              2015 July              
+##  9 City Hotel           1        62              2015 July              
+## 10 City Hotel           1        62              2015 July              
+## # ... with 79,320 more rows, and 27 more variables:
+## #   arrival_date_week_number &lt;dbl&gt;, arrival_date_day_of_month &lt;dbl&gt;,
+## #   stays_in_weekend_nights &lt;dbl&gt;, stays_in_week_nights &lt;dbl&gt;, adults &lt;dbl&gt;,
+## #   children &lt;dbl&gt;, babies &lt;dbl&gt;, meal &lt;chr&gt;, country &lt;chr&gt;,
+## #   market_segment &lt;chr&gt;, distribution_channel &lt;chr&gt;, is_repeated_guest &lt;dbl&gt;,
+## #   previous_cancellations &lt;dbl&gt;, previous_bookings_not_canceled &lt;dbl&gt;,
+## #   reserved_room_type &lt;chr&gt;, assigned_room_type &lt;chr&gt;, booking_changes &lt;dbl&gt;,
+## #   deposit_type &lt;chr&gt;, agent &lt;chr&gt;, company &lt;chr&gt;, days_in_waiting_list &lt;dbl&gt;,
+## #   customer_type &lt;chr&gt;, adr &lt;dbl&gt;, required_car_parking_spaces &lt;dbl&gt;,
+## #   total_of_special_requests &lt;dbl&gt;, reservation_status &lt;chr&gt;,
+## #   reservation_status_date &lt;date&gt;</code></pre>
+<pre class="r"><code>hotels %&gt;%
+  filter( 
+    adults == 0,
+    children &gt;= 1 &amp; babies&gt;=1   # &amp; means and
+    ) %&gt;% 
+  select(adults, babies, children)</code></pre>
+<pre><code>## # A tibble: 3 x 3
+##   adults babies children
+##    &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;
+## 1      0      1        2
+## 2      0      1        2
+## 3      0      1        2</code></pre>
+</div>
+<div id="summarizing" class="section level2">
+<h2>Summarizing</h2>
+<pre class="r"><code>hotels %&gt;%
+ #count(market_segment,sort = TRUE)
+count(hotel,market_segment,sort = TRUE)</code></pre>
+<pre><code>## # A tibble: 14 x 3
+##    hotel        market_segment     n
+##    &lt;chr&gt;        &lt;chr&gt;          &lt;int&gt;
+##  1 City Hotel   Online TA      38748
+##  2 Resort Hotel Online TA      17729
+##  3 City Hotel   Offline TA/TO  16747
+##  4 City Hotel   Groups         13975
+##  5 Resort Hotel Offline TA/TO   7472
+##  6 Resort Hotel Direct          6513
+##  7 City Hotel   Direct          6093
+##  8 Resort Hotel Groups          5836
+##  9 City Hotel   Corporate       2986
+## 10 Resort Hotel Corporate       2309
+## 11 City Hotel   Complementary    542
+## 12 City Hotel   Aviation         237
+## 13 Resort Hotel Complementary    201
+## 14 City Hotel   Undefined          2</code></pre>
+</div>
+<div id="mutation" class="section level2">
+<h2>Mutation</h2>
+<pre class="r"><code>little_ones &lt;- hotels
+
+little_ones %&lt;&gt;%
+  mutate(little_ones = children + babies) %&gt;%
+  select(children, babies, little_ones) %&gt;%
+  arrange(desc(little_ones))</code></pre>
+<div id="summary-stats" class="section level3">
+<h3>summary stats</h3>
+<pre class="r"><code>summary &lt;-hotels %&gt;%
+  group_by(hotel) %&gt;%
+  summarise(mean_adr = mean(adr))
+summary</code></pre>
+<pre><code>## # A tibble: 2 x 2
+##   hotel        mean_adr
+##   &lt;chr&gt;           &lt;dbl&gt;
+## 1 City Hotel      105. 
+## 2 Resort Hotel     95.0</code></pre>
+</div>
+</div>
+
+
+
+      </main>
+      
+<footer class="bg-dark py-5 row d-print-none">
+  <div class="container-fluid mx-sm-5">
+    <div class="row">
+      <div class="col-6 col-sm-4 text-xs-center order-sm-2">
+        
+      </div>
+      <div class="col-6 col-sm-4 text-right text-xs-center order-sm-3">
+        
+      </div>
+      <div class="col-12 col-sm-4 text-center py-2 order-sm-2">
+        
+        
+	
+		<p class="mt-2"><a href="/about/">Fundamentals of Data Analytics</a></p>
+	
+      </div>
+    </div>
+  </div>
 </footer>
 
-        </div>
 
-    
-    <div id="bg"></div>
-
-</body>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
 
 
-    
-    <script src=/assets/js/jquery.min.js></script>
-    <script src=/assets/js/browser.min.js></script>
-    <script src=/assets/js/breakpoints.min.js></script>
-    <script src=/assets/js/util.js></script>
-    <script src=/assets/js/main.js></script>
 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.min.5c74b870c6953931a705f390a49c7e4c0a842ec5c83b24354758dd674343ed0d.js" integrity="sha256-XHS4cMaVOTGnBfOQpJx&#43;TAqELsXIOyQ1R1jdZ0ND7Q0=" crossorigin="anonymous"></script>
+
+
+
+
+  </body>
 </html>

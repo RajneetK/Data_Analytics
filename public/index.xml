@@ -1,142 +1,18 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>RajneetK-Fundamentals of Analytics</title>
+    <title>RajneetK-Fundamentals of Analytics – RajneetK-Fundamentals of Analytics</title>
     <link>/</link>
     <description>Recent content on RajneetK-Fundamentals of Analytics</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 22 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Final Project</title>
-      <link>/2021/06/22/final-project/</link>
-      <pubDate>Tue, 22 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/2021/06/22/final-project/</guid>
-      <description>Data exploration of monthly rent index in USA for 2010 - 2017
-Introduction:Problem Statement: The goal of this project is to investigate data for median rent estimates (rent index) and rent per square foot over a 7-year period across counties and metropolitan areas in the United States in order to help citizens determine how much they would spend on rent in a specific location.</description>
-    </item>
+    <lastBuildDate>Tue, 22 Jun 2021 00:00:00 +0000</lastBuildDate>
     
-    <item>
-      <title>A05 Assignment: EDA2</title>
-      <link>/2021/06/18/a05-assignment-eda2/</link>
-      <pubDate>Fri, 18 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/2021/06/18/a05-assignment-eda2/</guid>
-      <description>Exploratory Data Analysis of the Hotel Booking Demand
-IntroductionThis data set contains booking information for a city hotel and a resort hotel, including when the booking was made, length of stay, number of adults, children, and/or babies, and number of available parking spaces, among other things. All personally identifying information has been extracted from the data.To gain insight from the data, we will conduct exploratory data analysis.</description>
-    </item>
+	  <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
-    <item>
-      <title>Fitting and interpreting models</title>
-      <link>/2021/06/15/fitting-and-interpreting-models/</link>
-      <pubDate>Tue, 15 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/2021/06/15/fitting-and-interpreting-models/</guid>
-      <description>#Data: Paris Paintings
-pp &amp;lt;- read_csv(&amp;quot;paris-paintings.csv&amp;quot;, na = c(&amp;quot;n/a&amp;quot;, &amp;quot;&amp;quot;, &amp;quot;NA&amp;quot;))## ## -- Column specification --------------------------------------------------------## cols(## .default = col_double(),## name = col_character(),## sale = col_character(),## lot = col_character(),## dealer = col_character(),## origin_author = col_character(),## origin_cat = col_character(),## school_pntg = col_character(),## price = col_number(),## subject = col_character(),## authorstandard = col_character(),## authorstyle = col_character(),## author = col_character(),## winningbidder = col_character(),## winningbiddertype = col_character(),## endbuyer = col_character(),## type_intermed = col_character(),## Shape = col_character(),## material = col_character(),## mat = col_character(),## materialCat = col_character()## )## i Use `spec()` for the full column specifications.</description>
-    </item>
     
-    <item>
-      <title>A03 Assignment EDA1</title>
-      <link>/2021/06/04/a03-assignment-eda1/</link>
-      <pubDate>Fri, 04 Jun 2021 00:00:00 +0000</pubDate>
       
-      <guid>/2021/06/04/a03-assignment-eda1/</guid>
-      <description>Import Lego_sales.csv fileIn this assignment we will work with the tidyverse package as usual.We will simulate the data from Lego sales for a sample of customers who bought Legos in the US. The dataset is called lego_sales and is loaded in the data folder.
-library(tidyverse)## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --## v ggplot2 3.3.3 v purrr 0.3.4## v tibble 3.1.1 v dplyr 1.0.6## v tidyr 1.</description>
-    </item>
+      
     
-    <item>
-      <title>Data IO</title>
-      <link>/2021/06/01/data-io/</link>
-      <pubDate>Tue, 01 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/2021/06/01/data-io/</guid>
-      <description>Import Nobel.csv filelibrary(tidyverse)## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --## v ggplot2 3.3.3 v purrr 0.3.4## v tibble 3.1.1 v dplyr 1.0.6## v tidyr 1.1.3 v stringr 1.4.0## v readr 1.4.0 v forcats 0.5.1## -- Conflicts ------------------------------------------ tidyverse_conflicts() --## x dplyr::filter() masks stats::filter()## x dplyr::lag() masks stats::lag()nobel &amp;lt;- read_csv(file =&amp;quot;nobel.csv&amp;quot;)## ## -- Column specification --------------------------------------------------------## cols(## .</description>
-    </item>
-    
-    <item>
-      <title>Data IO- Data Recoding</title>
-      <link>/2021/06/01/data-io-data-recoding/</link>
-      <pubDate>Tue, 01 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/2021/06/01/data-io-data-recoding/</guid>
-      <description>Import and Transform religion-income .csv filelibrary(tidyverse)## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --## v ggplot2 3.3.3 v purrr 0.3.4## v tibble 3.1.1 v dplyr 1.0.6## v tidyr 1.1.3 v stringr 1.4.0## v readr 1.4.0 v forcats 0.5.1## -- Conflicts ------------------------------------------ tidyverse_conflicts() --## x dplyr::filter() masks stats::filter()## x dplyr::lag() masks stats::lag()library(readxl)rel_inc &amp;lt;- read_excel(&amp;quot;relig-income.xlsx&amp;quot;)rel_inc_long = rel_inc %&amp;gt;%rename( religion = `Religious tradition`, n = `Sample Size` ) %&amp;gt;%pivot_longer( cols = -c(religion, n), # all but religion and n names_to = &amp;quot;income&amp;quot;, values_to = &amp;quot;proportion&amp;quot; )%&amp;gt;%mutate(frequency = round(proportion * n))Visualize the barplotlibrary(tidyverse)rel_inc_long &amp;lt;- rel_inc_long %&amp;gt;%mutate(religion = case_when(religion == &amp;quot;Evangelical Protestant&amp;quot; ~ &amp;quot;Ev.</description>
-    </item>
-    
-    <item>
-      <title>Assignment A02</title>
-      <link>/2021/05/28/assignment-a02/</link>
-      <pubDate>Fri, 28 May 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/2021/05/28/assignment-a02/</guid>
-      <description>Exploring Phishing Dataset for Machine Learning with Tidyverse.
-Description:
-The Phishing dataset is downloaded from kaggle website.
-Dataset information
-This dataset contains 48 features taken from 5000 phishing web pages and 5000 legitimate web pages downloaded between January and May and June 2015.
-Tidyverse and dplyr library would be used.
-Importing data from phishing.csv filelibrary(tidyverse)## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --## v ggplot2 3.</description>
-    </item>
-    
-    <item>
-      <title>Data Wrangling using tidyverse</title>
-      <link>/2021/05/25/data-wrangling-using-tidyverse/</link>
-      <pubDate>Tue, 25 May 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/2021/05/25/data-wrangling-using-tidyverse/</guid>
-      <description>Import the Hotels.csv filelibrary(tidyverse)## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --## v ggplot2 3.3.3 v purrr 0.3.4## v tibble 3.1.1 v dplyr 1.0.6## v tidyr 1.1.3 v stringr 1.4.0## v readr 1.4.0 v forcats 0.5.1## -- Conflicts ------------------------------------------ tidyverse_conflicts() --## x dplyr::filter() masks stats::filter()## x dplyr::lag() masks stats::lag()hotels &amp;lt;- read_csv(&amp;quot;hotels.csv&amp;quot;)## ## -- Column specification --------------------------------------------------------## cols(## .</description>
-    </item>
-    
-    <item>
-      <title>Fun with R</title>
-      <link>/2021/05/25/fun-with-r/</link>
-      <pubDate>Tue, 25 May 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/2021/05/25/fun-with-r/</guid>
-      <description>Variables and Numbersx&amp;lt;- 1y = 23 -&amp;gt; zx+y## [1] 3x*z## [1] 3y/x## [1] 2Vectorsa &amp;lt;- 0:10print(a)## [1] 0 1 2 3 4 5 6 7 8 9 10b &amp;lt;- 10:-4print(b)## [1] 10 9 8 7 6 5 4 3 2 1 0 -1 -2 -3 -4class(a)## [1] &amp;quot;integer&amp;quot;str(a)## int [1:11] 0 1 2 3 4 5 6 7 8 9 .</description>
-    </item>
-    
-    <item>
-      <title>Assignment A01 based on mtcars dataset</title>
-      <link>/2021/05/20/assignment-a01-on-mtcars-dataset/</link>
-      <pubDate>Thu, 20 May 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/2021/05/20/assignment-a01-on-mtcars-dataset/</guid>
-      <description>Our analysis will start with the data and then show different links between the car’s design and the miles it can achieve per gallon. Below is a detailed report with our code and methods.
-Description:
-The data was extracted from the US magazine Motor Trend 1974 and includes fuel consumption and 10 car design and performance aspects for 32 cars (1973-74 models).
-Source Data:
-We have used the mtcars dataset integrated in R.</description>
-    </item>
-    
-    <item>
-      <title>Data and Visualization</title>
-      <link>/2021/05/18/data-and-visualization/</link>
-      <pubDate>Tue, 18 May 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/2021/05/18/data-and-visualization/</guid>
-      <description>Data Visualization Exerciselibrary(dplyr)starwars## # A tibble: 87 x 14## name height mass hair_color skin_color eye_color birth_year sex gender## &amp;lt;chr&amp;gt; &amp;lt;int&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt; ## 1 Luke S~ 172 77 blond fair blue 19 male mascu~## 2 C-3PO 167 75 &amp;lt;NA&amp;gt; gold yellow 112 none mascu~## 3 R2-D2 96 32 &amp;lt;NA&amp;gt; white, bl~ red 33 none mascu~## 4 Darth ~ 202 136 none white yellow 41.</description>
-    </item>
-    
-    <item>
-      <title>Data visualisation using ggplot2</title>
-      <link>/2021/05/18/data-visulization-using-ggplot2/</link>
-      <pubDate>Tue, 18 May 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/2021/05/18/data-visulization-using-ggplot2/</guid>
-      <description>Palmer Penguins Data Visualisation</description>
-    </item>
-    
-    <item>
-      <title>Fundamentals of Data Analytics</title>
-      <link>/about/</link>
-      <pubDate>Thu, 05 May 2016 21:48:51 -0700</pubDate>
-      
-      <guid>/about/</guid>
-      <description>overview This is a website for learning the course &amp;ldquo;Fundamentals of Data Analytics&amp;rdquo;.</description>
-    </item>
     
   </channel>
 </rss>

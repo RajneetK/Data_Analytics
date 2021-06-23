@@ -1,58 +1,236 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Data IO- Data Recoding</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="/assets/css/main.css"/>
-    <link rel="canonical" href="/2021/06/01/data-io-data-recoding/">
-    <noscript><link rel="stylesheet" href="/assets/css/noscript.css"/></noscript>
-    <style>
-        :root{--site-background : url("/images/bg.jpg")};
-    </style> 
-    
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-</head>
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.83.1" /><META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 
 
-<body class="is-preload">
+<link rel="shortcut icon" href="/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-    
-        <div id="wrapper">
+<title>Data IO- Data Recoding | RajneetK-Fundamentals of Analytics</title>
+<meta name="description" content="This the website for my Course Fundamentals of Analytics"><meta property="og:title" content="Data IO- Data Recoding" />
+<meta property="og:description" content="Import and Transform religion-income .csv filelibrary(tidyverse)## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --## v ggplot2 3.3.3 v purrr 0.3.4## v tibble 3.1.1 v dplyr 1.0.6## v tidyr 1.1.3 v stringr 1.4.0## v readr 1.4.0 v forcats 0.5.1## -- Conflicts ------------------------------------------ tidyverse_conflicts() --## x dplyr::filter() masks stats::filter()## x dplyr::lag() masks stats::lag()library(readxl)rel_inc &lt;- read_excel(&quot;relig-income.xlsx&quot;)rel_inc_long = rel_inc %&gt;%rename( religion = `Religious tradition`, n = `Sample Size` ) %&gt;%pivot_longer( cols = -c(religion, n), # all but religion and n names_to = &quot;income&quot;, values_to = &quot;proportion&quot; )%&gt;%mutate(frequency = round(proportion * n))Visualize the barplotlibrary(tidyverse)rel_inc_long &lt;- rel_inc_long %&gt;%mutate(religion = case_when(religion == &quot;Evangelical Protestant&quot; ~ &quot;Ev." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/2021/06/01/data-io-data-recoding/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-06-01T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2021-06-01T00:00:00&#43;00:00" />
 
-            
-                <header id="header">
-                    <div class="logo">
-                        <span class="icon fa-gem"></span>
-                    </div>
-                    <div class="content">
-                        <div class="inner">
-                            <h1><a href="/">Go Home</a></h1>
-                            <p>
-                                Nothing to see here
-                            </p>
-                        </div>
-                    </div>
-                </header>
+<meta itemprop="name" content="Data IO- Data Recoding">
+<meta itemprop="description" content="Import and Transform religion-income .csv filelibrary(tidyverse)## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --## v ggplot2 3.3.3 v purrr 0.3.4## v tibble 3.1.1 v dplyr 1.0.6## v tidyr 1.1.3 v stringr 1.4.0## v readr 1.4.0 v forcats 0.5.1## -- Conflicts ------------------------------------------ tidyverse_conflicts() --## x dplyr::filter() masks stats::filter()## x dplyr::lag() masks stats::lag()library(readxl)rel_inc &lt;- read_excel(&quot;relig-income.xlsx&quot;)rel_inc_long = rel_inc %&gt;%rename( religion = `Religious tradition`, n = `Sample Size` ) %&gt;%pivot_longer( cols = -c(religion, n), # all but religion and n names_to = &quot;income&quot;, values_to = &quot;proportion&quot; )%&gt;%mutate(frequency = round(proportion * n))Visualize the barplotlibrary(tidyverse)rel_inc_long &lt;- rel_inc_long %&gt;%mutate(religion = case_when(religion == &quot;Evangelical Protestant&quot; ~ &quot;Ev."><meta itemprop="datePublished" content="2021-06-01T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2021-06-01T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="264">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Data IO- Data Recoding"/>
+<meta name="twitter:description" content="Import and Transform religion-income .csv filelibrary(tidyverse)## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --## v ggplot2 3.3.3 v purrr 0.3.4## v tibble 3.1.1 v dplyr 1.0.6## v tidyr 1.1.3 v stringr 1.4.0## v readr 1.4.0 v forcats 0.5.1## -- Conflicts ------------------------------------------ tidyverse_conflicts() --## x dplyr::filter() masks stats::filter()## x dplyr::lag() masks stats::lag()library(readxl)rel_inc &lt;- read_excel(&quot;relig-income.xlsx&quot;)rel_inc_long = rel_inc %&gt;%rename( religion = `Religious tradition`, n = `Sample Size` ) %&gt;%pivot_longer( cols = -c(religion, n), # all but religion and n names_to = &quot;income&quot;, values_to = &quot;proportion&quot; )%&gt;%mutate(frequency = round(proportion * n))Visualize the barplotlibrary(tidyverse)rel_inc_long &lt;- rel_inc_long %&gt;%mutate(religion = case_when(religion == &quot;Evangelical Protestant&quot; ~ &quot;Ev."/>
 
-                
-<footer id="footer">
-    <p class="copyright">&copy; Design: <a href="https://github.com/d-asnaghi">d-asnaghi</a> and <a href="https://html5up.net">HTML5 UP</a>.</p>
+
+
+
+<link rel="preload" href="/scss/main.scss" as="style">
+<link href="/scss/main.scss" rel="stylesheet" integrity="">
+
+
+<script
+  src="https://code.jquery.com/jquery-3.5.1.min.js"
+  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+  crossorigin="anonymous"></script>
+
+
+
+
+
+  </head>
+  <body class="td-page">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+        <a class="navbar-brand" href="/">
+		<span class="navbar-logo"></span><span class="text-uppercase font-weight-bold">RajneetK-Fundamentals of Analytics</span>
+	</a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="/about/" ><span>About</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="https://github.com/RajneetK" target="_blank" ><span>GitHub</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a class="nav-link" href="https://twitter.com/Rajneet74968819" target="_blank" ><span>Twitter</span></a>
+			</li>
+			
+			
+			
+		</ul>
+	</div>
+	<div class="navbar-nav d-none d-lg-block">
+</div>
+</nav>
+
+    </header>
+    <div class="container-fluid td-default td-outer">
+      <main role="main" class="td-main">
+        
+
+
+<script src="/2021/06/01/data-io-data-recoding/index_files/header-attrs/header-attrs.js"></script>
+
+
+<div id="import-and-transform-religion-income-.csv-file" class="section level2">
+<h2>Import and Transform religion-income .csv file</h2>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --</code></pre>
+<pre><code>## v ggplot2 3.3.3     v purrr   0.3.4
+## v tibble  3.1.1     v dplyr   1.0.6
+## v tidyr   1.1.3     v stringr 1.4.0
+## v readr   1.4.0     v forcats 0.5.1</code></pre>
+<pre><code>## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>library(readxl)
+rel_inc &lt;- read_excel(&quot;relig-income.xlsx&quot;)
+rel_inc_long = rel_inc %&gt;%
+  rename( 
+    religion = `Religious tradition`, 
+    n = `Sample Size` 
+  ) %&gt;%
+  pivot_longer( 
+    cols = -c(religion, n),   # all but religion and n 
+    names_to = &quot;income&quot;,  
+    values_to = &quot;proportion&quot; 
+  )%&gt;%
+  mutate(frequency = round(proportion * n))</code></pre>
+</div>
+<div id="visualize-the-barplot" class="section level2">
+<h2>Visualize the barplot</h2>
+<pre class="r"><code>library(tidyverse)
+rel_inc_long &lt;- rel_inc_long %&gt;%
+  mutate(religion = case_when(
+    religion == &quot;Evangelical Protestant&quot;           ~ &quot;Ev. Protestant&quot;,
+    religion == &quot;Historically Black Protestant&quot;    ~ &quot;Hist. Black Protestant&quot;,
+    religion == &#39;Unaffiliated (religious &quot;nones&quot;)&#39; ~ &quot;Unaffiliated&quot;,
+    TRUE                                           ~ religion
+  ))
+rel_inc_long &lt;- rel_inc_long %&gt;%
+  mutate(religion = fct_rev(religion))
+ggplot(rel_inc_long, aes(y = religion, x = frequency)) +
+  geom_col()</code></pre>
+<p><img src="/2021/06/01/data-io-data-recoding/index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+</div>
+<div id="fill-barplot-with-income" class="section level2">
+<h2>Fill barplot with Income</h2>
+<pre class="r"><code>ggplot(rel_inc_long, aes(y = religion, x = frequency,fill= income)) +
+  geom_col(position=&quot;fill&quot;)+
+ scale_fill_viridis_d()+
+  theme_minimal()</code></pre>
+<p><img src="/2021/06/01/data-io-data-recoding/index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+</div>
+<div id="change-theme-of-plot" class="section level2">
+<h2>Change theme of plot</h2>
+<pre class="r"><code>ggplot(rel_inc_long, aes(y = religion, x = frequency, fill = income)) +
+  geom_col(position = &quot;fill&quot;) +
+  scale_fill_viridis_d() +
+  theme_minimal() +
+  theme(legend.position = &quot;bottom&quot;)+
+    guides(fill = guide_legend(nrow = 2, byrow = TRUE))</code></pre>
+<p><img src="/2021/06/01/data-io-data-recoding/index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<pre class="r"><code>ggplot(rel_inc_long, aes(y = religion, x = frequency, fill = income)) +
+  geom_col(position = &quot;fill&quot;) +
+  scale_fill_viridis_d() +
+  theme_minimal() +
+  theme(legend.position = &quot;bottom&quot;) +
+  guides(fill = guide_legend(nrow = 2, byrow = TRUE)) +
+  labs(
+    x = &quot;Proportion&quot;, y = &quot;&quot;, 
+    title = &quot;Income distribution by religious group&quot;, 
+    subtitle = &quot;Source: Pew Research Center, Religious Landscape Study&quot;, 
+    fill = &quot;Income&quot; 
+    )</code></pre>
+<p><img src="/2021/06/01/data-io-data-recoding/index_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
+</div>
+
+
+
+      </main>
+      
+<footer class="bg-dark py-5 row d-print-none">
+  <div class="container-fluid mx-sm-5">
+    <div class="row">
+      <div class="col-6 col-sm-4 text-xs-center order-sm-2">
+        
+      </div>
+      <div class="col-6 col-sm-4 text-right text-xs-center order-sm-3">
+        
+      </div>
+      <div class="col-12 col-sm-4 text-center py-2 order-sm-2">
+        
+        
+	
+		<p class="mt-2"><a href="/about/">Fundamentals of Data Analytics</a></p>
+	
+      </div>
+    </div>
+  </div>
 </footer>
 
-        </div>
 
-    
-    <div id="bg"></div>
-
-</body>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
 
 
-    
-    <script src=/assets/js/jquery.min.js></script>
-    <script src=/assets/js/browser.min.js></script>
-    <script src=/assets/js/breakpoints.min.js></script>
-    <script src=/assets/js/util.js></script>
-    <script src=/assets/js/main.js></script>
 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.min.5c74b870c6953931a705f390a49c7e4c0a842ec5c83b24354758dd674343ed0d.js" integrity="sha256-XHS4cMaVOTGnBfOQpJx&#43;TAqELsXIOyQ1R1jdZ0ND7Q0=" crossorigin="anonymous"></script>
+
+
+
+
+  </body>
 </html>
