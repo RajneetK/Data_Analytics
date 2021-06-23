@@ -1,7 +1,7 @@
 # Base information
 baseURL = "https://example.com"
 languageCode = "en-gb"
-title = "Data Analytics"
+title = "Sam Robbins"
 # theme = "hugo-developer-portfolio"
 googleAnalytics = ""
 
