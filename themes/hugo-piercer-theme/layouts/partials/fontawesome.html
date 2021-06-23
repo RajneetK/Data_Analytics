@@ -1,9 +1,0 @@
-{{ $kit := "" }}
-
-{{ if and $.Site.Params.fa.kit}}
-{{ $kit = $.Site.Params.fa.kit }}
-{{ end }}
-
-{{ $src := printf "%s" $kit}}
-
-<script defer src="{{ $src }}" crossorigin="anonymous"></script>
