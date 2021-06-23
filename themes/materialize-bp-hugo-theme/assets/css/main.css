@@ -1,0 +1,23 @@
+figure > img {
+    display: block;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+}
+
+.list-inline-item {
+    display: inline-block;
+}
+
+h1.card-title, h2.card-title {
+    margin-top: 0px;
+}
+
+h1.card-title > a {
+    font-size: 2.3rem;
+}
+
+/** Must be set for inline text at the moment **/
+a { color: #03a9f4; /* light-blue */ }
+.pagination li.active { background-color: #ff9800; /* orange */ }
+blockquote { border-left: 5px solid #ff9800; }

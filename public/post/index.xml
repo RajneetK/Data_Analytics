@@ -38,16 +38,6 @@ pp &amp;lt;- read_csv(&amp;quot;paris-paintings.csv&amp;quot;, na = c(&amp;quot;
     </item>
     
     <item>
-      <title>A04: Shiny App</title>
-      <link>/2021/06/12/a04-shiny-app/</link>
-      <pubDate>Sat, 12 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/2021/06/12/a04-shiny-app/</guid>
-      <description>Global mobility ReportThis interactive visualization is the positive and negative percentages representing an increase or decrease from the baseline period of the global mobility report related to Argentina,Australia,Brazil.
-</description>
-    </item>
-    
-    <item>
       <title>A03 Assignment EDA1</title>
       <link>/2021/06/04/a03-assignment-eda1/</link>
       <pubDate>Fri, 04 Jun 2021 00:00:00 +0000</pubDate>

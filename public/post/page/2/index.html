@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html><head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  
+  <meta
+    name="description"
+    content="This the website for my Course Fundamentals of Analytics"
+  />
+  
+  <title>RajneetK-Fundamentals of Analytics</title>
+  
+  <script src="https://unpkg.com/tailwindcss-jit-cdn@1.3.0/dist/tailwindcss-jit-cdn.umd.min.js"></script>
+
+  <style>
+    @font-face {
+      font-family: "Bree Serif";
+      src: url("./BreeSerif-Regular.ttf") format("truetype");
+    }
+    .font-bree {
+      font-family: "Bree Serif", serif;
+    }
+    .hide {
+      display: none;
+    }
+    .active {
+      background-color: #4299e1;
+      color: white;
+    }
+    .active:hover {
+      color: white;
+    }
+  </style>
+</head>
+<body><header class="text-gray-700 body-font sticky top-0 bg-white z-10">
+  <div
+    class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center"
+  >
+    <a
+      class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
+      href="/"
+    ><svg
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="w-10 h-10 text-white p-2 bg-blue-500 rounded-full"
+  viewBox="0 0 24 24"
+>
+  <path
+    d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+  ></path>
+</svg>
+<span class="ml-3 text-xl"></span></a>
+    <nav
+      class="md:ml-auto flex flex-wrap items-center text-base justify-center "
+    >
+      
+      
+      <a
+      href="/about/"
+      class="mr-2 px-2 rounded cursor-pointer select-none hover:text-gray-900"
+      >About</a>
+      
+      <a
+      href="https://github.com/RajneetK"
+      class="mr-2 px-2 rounded cursor-pointer select-none hover:text-gray-900"
+      >GitHub</a>
+      
+      <a
+      href="https://twitter.com/Rajneet74968819"
+      class="mr-2 px-2 rounded cursor-pointer select-none hover:text-gray-900"
+      >Twitter</a>
+      
+    </nav>
+  </div>
+</header>
+<div id="content">
+
+<section class="text-gray-700 body-font">
+  <div class="container px-5 py-8 mx-auto"><div class="flex flex-wrap sm:flex-row flex-col py-6 mb-12">
+  
+</div>
+
+    
+
+<div>
+  
+
+  <div class="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4">
+    
+    <a target="_blank" rel="noopener" href=""
+      class="card p-4 md:w-1/3 sm:mb-4 mb-6 hover:shadow-xl hover:bg-gray-400 transition duration-200 ease-in rounded-lg post">
+      <div class="rounded-lg h-64 overflow-hidden relative">
+        
+        <span class="bg-blue-500 text-white px-3 py-1 tracking-widest text-xs absolute right-0 top-0 rounded-bl">Post</span>
+        <h2
+          class="text-white px-2 py-1 tracking-widest text-2xl leading-tight font-extrabold font-bree text-center w-full h-full flex justify-center items-center absolute top-0 left-0">
+          Data and Visualization
+        </h2>
+        <p
+          class="text-white px-2 py-1 tracking-widest text-md leading-tight font-light w-full text-center absolute bottom-0 left-0">
+          
+        </p>
+      </div>
+    </a>
+    
+    <a target="_blank" rel="noopener" href=""
+      class="card p-4 md:w-1/3 sm:mb-4 mb-6 hover:shadow-xl hover:bg-gray-400 transition duration-200 ease-in rounded-lg post">
+      <div class="rounded-lg h-64 overflow-hidden relative">
+        
+        <span class="bg-blue-500 text-white px-3 py-1 tracking-widest text-xs absolute right-0 top-0 rounded-bl">Post</span>
+        <h2
+          class="text-white px-2 py-1 tracking-widest text-2xl leading-tight font-extrabold font-bree text-center w-full h-full flex justify-center items-center absolute top-0 left-0">
+          Data visualisation using ggplot2
+        </h2>
+        <p
+          class="text-white px-2 py-1 tracking-widest text-md leading-tight font-light w-full text-center absolute bottom-0 left-0">
+          
+        </p>
+      </div>
+    </a>
+    
+  </div>
+
+</div>
+
+
+  </div>
+</section>
+
+
+        </div><footer class="text-gray-700 body-font">
+  <div
+    class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col"
+  >
+    <p
+      class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-1 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4"
+    >
+      <a href="/">&copy; </a>
+    </p>
+    <span
+      class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start"
+    >
+         
+    </span>
+  </div>
+</footer>
+
+
+<script>
+  const allTypes = ["all",  "posts",];
+  const filter = (event, type) => {
+    const isMultiPage = !!document.querySelector('nav.multipage');
+
+    if (isMultiPage) {
+      return;
+    }
+
+    const isActive = event.target.classList.contains("active");
+
+    showAll();
+    if (!isActive) {
+      hideAll();
+      event.target.classList.add("active");
+      if (type !== "other") {
+        document
+          .querySelectorAll(`nav:not(.multipage) .${type}`)
+          .forEach((item) => item.classList.remove("hide"));
+      } else {
+        document
+          .querySelectorAll(
+            `.card${specificTypes.map((type) => `:not(.${type})`).join("")}`
+          )
+          .forEach((item) => item.classList.remove("hide"));
+      }
+    }
+  };
+
+  const showAll = () => {
+    allTypes.forEach((type) => {
+      document
+        .querySelectorAll(`nav:not(.multipage) .${type}`)
+        .forEach((item) => item.classList.remove("hide"));
+      document
+        .querySelectorAll(`nav:not(.multipage) .filter-${type}`)
+        .forEach((filterItem) => filterItem.classList.remove("active"));
+    });
+  };
+
+  const hideAll = () => {
+    allTypes.forEach((type) => {
+      document
+        .querySelectorAll(`.container a.card`)
+        .forEach((item) => item.classList.add("hide"));
+    });
+  };
+
+  allTypes.forEach((type) => {
+    document
+      .querySelectorAll(`.filter-${type}`)
+      .forEach((filterItem) =>
+        filterItem.addEventListener("click", (event) => filter(event, type))
+      );
+  });
+
+  const showAllButton = document.querySelector(`.show-all`)
+  if(showAllButton) showAllButton.addEventListener("click", showAll);
+</script>
+</body>
+</html>

@@ -1,72 +1,89 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  <head>
-    <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Hugo 0.83.1" />
-
-
-<title>Data visualisation using ggplot2 - RajneetK-Fundamentals of Analytics</title>
-<meta property="og:title" content="Data visualisation using ggplot2 - RajneetK-Fundamentals of Analytics">
-
-
-  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
-
-
-
+<html><head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
+  
+  <meta
+    name="description"
+    content="This the website for my Course Fundamentals of Analytics"
+  />
+  
+  <title>RajneetK-Fundamentals of Analytics</title>
+  
+  <script src="https://unpkg.com/tailwindcss-jit-cdn@1.3.0/dist/tailwindcss-jit-cdn.umd.min.js"></script>
 
+  <style>
+    @font-face {
+      font-family: "Bree Serif";
+      src: url("./BreeSerif-Regular.ttf") format("truetype");
+    }
+    .font-bree {
+      font-family: "Bree Serif", serif;
+    }
+    .hide {
+      display: none;
+    }
+    .active {
+      background-color: #4299e1;
+      color: white;
+    }
+    .active:hover {
+      color: white;
+    }
+  </style>
+</head>
+<body><header class="text-gray-700 body-font sticky top-0 bg-white z-10">
+  <div
+    class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center"
+  >
+    <a
+      class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
+      href="/"
+    ><svg
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="w-10 h-10 text-white p-2 bg-blue-500 rounded-full"
+  viewBox="0 0 24 24"
+>
+  <path
+    d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+  ></path>
+</svg>
+<span class="ml-3 text-xl"></span></a>
+    <nav
+      class="md:ml-auto flex flex-wrap items-center text-base justify-center "
+    >
+      
+      
+      <a
+      href="/about/"
+      class="mr-2 px-2 rounded cursor-pointer select-none hover:text-gray-900"
+      >About</a>
+      
+      <a
+      href="https://github.com/RajneetK"
+      class="mr-2 px-2 rounded cursor-pointer select-none hover:text-gray-900"
+      >GitHub</a>
+      
+      <a
+      href="https://twitter.com/Rajneet74968819"
+      class="mr-2 px-2 rounded cursor-pointer select-none hover:text-gray-900"
+      >Twitter</a>
+      
+    </nav>
+  </div>
+</header>
+<div id="content">
 
-
-
-
-
-
-<link rel="stylesheet" href="/css/fonts.css" media="all">
-<link rel="stylesheet" href="/css/main.css" media="all">
-
-
-
-  </head>
-  <body>
-    <div class="wrapper">
-      <header class="header">
-        <nav class="nav">
-  <a href="/" class="nav-logo">
-    <img src="/images/logo.png"
-         width="50"
-         height="50"
-         alt="Logo">
-  </a>
-
-  <ul class="nav-links">
-    
-    <li><a href="/about/">About</a></li>
-    
-    <li><a href="https://github.com/RajneetK">GitHub</a></li>
-    
-    <li><a href="https://twitter.com/Rajneet74968819">Twitter</a></li>
-    
-  </ul>
-</nav>
-
-      </header>
-
-
-<main class="content" role="main">
-
-  <article class="article">
-    
-    <span class="article-duration">1 min read</span>
-    
-
-    <h1 class="article-title">Data visualisation using ggplot2</h1>
-
-    
-    <span class="article-date">2021-05-18</span>
-    
-
-    <div class="article-content">
+<section class="text-gray-700 body-font">
+  <div class="container px-5 py-8 mx-auto">
+    <h1 class="text-2xl font-bold my-4">Data visualisation using ggplot2</h1>
+    <div>
       
 <script src="/2021/05/18/data-visulization-using-ggplot2/index_files/header-attrs/header-attrs.js"></script>
 
@@ -77,30 +94,86 @@
 </div>
 
     </div>
-  </article>
+  </div>
+</section>
 
-  
+
+        </div><footer class="text-gray-700 body-font">
+  <div
+    class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col"
+  >
+    <p
+      class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-1 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4"
+    >
+      <a href="/">&copy; </a>
+    </p>
+    <span
+      class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start"
+    >
+         
+    </span>
+  </div>
+</footer>
 
 
-</main>
+<script>
+  const allTypes = ["all",  "posts",];
+  const filter = (event, type) => {
+    const isMultiPage = !!document.querySelector('nav.multipage');
 
-      <footer class="footer">
-        <ul class="footer-links">
-          <li>
-            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
-          </li>
-          <li>
-            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
-          </li>
-        </ul>
-      </footer>
+    if (isMultiPage) {
+      return;
+    }
 
-    </div>
-    
+    const isActive = event.target.classList.contains("active");
 
-    
+    showAll();
+    if (!isActive) {
+      hideAll();
+      event.target.classList.add("active");
+      if (type !== "other") {
+        document
+          .querySelectorAll(`nav:not(.multipage) .${type}`)
+          .forEach((item) => item.classList.remove("hide"));
+      } else {
+        document
+          .querySelectorAll(
+            `.card${specificTypes.map((type) => `:not(.${type})`).join("")}`
+          )
+          .forEach((item) => item.classList.remove("hide"));
+      }
+    }
+  };
 
-    
-  </body>
+  const showAll = () => {
+    allTypes.forEach((type) => {
+      document
+        .querySelectorAll(`nav:not(.multipage) .${type}`)
+        .forEach((item) => item.classList.remove("hide"));
+      document
+        .querySelectorAll(`nav:not(.multipage) .filter-${type}`)
+        .forEach((filterItem) => filterItem.classList.remove("active"));
+    });
+  };
+
+  const hideAll = () => {
+    allTypes.forEach((type) => {
+      document
+        .querySelectorAll(`.container a.card`)
+        .forEach((item) => item.classList.add("hide"));
+    });
+  };
+
+  allTypes.forEach((type) => {
+    document
+      .querySelectorAll(`.filter-${type}`)
+      .forEach((filterItem) =>
+        filterItem.addEventListener("click", (event) => filter(event, type))
+      );
+  });
+
+  const showAllButton = document.querySelector(`.show-all`)
+  if(showAllButton) showAllButton.addEventListener("click", showAll);
+</script>
+</body>
 </html>
-
