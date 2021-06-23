@@ -1,13 +1,93 @@
 name = "Developer Portfolio"
 license = "MIT"
-licenselink = "https://github.com/samrobbins85/hugo-developer-portfolio/blob/master/LICENSE"
+licenselink = "https://github.com/RajneetK"
 description = "A Portfolio website designed for developers"
-homepage = "https://github.com/samrobbins85/hugo-developer-portfolio"
+homepage = "https://github.com/RajneetK"
 tags = ["portfolio", "developer", "responsive","uikit"]
 features = ["uikit", "responsive", "features"]
 min_version = "0.54.0"
 
 [author]
-    name = "Sam Robbins"
-    homepage = "https://samrobbins.uk/"
+    name = "RajneetK"
+    homepage = "https://rajneetk.netlify.app/"
+
+# Base information
+baseURL = "https://example.com"
+languageCode = "en-gb"
+title = "Data analytics"
+# theme = "hugo-developer-portfolio"
+googleAnalytics = ""
+
+# Remove this when using normally
+# themesDir = "../../" 
+# `
+[module]
+  [[module.imports]]
+    path = "github.com/samrobbins85/hugo-developer-portfolio"
+
+# Plugins
+[params.plugins]
+
+  # CSS Plugins
+  [[params.plugins.css]]
+  URL = "https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/css/uikit.min.css"
+
+  # JS Plugins
+  [[params.plugins.js]]
+  URL = "https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/js/uikit.min.js"
+  [[params.plugins.js]]
+  URL = "https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/js/uikit-icons.min.js"
+
+
+# navigation
+[menu]
+
+  [[menu.main]]
+  name = "About"
+  URL = "about"
+  weight=1
+
+  [[menu.main]]
+  name = "Blog"
+  URL = "blog"
+  weight=2
+
+  [[menu.main]]
+  name = "Portfolio"
+  URL = "portfolio"
+  weight=3
+
+  [[menu.main]]
+  name = "Contact"
+  URL = "contact"
+  weight=4
+
+
+[params]
+home = "Home"
+# Meta data
+description = "The website of RajneetK,Student at UNB University"
+author = "RajneetK"
+
+
+  [params.contact]
+  enable = true
+  formAction = "" #contact form works with formspree.io
+  avatarurl = "images/logo.png"
+  [params.footer]
+  email = "merajneet@gmail.com"
+  address = "Canada"
+  googlemaps = "https://www.google.com/maps/embed/v1/place?q=place_id:ChIJwbHYJaUqfEgRK0Ui9dVGimc&key=AIzaSyAE_4rVAKux_DSPcb_OdSRDaovtPOSk_3U"
+
+[markup]
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ""
+    lineNoStart = 1
+    lineNos = true
+    lineNumbersInTable = true
+    noClasses = true
+    style = "rainbow_dash"
+    tabWidth = 4
 
