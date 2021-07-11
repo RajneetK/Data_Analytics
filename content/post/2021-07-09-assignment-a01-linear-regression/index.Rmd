@@ -1,0 +1,323 @@
+---
+title: Assignment A01:Linear regression
+author: rajneetk
+date: '2021-07-09'
+slug: assignment-a01-linear-regression
+categories:
+  - Linear regression
+tags: []
+description: Article description.
+featured: yes
+toc: no
+featureImage: /images/path/file.jpg
+thumbnail: /images/path/thumbnail.png
+shareImage: /images/path/share.png
+codeMaxLines: 10
+codeLineNumbers: no
+figurePositionShow: yes
+---
+
+**Diamonds**
+
+The diamonds dataset that we will use in this application exercise consists of prices and quality information.
+
+The variables in the diamonds dataset are
+
+1. price: price in US dollars
+2. carat: weight of the diamond
+3. cut: quality of the cut (Fair, Good, Very Good, Premium, Ideal)
+4. color: diamond color, from J (worst) to D (best)
+5. clarity: a measurement of how clear the diamond is, from I1 (worst), SI1, SI2, VS1, VS2, VVS1, VVS2, to IF (best)
+
+
+# Load required packages
+
+```{r}
+library(QuantPsyc)
+library(MASS)
+library(dplyr)
+library(data.table)
+library(tidyr)
+library(ggplot2)
+library(GGally)
+library(gridExtra)
+library(mosaic)
+
+```
+
+# load data
+ let us check the structure of the dataset.
+ 
+```{r}
+diamonds <- read.csv("MBA6636_SM21_Professor_Proposes_Data.csv")   #read diamonds file
+head(diamonds)    #display some of the data
+```
+
+Another function that is very useful for quickly taking a peek at a dataset is str. This function compactly displays the internal structure of an R object.
+
+```{r}
+str(diamonds)  #data frame by observations and variables
+```
+The output above tells us that there are observations and variables in the dataset. The variable name are listed, along with their type and the first few observations of each variable. 
+
+# More about the dataset
+
+Before we go any further with the analysis, let us first understand what each column in the dataset means. And who are we going to rely on to help us with that? The American Gemological Institute (GIA). So, let's decipher the 4Cs and other fields in the dataset.
+
+1. Carat weight: Represents the weight of the diamond. Bigger, the better (if other factors are held constant).
+
+2. Clarity: Refers to the absence of inclusions and blemishes. The clearer the diamond, the better the diamond, expensive the diamond (Other factors held constant).
+
+3. Color: Color refers to the absence of color in diamonds.
+
+4. Cut: Based on various dimensions, a diamond is assigned a cut rating or grade. This ranges from Excellent to Poor. Our dataset has the following cut ratings:
+Fair < Good < Very Good < Premium < Ideal
+Better the cut rating, expensive the diamond (other factors held constant).
+
+5. Certification, polish, Symmetry, Price: These are physical dimensions of the diamond.
+
+
+```{r}
+summary(diamonds)
+```
+
+# Exploring variables individually
+
+We will investigate and visualise the distributions of the variables in this dataset. This is also referred to as univariate analysis.
+
+First, variable classification:
+
+* Numerical variables are classified as continuous or discrete depending on whether they can take on an infinite number of values or only non-negative whole numbers.
+* If the variable is categorical, we can tell if it is ordinal by whether or not the levels are ordered naturally.
+
+*Investigating numerical data*
+We emphasise the following points when describing the shapes of numerical distributions:
+
+* shape:
+- right-skewed, left-skewed, symmetric (skew is to the side of the longer tail)
+- unimodal, bimodal, multimodal, uniform
+* center: mean (mean), median (median), mode (not always useful)
+- spead: range (range), standard deviation (sd), inter-quartile range (IQR)
+- unusal observations
+
+To calculate the mean, median, SD, variance, five-number summary, IQR, minimum, maximum of the price variable in the diamonds dataset.
+
+
+The mosaic command favstats, allows us to compute all of this information (and more) at once.
+
+```{r}
+favstats(~Price, data=diamonds)
+```
+
+
+find the mean price of diamonds by quality of cut
+
+```{r, message=FALSE, warning=FALSE}
+mean(Price ~ Cut , data=diamonds)
+```
+
+
+```{r, message=FALSE,warning=FALSE}
+median(Price ~ Cut , data=diamonds)
+sd(Price ~ Cut , data=diamonds)
+var(Price ~ Cut, data=diamonds)
+min(Price ~ Cut, data=diamonds)
+max(Price ~ Cut , data=diamonds)
+favstats(Price ~ Cut , data=diamonds)
+
+
+```
+
+The distribution of each cuts.
+
+```{r,message=FALSE,warning=FALSE}
+diamonds %>%
+  ggplot(aes(x=(Price))) +
+  geom_histogram(stat="bin",binwidth= 500) +
+  facet_wrap(~Cut, scales = "free")
+```
+
+# Graphical Display of Data
+
+Histogram of the carat variable:
+
+```{r}
+histogram(~Carat, data=diamonds)
+```
+
+Adjust the binwidth of the histogram:
+
+```{r}
+histogram(~Carat, data=diamonds, width = 0.1)
+histogram(~Carat, data=diamonds, width = 0.01)
+```
+
+Adjust the number of intervals:
+
+```{r}
+histogram(~Carat, data=diamonds, nint = 50)
+
+```
+Boxplots:
+
+```{r,warning=FALSE,message=FALSE}
+bwplot(Clarity ~ Price, data=diamonds)
+```
+
+Scatterplots:
+
+Scatterplot between carat and price of diamonds:
+```{r, message=FALSE,warning=FALSE}
+qplot(Carat, Price, data=diamonds)
+```
+
+# Relationship of Price and Cut
+Through a box plot, we observe that the highest price diamonds are premium cut, lowest price diamonds are ideal cut.
+
+```{r}
+dim(diamonds)
+samp_index = sample(1:nrow(diamonds), 30, replace = FALSE) # Creating a random sample to look at the data set.
+samp_index
+diamonds[samp_index,]
+str(diamonds$Carat)
+levels(diamonds$Carat)
+plot(diamonds$Carat)
+```
+
+# Lets take a closer look at the other ordinal factor variables.
+
+
+```{r}
+
+ggplot(diamonds, aes(factor(Cut), Price, fill=Cut)) + geom_boxplot() + ggtitle("Diamond Price according Cut") + xlab("Type of Cut") + ylab("Diamond Price in US Dollars")
+```
+
+
+
+
+# Price vs Categorical Variables: Clarity, Cut, Color
+
+We can see that these three variables all have a relationship with Price by plotting the categorical variables as colour. We can deduce from this that these three variables are important in predicting price, so we'll include them as features in our next prediction model.
+
+```{r,message=FALSE,warning=FALSE}
+par(mfrow=c(1,3))
+diamonds %>%
+  ggplot(aes(log(Price),log(Carat), col= Clarity))+
+  geom_point()
+```
+```{r,warning=FALSE,message=FALSE}
+diamonds %>%
+  ggplot(aes(log(Price),log(Carat), col= Cut))+
+  geom_point()
+```
+```{r,message=FALSE,warning=FALSE}
+diamonds %>%
+  ggplot(aes(log(Price),log(Carat), col= Colour))+
+  geom_point()
+```
+
+
+# Exploring categorical data
+
+Summarize cuts of diamonds. Since this is a categorical variable we use tables. To create the table, first group by the levels of the cut variable, and then summarize the counts of diamonds in each level.
+
+* Frequency table:
+
+```{r}
+diamonds %>%
+  group_by(Cut) %>%
+  summarise(counts = n())
+```
+
+* Proportions table: divide the counts in each level by the number of rows (observations) in the diamonds variable:
+
+```{r}
+diamonds %>%
+  group_by(Cut) %>%
+  summarise(counts = n() / nrow(diamonds))
+```
+What type of variable is color? Are all colors of diamonds  represented in the dataset? Which color is most prominently represented in the dataset?
+
+A useful representation for categorical variables is a bar plot.
+```{r}
+ggplot(data = diamonds, aes(x = Colour)) +
+  geom_bar()
+```
+
+# Bivariate Analysis:
+
+We are familiar with the individual variables in the dataset, we can start evaluating relationships between them.
+
+Adding another variable to a histogram:
+
+Let’s make a histogram of the depths of diamonds, with binwidth of 0.2%, and adding another variable i.e cut, to the visualization. We can do this either using an aesthetic or a facet:
+
+* Using aesthetics: Use different colors to fill in for different cuts.
+
+```{r, warning=FALSE, message=FALSE}
+ggplot(data = diamonds, aes(x = Carat, fill = Cut)) +
+  geom_histogram(binwidth = 0.2)
+```
+
+* Using facets: Split into different plots for different cuts.
+
+```{r, warning=FALSE, message=FALSE}
+ggplot(data = diamonds, aes(x = Carat)) +
+  geom_histogram(binwidth = 0.2) +
+  facet_wrap(~ Cut)
+```
+
+Variable correlated with cut:
+
+Carat and cut have a negative correlation (see box plot below)- fair cuts are typically higher carat, while ideal cuts are typically lower carat. This could be due to the scarcity of larger diamonds, as well as the technical challenge of cutting a large stone into an ideal cut. This is also why lower quality diamonds, even if they are high carats, are more expensive.
+
+```{r,message=FALSE,warning=FALSE}
+diamonds %>%
+  ggplot(aes(x=Cut,y=Carat, color=Cut)) +
+  geom_boxplot()
+```
+
+
+# Predicting Diamond Price
+
+To predict diamond price, we would first try to fit the data with a linear regression model.
+
+QQ plot and histogram both show that variable price shows a better normality after log transformation
+
+```{r}
+par(mfrow=c(1,2))
+qqnorm((diamonds$Price),main="Normal Q-Q Plot of Price");qqline((diamonds$Price))
+qqnorm(log(diamonds$Price),main="Normal Q-Q Plot of log Price");qqline(log(diamonds$Price))
+```
+
+
+```{r}
+par(mfrow=c(1,2))
+hist(diamonds$Price,main="Price")
+hist(log(diamonds$Price),main="log Price")
+```
+
+
+# Linear Regression
+
+We use the lm function to build the regression model, with the features that we have selected in earlier sessions.
+
+```{r}
+lm1= lm(log(Price)~ log(Carat) + Cut+Colour+Clarity, data= diamonds)
+summary(lm1)
+```
+
+Compare with a model before log transformation:
+
+```{r}
+lm2= lm(Price~Carat+Cut+Colour+Clarity, data= diamonds)
+summary(lm2)
+```
+
+The results show that lm1 outperforms lm2; however, while lm2 is adequate, there is a risk of inaccurate estimates from lm2 due to its violation of the regression assumptions.
+Standardized beta coefficients can be used to determine which feature has the greatest impact on price prediction because the coefficients are all on the same scale:
+
+```{r,message=FALSE,warning=FALSE}
+lm.beta(lm1)
+```
+
